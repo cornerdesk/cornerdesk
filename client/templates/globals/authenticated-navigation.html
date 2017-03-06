@@ -1,0 +1,23 @@
+<template name="authenticatedNavigation">
+  <div class="container-fluid">
+    <div class="navbar-minimize">
+      <button id="minimizeSidebar" class="btn btn-fill btn-icon"><i class="ti-more-alt"></i></button>
+    </div>
+    <button type="button" class="navbar-toggle">
+	                        <span class="sr-only">Toggle navigation</span>
+	                    </button>
+    <div class="navbar-header">
+
+      <span>{{reminder}}</span>
+
+    </div>
+    <ul class="nav navbar-nav navbar-right">
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{currentUser.emails.[0].address}} <span class="caret"></span></a>
+        <ul class="dropdown-menu" role="menu">
+          <li class="logout"><a href="#">Logout</a></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</template>

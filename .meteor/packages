@@ -1,0 +1,41 @@
+# Meteor packages used by this project, one per line.
+#
+# 'meteor add' and 'meteor remove' will edit this file for you,
+# but you can also edit it by hand.
+
+
+shell-server
+meteor-base
+accounts-base
+accounts-password
+jquery
+check
+audit-argument-checks
+themeteorchef:jquery-validation
+browser-policy
+themeteorchef:bert
+fourseven:scss
+meteorhacks:ssr
+ecmascript
+kadira:flow-router
+meteorhacks:fast-render
+session
+templating
+reactive-var
+reactive-dict
+tracker
+alanning:roles
+themeteorchef:seeder
+themeteorchef:commonmark
+aldeed:collection2
+twbs:bootstrap
+momentjs:moment
+risul:moment-timezone
+standard-minifier-css
+standard-minifier-js
+tsega:bootstrap3-datetimepicker
+peppelg:bootstrap-3-modal
+fullcalendar:fullcalendar
+kadira:blaze-layout
+dwatson:meteor-pagedown
+risul:bootstrap-colorpicker

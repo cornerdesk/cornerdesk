@@ -1,0 +1,17 @@
+<template name="default">
+	<div class="wrapper">
+		{{>bertAlert}} {{#if loggingIn}} {{> loading}} {{else}} {{#if authenticated}} {{> sidebar}}
+		<div class="main-panel ps-container ps-theme-default ps-active-y">
+			{{>header}} {{#unless redirectAuthenticated}}
+			<div class="content">
+				{{> Template.dynamic template=yield}}
+			</div>
+			{{/unless}}
+		</div>
+		{{else}} {{#unless redirectPublic}} {{>header}}
+		<div class="content"> 
+			{{> Template.dynamic template=yield}}
+		</div>
+		{{/unless}} {{/if}} {{/if}}
+	</div>
+</template>

@@ -1,0 +1,9 @@
+.DS_Store
+.vscode
+settings-development.json
+settings-production.json
+npm-debug.log
+debug.log
+.editorconfig
+
+node_modules
