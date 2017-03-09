@@ -14,7 +14,7 @@ authenticatedRoutes.route( '/messages/:channel', {
   }
 });
 
-authenticatedRoutes.route( '/calendar', {
+authenticatedRoutes.route( '/calendars/:calendar', {
   name: 'calendar',
   action() {
     BlazeLayout.render( 'default', { yield: 'calendar' } );

@@ -18,6 +18,11 @@ Events.allow({
 });
 
 let EventsSchema = new SimpleSchema({
+  'calendar': {
+    type: String,
+    label: 'The ID of the calendar this event belongs to.',
+    optional: true
+  },
   'title': {
     type: String,
     label: 'The title of the event.'

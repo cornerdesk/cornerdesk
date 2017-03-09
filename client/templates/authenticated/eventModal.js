@@ -1,3 +1,5 @@
+import handleEventInsert from '../../modules/handle-event-insert';
+
 var dateFormat = 'DD/MM/YYYY HH:mm';
 Template.eventModal.helpers({
     event: function () {
@@ -34,39 +36,8 @@ Template.eventModal.helpers({
 });
 
 Template.eventModal.events({
-    'click #save': function (e) {
-        e.preventDefault();
-        var $form = jQuery('#eventModal form');
-        var title = $form.find('#event-title').val();
-        var color = $form.find('#event-color').val();
-        var isPrivate = $form.find('#event-private').is(':checked');
-        var allDay = $form.find('#event-allday').is(':checked');
-        var start = moment($form.find('#event-start').val(), dateFormat).toDate();
-        var end = moment($form.find('#event-end').val(), dateFormat).toDate();
-        var eventId = $form.find('#event-id').val();
-        var description = $form.find('#event-description').val();
-        if (eventId === "") {
-            CalHelper.createEvent(title, color, start, end, description, allDay, isPrivate);
-        } else {
-            var calEvent = Events.findOne({ _id: eventId });
-            var modifier = {};
-            if (calEvent.title !== title)
-                modifier.title = title;
-            if (calEvent.color !== color)
-                modifier.color = color;
-            if (calEvent.start.toLocaleString() !== start.toLocaleString())
-                modifier.start = start;
-            if (calEvent.end.toLocaleString() !== end.toLocaleString())
-                modifier.end = end;
-            if (calEvent.allDay !== allDay)
-                modifier.allDay = allDay;
-            if (calEvent.isPrivate !== isPrivate)
-                modifier.isPrivate = isPrivate;
-            if (calEvent.description !== description)
-                modifier.description = description;
-
-            CalHelper.updateEvent(calEvent._id, modifier);
-        }
+    'click #save': function (event, template) {
+        handleEventInsert(event, template);
 
         Modal.hide('eventModal');
     }

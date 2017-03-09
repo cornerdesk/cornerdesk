@@ -10,6 +10,16 @@ Template.sidebar.helpers({
       return current === name || current === `@${ name }` ? 'active' : false;
     }
   },
+  currentUsername() {
+    let currentUser = Meteor.users.findOne( { _id: Meteor.userId() } );
+    return currentUser.username;
+  },
+  calendars() {
+    let calendars = Calendars.find();
+    if ( calendars ) {
+      return calendars;
+    }
+  },
   channels() {
     let channels = Channels.find();
     if ( channels ) {

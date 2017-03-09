@@ -1,15 +1,42 @@
 CalHelper = {};
 // Récupère les elements de la collection Events
-CalHelper.getEvents = function (start, end) {
-    var events = Events.find({
-        start: {
-            $gte: start
+CalHelper.getEvents = function (calendar, start, end) {
+    if (calendar.includes('@')) {
+        let calendarOwner = Meteor.users.findOne({ username: calendar.replace('@', '') });
+        return Events.find({
+            $or: [{
+                start: { $lte: end }
+            },
+            {
+                end: { $gte: start }
+            }],
+            $or: [{
+                isPrivate: false
+            },
+            {
+                isPrivate: true,
+                ownerId: Meteor.userId()
+            }],
+            ownerId: calendarOwner._id
+        });
+    }
+    let calObject = Calendars.findOne({name: calendar});
+    return Events.find({
+        calendar: calObject._id,
+        $or: [{
+            start: { $lte: end }
         },
-        end: {
-            $lte: end
-        }
+        {
+            end: { $gte: start }
+        }],
+        $or: [{
+            isPrivate: false
+        },
+        {
+            isPrivate: true,
+            ownerId: Meteor.userId()
+        }]
     });
-    return events;
 };
 // Mise en forme des Events pour affichage
 CalHelper.mapDbEventsToEventSource = function (eventCursor) {
@@ -19,8 +46,8 @@ CalHelper.mapDbEventsToEventSource = function (eventCursor) {
         // if (eventData.isPrivate) {
         //     title += '<i class="fa fa-user-secret" aria-hidden="true"></i> ';
         // }
-         title += eventData.title;
-        
+        title += eventData.title;
+
         var event = {
             id: eventData._id,
             title: title,
@@ -37,7 +64,13 @@ CalHelper.mapDbEventsToEventSource = function (eventCursor) {
     return eventArray;
 };
 
-CalHelper.createEvent = function (title, color, start, end, description, allDay, isPrivate) {
+CalHelper.getCalendarId = function() {
+    return Calendars.findOne({name: name})._id;
+};
+
+CalHelper.createEvent = function (calendar, title, color, start, end, description, allDay, isPrivate) {
+    let calId = calendar.includes('@') ? null : Calendars.findOne({name: calendar})._id;
+
     Events.insert({
         title: title,
         color: color,
@@ -46,12 +79,13 @@ CalHelper.createEvent = function (title, color, start, end, description, allDay,
         description: description,
         allDay: allDay,
         isPrivate: isPrivate,
+        calendar: calId,
         ownerId: Meteor.userId()
-    }, function() { Bert.alert('Event saved !', 'success'); } );
+    }, function () { Bert.alert('Event saved !', 'success'); });
 };
 
 CalHelper.updateEvent = function (id, modifier) {
-    Events.update({ _id: id }, { $set: modifier}, function() { Bert.alert('Event updated !', 'success'); } );
+    Events.update({ _id: id }, { $set: modifier }, function () { Bert.alert('Event updated !', 'success'); });
 };
 
 CalHelper.eventWithDates = function (calEvent) {
@@ -67,7 +101,7 @@ CalHelper.eventWithMomentDates = function (calEvent) {
 }
 
 CalHelper.momentToDate = function (moment) {
-    if(typeof moment.toDate === 'function') {
+    if (typeof moment.toDate === 'function') {
         moment = moment.toDate();
     }
     return moment;

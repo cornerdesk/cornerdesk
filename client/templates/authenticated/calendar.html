@@ -1,6 +1,11 @@
 <template name="calendar">
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
+            <h3>{{name}}</h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-10 col-md-offset-1">
             <div class="card card-calendar">
                 {{#unless currentUser}} {{> warning}} {{/unless}} {{> fcalendar}}
             </div>
@@ -20,4 +25,3 @@
 <template name="fcalendar">
     <div id="fullcalendar" class="fc"></div>
 </template>
-
