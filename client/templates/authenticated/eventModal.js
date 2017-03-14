@@ -1,9 +1,9 @@
 import handleEventInsert from '../../modules/handle-event-insert';
 
-var dateFormat = 'DD/MM/YYYY HH:mm';
+let dateFormat = 'DD/MM/YYYY HH:mm';
 Template.eventModal.helpers({
-    event: function () {
-        var event = Session.get('selectedEvent');
+    event: () => {
+        let event = Session.get('selectedEvent');
 
         if (typeof event !== "undefined") {
             return event;
@@ -20,23 +20,23 @@ Template.eventModal.helpers({
             }
         }
     },
-    formatDate: function (date) {
-        var event = Session.get('selectedEvent');
+    formatDate: (date) => {
+        let event = Session.get('selectedEvent');
         if (typeof event === 'undefined') {
             return '';
         }
         return moment(date.toISOString()).format(dateFormat);
     },
-    isOwner: function () {
+    isOwner: () => {
         return Session.get('selectedEvent').ownerId === Meteor.userId();
     },
-    readonly: function() {
+    readonly: () => {
         return Session.get('selectedEvent').ownerId === Meteor.userId() ? '' : 'disabled';
     }
 });
 
 Template.eventModal.events({
-    'click #save': function (event, template) {
+    'click #save': (event, template) => {
         handleEventInsert(event, template);
 
         Modal.hide('eventModal');
@@ -44,8 +44,8 @@ Template.eventModal.events({
 });
 
 Template.eventModal.onRendered(() => {
-    var $form = jQuery('#eventModal form');
-    var event = Session.get('selectedEvent');
+    let $form = jQuery('#eventModal form');
+    let event = Session.get('selectedEvent');
     $form.find('#event-title').val(event.title);
     $form.find('#eventColorPicker').colorpicker({
         color: event.color,
@@ -69,7 +69,7 @@ Template.eventModal.onRendered(() => {
     $form.find('#event-end').datetimepicker({ format: dateFormat, defaultDate: moment(event.end.toISOString()).format() });
     $form.find('#event-id').val(event._id);
     $form.find('#event-description').val(event.description);
-    $("#event-start").on("dp.change", function (e) {
+    $("#event-start").on("dp.change", (e) => {
         $('#event-end').data("DateTimePicker").minDate(e.date);
     });
 });

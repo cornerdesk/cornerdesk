@@ -1,10 +1,13 @@
 ModalHelper = {};
 
-ModalHelper.openEmptyEventModal = function (start, end, allDay, jsEvent, view) {
+ModalHelper.openEmptyEventModal = (start, end, allDay, jsEvent, view) => {
+  if(!CalHelper.canInsert()) {
+    return;
+  }
   if (typeof allDay !== 'boolean') {
     allDay = false;
   }
-  var calEvent = CalHelper.eventWithDates({
+  let calEvent = CalHelper.eventWithDates({
     title: '',
     color: '#51c2bf',
     start: start,
@@ -15,10 +18,10 @@ ModalHelper.openEmptyEventModal = function (start, end, allDay, jsEvent, view) {
     ownerId: Meteor.userId()
   });
   Session.set('selectedEvent', calEvent);
-  Modal.show('eventModal', function() { return calEvent; });
+  Modal.show('eventModal', () => { return calEvent; });
 }
 
-ModalHelper.openEventModal = function (calEvent, jsEvent, view) {
+ModalHelper.openEventModal = (calEvent, jsEvent, view) => {
   calEvent = CalHelper.eventWithDates({
     _id: calEvent._id,
     title: calEvent.title,
@@ -31,5 +34,5 @@ ModalHelper.openEventModal = function (calEvent, jsEvent, view) {
     ownerId: calEvent.ownerId
   });
   Session.set('selectedEvent', calEvent);
-  Modal.show('eventModal', function() { return calEvent; });
+  Modal.show('eventModal', () => { return calEvent; });
 }
