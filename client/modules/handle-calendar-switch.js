@@ -7,10 +7,11 @@ let _handleSwitch = (template) => {
     }
     
     if (template.isDirect) {
-        var user = Meteor.users.findOne({ username: calendar.replace('@', '') });
-        template.name = user.profile.name + "'s calendar";
+        let user = Meteor.users.findOne({ username: calendar.replace('@', '') });
+        template.name.set(user._id === Meteor.userId() ? "My calendar" : user.profile.name.first + "'s calendar");
     } else {
-        template.name = calendar;
+        let cal = Calendars.find({name: calendar});
+        template.name.set(cal.name);
     }
 };
 

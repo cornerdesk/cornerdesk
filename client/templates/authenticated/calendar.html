@@ -7,7 +7,7 @@
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
             <div class="card card-calendar">
-                {{#unless currentUser}} {{> warning}} {{/unless}} {{> fcalendar}}
+                <div id="fullcalendar" class="fc"></div>
             </div>
         </div>
     </div>
@@ -20,8 +20,4 @@
         <h4>Warning!</h4>
         <p>You need to sign in to access every functionality.</p>
     </div>
-</template>
-
-<template name="fcalendar">
-    <div id="fullcalendar" class="fc"></div>
 </template>
