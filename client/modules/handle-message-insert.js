@@ -19,7 +19,7 @@ let _buildMessage = ( template, text ) => {
 };
 
 let _checkIfCanInsert = ( message, event ) => {
-  return message !== '' && event.keyCode === 13;
+  return message !== '' && event.keyCode === 13 && !event.ctrlKey && !event.shiftKey;
 };
 
 let _getMessage = ( template ) => {

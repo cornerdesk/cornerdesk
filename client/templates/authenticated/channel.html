@@ -10,8 +10,18 @@
       </div>
     </div>
 
-    <div class="message-input">
-      <input class="form-control" name="message" placeholder="Type your message here...">
+    <div class="message-input ">
+      <div class="form-group label-floating is-empty mt0">
+        <textarea class="form-control mb0" id="message" name="message" placeholder="Type your message here..." rows="2" ></textarea>
+      </div>
+        <span class="pull-right">
+          <i>*italic*</i> 
+          <b> **bold** </b> ~
+          <strike>striked</strike>~ 
+          <code class="code-colors inline">`code`</code> 
+          <code class="code-colors inline">``` <i class="fa fa-level-down"></i> multiple <i class="fa fa-level-down"></i> lines <i class="fa fa-level-down"></i> ```</code>
+          <blockquote class="help-quote"> &gt;citation </blockquote>
+        </span>
     </div>
   </div>
 </template>

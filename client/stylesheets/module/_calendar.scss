@@ -161,7 +161,7 @@ NOTE: use percentage font sizes or else old IE chokes
   border-radius: 20px !important;
   box-sizing: border-box;
   border-width: 2px;
-  background-color: transparent;
+  background: #ffffff;
   font-size: 12px;
   font-weight: 500;
   padding: 7px 18px;
@@ -265,7 +265,7 @@ NOTE: use percentage font sizes or else old IE chokes
   cursor: default;
   opacity: 0.65;
   filter: alpha(opacity=65);
-  color: #66615b;
+  color: #66615B;
 }
 
 .fc-state-hover {
@@ -304,6 +304,7 @@ previous button's border...
 }
 
 .fc .fc-button {
+    
     height: 3em;
 }
 

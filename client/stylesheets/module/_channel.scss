@@ -29,11 +29,13 @@
   border-top: 1px solid #eee;
 
   .message-input {
+    height:150px;
     background: #fff;
     position: absolute;
     left: 0;
     right: 0;
-    padding: 15px;
+    bottom:0;
+    padding: 5px;
     border-top: 1px solid #eee;
     
   }
@@ -41,7 +43,7 @@
   #messages {
     display: flex;
     overflow: auto;
-    height: calc( 100% - 122px );
+    height: calc( 100% - 152px );
     // background: $background;
     padding: 20px 20px 0;
   }
@@ -92,4 +94,10 @@
   .message > .body > *:last-child {
     margin-bottom: 0px;
   }
+}
+
+blockquote.help-quote {
+  padding:0;
+  font-size:small;
+  display: inline;
 }

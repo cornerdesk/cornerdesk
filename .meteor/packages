@@ -33,9 +33,10 @@ momentjs:moment
 risul:moment-timezone
 standard-minifier-css
 standard-minifier-js
-tsega:bootstrap3-datetimepicker
 peppelg:bootstrap-3-modal
 fullcalendar:fullcalendar
 kadira:blaze-layout
 dwatson:meteor-pagedown
 risul:bootstrap-colorpicker
+fezvrasta:bootstrap-material-design
+stubborncoder:bootstrap-material-datepicker

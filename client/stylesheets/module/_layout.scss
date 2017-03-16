@@ -1,4 +1,7 @@
 
+body {
+  position:relative;
+}
 
 /*!
  * Datetimepicker for Bootstrap 3
@@ -1622,7 +1625,6 @@ a.dropdown-toggle[aria-expanded="true"] .caret {
   box-shadow: none;
 }
 .form-control:focus {
-  border: 1px solid #e8e7e3;
   background-color: #FFFFFF;
   -webkit-box-shadow: none;
   box-shadow: none;
@@ -2089,9 +2091,9 @@ form label.radio, form label.checkbox {
   cursor: pointer;
 }
 
-.form-group {
-  position: relative;
-}
+// .form-group {
+//   position: relative;
+// }
 
 .form-horizontal .checkbox,
 .form-horizontal .radio {
