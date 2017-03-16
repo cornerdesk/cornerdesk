@@ -28,18 +28,18 @@ RemotR
           </a>
           <div class="collapse" id="calendars" aria-expanded="false" style="height: auto;">
             <ul class="nav">
-              <li><a href="/calendars/@{{currentUsername}}">My calendar</a></li>
+              <li class="{{currentCalendar currentUsername}}"><a href="/calendars/@{{currentUsername}}">My calendar</a></li>
               <li>
-                <a data-toggle="collapse" href="#directMessages" class="collapsed" aria-expanded="false">
+                <a data-toggle="collapse" href="#directCalendars" class="collapsed" aria-expanded="false">
                   <i class="ti-user"></i>
                   <p>Users
                     <b class="caret"></b>
                   </p>
                 </a>
-                <div class="collapse" id="directMessages" aria-expanded="false" style="height: auto;">
+                <div class="collapse" id="directCalendars" aria-expanded="false" style="height: auto;">
                   <ul class="nav">
                     {{#each user in users}}
-                    <li class="{{currentChannel user.username}}">
+                    <li class="{{currentCalendar user.username}}">
                       <a href="/calendars/@{{user.username}}">
             {{fullName user.profile.name}}
           </a>
