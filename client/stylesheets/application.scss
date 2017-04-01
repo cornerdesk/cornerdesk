@@ -1,9 +1,7 @@
 @import "extends";
-
 @import "module/utilities";
 @import "base/animations";
 @import "base/forms";
-
 @import "module/channel";
 @import "module/header";
 @import "module/loading";
@@ -12,5 +10,4 @@
 @import "module/layout";
 @import "module/calendar";
 @import "module/charts";
-
-
+@import "module/kanboard";

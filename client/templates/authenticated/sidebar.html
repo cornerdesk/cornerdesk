@@ -110,7 +110,26 @@ RemotR
           </a>
           <div class="collapse" id="boards" aria-expanded="false" style="height: auto;">
             <ul class="nav">
-              <li><a href="/board">Personnal Board</a></li>
+              <li><a href="/kanboards/@{{currentUsername}}">Personnal Kanboard</a></li>
+              <li>
+                <a data-toggle="collapse" href="#kanboards" class="collapsed" aria-expanded="false">
+                  <i class="ti-user"></i>
+                  <p>Users
+                    <b class="caret"></b>
+                  </p>
+                </a>
+                <div class="collapse" id="kanboards" aria-expanded="false" style="height: auto;">
+                  <ul class="nav">
+                    {{#each user in users}}
+                    <li class="{{currentBoard user.username}}">
+                      <a href="/kanboards/@{{user.username}}">
+            {{fullName user.profile.name}}
+          </a>
+                    </li>
+                    {{/each}}
+                  </ul>
+                </div>
+              </li>
             </ul>
           </div>
         </li>

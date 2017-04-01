@@ -28,7 +28,6 @@ alanning:roles
 themeteorchef:seeder
 themeteorchef:commonmark
 aldeed:collection2
-twbs:bootstrap
 momentjs:moment
 risul:moment-timezone
 standard-minifier-css
