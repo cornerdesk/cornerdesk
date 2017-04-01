@@ -1,0 +1,71 @@
+<template name="eventModal">
+    <div id="eventModal" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header text-center">
+                    <button type="button" class="close" data-dismiss="modal">×</button>
+                    <h3><i class="fa fa-edit fa-x3"></i> Event editor</h3>
+                </div>
+                <div class="modal-body" id="eventEditorForm">
+                    <div class="row">
+                        <input type="hidden" id="event-id" name="event-id" />
+                        <div class="col-md-8 form-group form-group-lg label-static is-empty">
+                            <label for="event-title" class="form-label">Title</label>
+                            <input type="text" class="form-control {{readonly}}" {{readonly}} name="event-title" id="event-title">
+                        </div>
+                        <div class="col-md-4 form-group form-group-lg label-static is-empty">
+                            <label for="event-color">Color</label>
+                            <div id="eventColorPicker" class="input-group colorpicker-component">
+                                <input type="text" class="form-control {{readonly}}" {{readonly}} name="event-color" id="event-color">
+                                <span
+                                    class="input-group-addon"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 form-group form-group-lg label-static is-empty">
+                            <label for="event-start">Start</label>
+                            <input class="form-control {{readonly}}" {{readonly}} id="event-start" type="text" />
+                        </div>
+                        <div class="col-md-6 form-group form-group-lg label-static is-empty">
+                            <label for="event-end">End</label>
+                            <input class="form-control {{readonly}}" {{readonly}} id="event-end" type="text" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 form-group form-group-lg label-static is-empty">
+                            <label for="event-title">Description</label>
+                            <textarea class="form-control {{readonly}}" {{readonly}} rows="2" name="event-description" id="event-description" value=""></textarea>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 text-center form-group form-group-lg label-static is-empty">
+                            <label for="event-allday">
+                                        <input type="checkbox" class="{{readonly}}" {{readonly}} name="event-allday" id="event-allday" value="">
+                                        All day
+                                    </label>
+                        </div>
+                        <div class="col-md-6 text-center form-group form-group-lg label-static is-empty">
+                            <label for="event-private">
+                                        <input type="checkbox" class="{{readonly}}" {{readonly}} name="event-private" id="event-private" value="" >
+                                        Make this event private
+                                    </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="row">
+                        <div class="col-md-12 text-center">
+                            {{#if isOwner}}
+                            <button class="btn" data-dismiss="modal">Cancel</button>
+                            <button class="btn btn-primary" id="save">Save</button> {{else}}
+                            <p>You don't have the right to edit this event</p>
+                            {{/if}}
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

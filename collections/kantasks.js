@@ -1,0 +1,1 @@
+Kantasks = new Meteor.Collection('kantasks');
