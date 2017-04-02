@@ -2,10 +2,19 @@
     <div id="kanlist{{_id}}" class="kanlist">
         <div class="kanlist-header">
             {{title}}
+            <div class="list-header-menu dropdown pull-right">
+                <a class="list-header-menu-icon dropdown-toggle"  data-target="#" data-toggle="dropdown" href="#">
+                    <i class="fa fa-navicon"></i>
+                    <div class="ripple-container"></div>
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a class="removeListBtn" data-list-id="{{_id}}" href="#">Remove list</a></li>
+                </ul>
+            </div>
+            
         </div>
         <div class="kanlist-body">
             <div class="tasks-container clearfix">
-
             </div>
         </div>
     </div>
