@@ -1,6 +1,6 @@
 Template.addListForm.events({
     'click [name="new-list-btn"]' (event, template) {
-        let nameInput = template.find('#addListForm [name="new-list-name"]');
+        let nameInput = template.find('[name="new-list-name"]');
         if (nameInput.value !== '') {
             let boardId = FlowRouter.getParam('board');
             var list = null;
@@ -10,6 +10,7 @@ Template.addListForm.events({
                     list = { title: nameInput.value };
                 }
             } else {
+                // TODO Gestion des membres du board
                 list = { title: nameInput.value, kanboard: boardId };
             }
             if (list === null) {

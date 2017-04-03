@@ -1,17 +1,15 @@
 Kanlists = new Meteor.Collection('kanlists');
 
 Kanlists.allow({
-    insert: function(userId, doc) {
-        if (userId) {
-            return true;
-        }
-        return false;
-    },
-    update: function(userId, doc, fields, modifier) {
-        if (userId && doc.ownerId === userId) {
-            return true;
-        }
-    }
+    insert: () => false,
+    update: () => false,
+    remove: () => false
+});
+
+Kanlists.deny({
+    insert: () => true,
+    update: () => true,
+    remove: () => true
 });
 
 let KanlistsSchema = new SimpleSchema({

@@ -1,0 +1,41 @@
+<template name="kantask">
+    <a class="kantask-wrapper">
+        <div class="kantask well infobox">
+            <div class="kantask-labels pull-right"></div>
+            <div class="kantask-title">{{title}}</div>
+            <div class="kantask-members"></div>
+        </div>
+    </a>
+</template>
+
+<template name="newTaskButton">
+    <div class="text-center">
+        <button name="new-task-button" class="btn btn-fab btn-fab-mini btn-primary createTaskButton">
+            <i class="fa fa-plus"></i>
+        </button>
+    </div>
+</template>
+
+<template name="newTaskForm">
+    <div class="kantask well infobox">
+        <div>
+            <button name="cancel-new-task-btn" type="button" class="close">×</button>
+        </div>
+        <div class="form-group label-floating is-empty">
+            <div class="input-group">
+                <label class="control-label">
+                    Title
+                </label>
+                <input class="form-control" type="text" name="new-task-name" id="newListName" />
+                <span class="input-group-btn">
+                    <button name="save-new-task-btn" class="btn btn-fab btn-fab-mini btn-primary">
+                        <i class="fa fa-floppy-o" aria-hidden="true"></i>
+                    </button>
+                </span>
+            </div>
+        </div>
+        <div class="text-center">
+
+        </div>
+    </div>
+</template>
