@@ -13,10 +13,33 @@ Template.kanboard.helpers({
         return Template.instance().name.get();
     },
     lists() {
-        return Kanlists.find({});
+        return Kanlists.find({}, { sort: { order: 1 } });
     }
 });
 
-Template.calendar.onRendered(() => {
+Template.kanboard.onRendered(() => {
+
+    $('.kanlists-container').sortable({
+        tolerance: 'pointer',
+        helper: 'clone',
+        handle: '.kanlist-header',
+        items: '.kanlist',
+        placeholder: 'kanlist placeholder',
+        distance: 7,
+        start(evt, ui) {
+            ui.placeholder.height(ui.helper.height());
+        },
+        stop() {
+            $('.kanlists-container').find('.kanlist').each(
+                (i, list) => {
+                    Meteor.call('updateList', Blaze.getData(list)._id, {
+                        $set: {
+                            order: i,
+                        },
+                    }, (err) => {});
+                }
+            );
+        },
+    });
     Tracker.autorun(() => {});
 });

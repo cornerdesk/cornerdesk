@@ -7,11 +7,11 @@ Template.addListForm.events({
             if (boardId.includes('@')) {
                 let user = Meteor.users.findOne({ username: boardId.replace('@', '') });
                 if (user._id === Meteor.userId()) {
-                    list = { title: nameInput.value };
+                    list = { title: nameInput.value, order: $('.kanlists-container').find('.kanlist').length };
                 }
             } else {
                 // TODO Gestion des membres du board
-                list = { title: nameInput.value, kanboard: boardId };
+                list = { title: nameInput.value, kanboard: boardId, order: $('.kanlists-container').find('.kanlist').length };
             }
             if (list === null) {
                 Bert.alert('You don\'t have the rights to create a list', 'warning');

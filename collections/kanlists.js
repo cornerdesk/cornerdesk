@@ -28,6 +28,11 @@ let KanlistsSchema = new SimpleSchema({
         label: 'The id of the user the list belongs to.',
         optional: false
     },
+    'order': {
+        type: Number,
+        label: 'Order of the list',
+        optional: true
+    }
 });
 
 Kanlists.attachSchema(KanlistsSchema);

@@ -15,10 +15,14 @@ Template.kanlist.onCreated(() => {
     template.kantasks = (list) => {
         return Kantasks.find({ kanlist: list });
     };
-    // let template = Template.instance();
-    // let board = FlowRouter.getParam('board');
-    // template.showNewTaskForm = new ReactiveVar(false);
-    // Meteor.subscribe('kanlist', board.includes('@'), board);
+});
+
+Template.kanlist.onRendered(() => {
+    var listBody = Template.instance().$('.kanlist-body');
+    listBody.perfectScrollbar();
+    listBody.on('mouseenter', () => {
+        listBody.perfectScrollbar('update');
+    });
 });
 
 Template.kanlist.events({
