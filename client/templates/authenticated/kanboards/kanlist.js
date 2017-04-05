@@ -23,6 +23,40 @@ Template.kanlist.onRendered(() => {
     listBody.on('mouseenter', () => {
         listBody.perfectScrollbar('update');
     });
+
+    // Drag n drop of the tasks
+    const $tasks = Template.instance().$('.tasks-container');
+    $tasks.sortable({
+        connectWith: '.tasks-container',
+        tolerance: 'pointer',
+        appendTo: 'body',
+        helper(evt, item) {
+            return item.clone();
+        },
+        distance: 7,
+        items: '.kantask-wrapper:not(.new-task)',
+        scroll: false,
+        placeholder: 'kantask-wrapper placeholder',
+        start(evt, ui) {
+            ui.placeholder.height(ui.helper.height());
+        },
+        receive(evt, ui) {
+            let kanlist = ui.item.parents('.kanlist').get(0);
+            let $listItems = $(kanlist).find('.kantask-wrapper');
+            const itemIndex = $listItems.index(ui.item.get(0));
+            const nbItems = $listItems.length;
+            if (itemIndex === nbItems - 1) {
+                $(kanlist).find('.new-task:eq(0)').insertAfter(ui.item.get(0));
+            }
+            const listId = Blaze.getData(kanlist)._id;
+
+            const taskDomElement = ui.item.get(0);
+            const task = Blaze.getData(taskDomElement);
+            console.log('task id : ' + task._id);
+            console.log('list id : ' + listId);
+            Meteor.call('updateTask', task._id, { $set: { kanlist: listId } });
+        },
+    });
 });
 
 Template.kanlist.events({

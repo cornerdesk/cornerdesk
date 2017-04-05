@@ -124,54 +124,6 @@ $listWidth: 270px;
                             -ms-flex: 1;
                             flex: 1;
                             width: 100%;
-                            .kantask-wrapper {
-                                cursor: pointer;
-                                position: relative;
-                                display: -webkit-box;
-                                display: -moz-box;
-                                display: -webkit-flex;
-                                display: -ms-flexbox;
-                                display: box;
-                                display: flex;
-                                -webkit-box-align: center;
-                                -moz-box-align: center;
-                                -o-box-align: center;
-                                -ms-flex-align: center;
-                                -webkit-align-items: center;
-                                align-items: center;
-                                .kantask {
-                                    position: relative;
-                                    -webkit-box-flex: 1;
-                                    -moz-box-flex: 1;
-                                    -o-box-flex: 1;
-                                    box-flex: 1;
-                                    -webkit-flex: 1;
-                                    -ms-flex: 1;
-                                    flex: 1;
-                                    -webkit-box-lines: multiple;
-                                    -moz-box-lines: multiple;
-                                    -o-box-lines: multiple;
-                                    -webkit-flex-wrap: wrap;
-                                    -ms-flex-wrap: wrap;
-                                    flex-wrap: wrap;
-                                    -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
-                                    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
-                                    -webkit-border-radius: 1px;
-                                    border-radius: 1px;
-                                    color: #4d4d4d;
-                                    overflow: hidden;
-                                    -webkit-transition: -webkit-transform 0.2s, border-radius 0.2s;
-                                    -moz-transition: -moz-transform 0.2s, border-radius 0.2s;
-                                    -o-transition: -o-transform 0.2s, border-radius 0.2s;
-                                    -ms-transition: -ms-transform 0.2s, border-radius 0.2s;
-                                    transition: transform 0.2s, border-radius 0.2s;
-                                    background: $background;
-                                    min-height: 80px;
-                                    margin-bottom: 15px;
-                                    margin-top: 0px;
-                                    padding: 10px;
-                                }
-                            }
                             .new-task {
                                 position: relative;
                                 -webkit-box-flex: 1;
@@ -203,6 +155,55 @@ $listWidth: 270px;
                 }
             }
         }
+    }
+}
+
+.kantask-wrapper {
+    cursor: pointer;
+    position: relative;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: box;
+    display: flex;
+    -webkit-box-align: center;
+    -moz-box-align: center;
+    -o-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    .kantask {
+        position: relative;
+        -webkit-box-flex: 1;
+        -moz-box-flex: 1;
+        -o-box-flex: 1;
+        box-flex: 1;
+        -webkit-flex: 1;
+        -ms-flex: 1;
+        flex: 1;
+        -webkit-box-lines: multiple;
+        -moz-box-lines: multiple;
+        -o-box-lines: multiple;
+        -webkit-flex-wrap: wrap;
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+        -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+        -webkit-border-radius: 1px;
+        border-radius: 1px;
+        color: #4d4d4d;
+        overflow: hidden;
+        -webkit-transition: -webkit-transform 0.2s, border-radius 0.2s;
+        -moz-transition: -moz-transform 0.2s, border-radius 0.2s;
+        -o-transition: -o-transform 0.2s, border-radius 0.2s;
+        -ms-transition: -ms-transform 0.2s, border-radius 0.2s;
+        transition: transform 0.2s, border-radius 0.2s;
+        background: $background;
+        min-height: 80px;
+        margin-bottom: 15px;
+        margin-top: 0px;
+        padding: 10px;
     }
 }
 

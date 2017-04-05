@@ -18,7 +18,7 @@ Template.kanboard.helpers({
 });
 
 Template.kanboard.onRendered(() => {
-
+    // Drag n drop of the lists
     $('.kanlists-container').sortable({
         tolerance: 'pointer',
         helper: 'clone',
@@ -31,8 +31,8 @@ Template.kanboard.onRendered(() => {
         },
         stop() {
             $('.kanlists-container').find('.kanlist').each(
-                (i, list) => {
-                    Meteor.call('updateList', Blaze.getData(list)._id, {
+                (i, ui) => {
+                    Meteor.call('updateList', Blaze.getData(ui)._id, {
                         $set: {
                             order: i,
                         },
@@ -41,5 +41,6 @@ Template.kanboard.onRendered(() => {
             );
         },
     });
+
     Tracker.autorun(() => {});
 });
