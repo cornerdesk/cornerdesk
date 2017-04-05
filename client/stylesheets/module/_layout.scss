@@ -8163,3 +8163,18 @@ input.ct-danger+span+label+span.switch-right {
     border-radius: 2px;
     border: 0;
 }
+
+.colorpicker.colorpicker-horizontal {
+    height: 120px;
+    width: 150px;
+    .colorpicker-selectors {
+        height: 120px;
+        width: 150px;
+        padding: 10px;
+        >i {
+            width: 15px;
+            height: 15px;
+            margin: 5px;
+        }
+    }
+}

@@ -36,9 +36,9 @@ peppelg:bootstrap-3-modal
 fullcalendar:fullcalendar
 kadira:blaze-layout
 dwatson:meteor-pagedown
-risul:bootstrap-colorpicker
 fezvrasta:bootstrap-material-design
 stubborncoder:bootstrap-material-datepicker
 dapearce:material-icons
 mquandalle:jquery-ui-drag-drop-sort
 keepnox:perfect-scrollbar
+risul:bootstrap-colorpicker

@@ -48,21 +48,45 @@ Template.eventModal.onRendered(() => {
         let $form = this.$('#eventEditorForm');
         let event = Session.get('selectedEvent');
         $form.find('#event-title').val(event.title);
-        $form.find('#eventColorPicker').colorpicker({
+        $form.find('#event-color').colorpicker({
             color: event.color,
+            format: 'hex',
             colorSelectors: {
-                'black': '#000000',
-                'white': '#ffffff',
-                'red': '#FF0000',
-                'default': '#777777',
-                'primary': '#337ab7',
-                'success': '#5cb85c',
-                'info': '#5bc0de',
-                'warning': '#f0ad4e',
-                'danger': '#d9534f'
+                '#f44336': '#f44336', //red
+                '#e91e63': '#e91e63', //pink
+                '#9c27b0': '#9c27b0', //purple
+                '#673ab7': '#673ab7', //deep-purple
+                '#3f51b5': '#3f51b5', //indigo
+                '#2196f3': '#2196f3', //blue
+                '#03a9f4': '#03a9f4', //light-blue
+                '#00bcd4': '#00bcd4', //cyan
+                '#009688': '#009688', //teal
+                '#4caf50': '#4caf50', //green
+                '#8bc34a': '#8bc34a', //light-green
+                '#cddc39': '#cddc39', //lime
+                '#ffeb3b': '#ffeb3b', //yellow
+                '#ffc107': '#ffc107', //amber
+                '#ff9800': '#ff9800', //orange
+                '#ff5722': '#ff5722', //deep-orange
+                '#795548': '#795548', //brown
+                '#9e9e9e': '#9e9e9e', //grey
+                '#607d8b': '#607d8b', //blue-grey
+                '#666666': '#666666',
             },
+            template: '<div class="colorpicker dropdown-menu colorpicker-hidden colorpicker-horizontal colorpicker-right">' +
+                '<div class="colorpicker-selectors" style="display: block;">' +
+                '</div>',
+            component: '.colorpicker-addon',
             horizontal: true
-        });
+        }).on('changeColor', function(e) {
+            $(e.target).css('color', e.color.toString('hex'));
+        }).css('color', event.color);
+        // <i style="background-color: rgb(244, 67, 54);"></i><i style="background-color: rgb(233, 30, 99);"></i><i style="background-color: rgb(156, 39, 176);"></i>' +
+        //         '<i style="background-color: rgb(103, 58, 183);"></i><i style="background-color: rgb(63, 81, 181);"></i><i style="background-color: rgb(33, 150, 243);"></i><i></i>' +
+        //         '<i style="background-color: rgb(0, 188, 212);"></i><i style="background-color: rgb(0, 150, 136);"></i><i style="background-color: rgb(76, 175, 80);"></i>' +
+        //         '<i style="background-color: rgb(139, 195, 74);"></i><i style="background-color: rgb(205, 220, 57);"></i><i style="background-color: rgb(255, 235, 59);"></i>' +
+        //         '<i style="background-color: rgb(255, 193, 7);"></i><i style="background-color: rgb(255, 152, 0);"></i><i style="background-color: rgb(255, 87, 34);"></i>' +
+        //         '<i style="background-color: rgb(121, 85, 72);"></i><i style="background-color: rgb(158, 158, 158);"></i><i style="background-color: rgb(96, 125, 139);"></i></div>' +
 
         $form.find('#event-private').attr('checked', event.isPrivate);
         $form.find('#event-allday').attr('checked', event.allDay);
