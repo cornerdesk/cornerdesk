@@ -14,7 +14,11 @@ Template.kanboard.helpers({
     },
     lists() {
         return Kanlists.find({}, { sort: { order: 1 } });
-    }
+    },
+    canUserEdit() {
+        let instance = Template.instance();
+        return !instance.isDirect.get() || FlowRouter.getParam('board').replace('@', '') === Meteor.users.findOne(Meteor.userId()).username;
+    },
 });
 
 Template.kanboard.onRendered(() => {

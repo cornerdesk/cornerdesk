@@ -27,5 +27,13 @@ Template.addListForm.events({
         } else {
             Bert.alert('The list name cannot be empty', 'error');
         }
+        let input = template.find('[name="new-list-name"]');
+        input.value = '';
+        $(input).parents('.form-group').get(0).className += " is-empty";
+    },
+    'keydown [name="new-list-name"]' (event, template) {
+        if (event.keyCode === 13) {
+            template.$('[name="new-list-btn"]').click();
+        }
     }
 });

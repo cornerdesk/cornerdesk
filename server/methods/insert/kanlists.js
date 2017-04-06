@@ -3,12 +3,12 @@ import updateList from '../../modules/update-list';
 
 Meteor.methods({
     insertList(list) {
-        check(list.title, String);
+        check(list, {
+            title: String,
+            order: Number,
+        });
         if (list.kanboard !== undefined) {
             check(list.kanboard, String);
-        }
-        if (list.order !== undefined) {
-            check(list.order, Number);
         }
         try {
             insertList(list);

@@ -3,7 +3,11 @@ Template.kanlist.helpers({
         //return [{ title: 'premiere tache' }, { title: 'seconde tache' }];
         let instance = Template.instance();
         return instance.kantasks(instance.data._id);
-    }
+    },
+    canUserEdit: () => {
+        let instance = Template.instance();
+        return !instance.data.kanboard !== undefined || instance.data.ownerId === Meteor.userId();
+    },
 });
 
 Template.kanlist.onCreated(() => {
@@ -114,10 +118,9 @@ Template.kanlist.events({
                 Bert.alert(error.reason, 'danger');
             }
             event.target.value = '';
-            template.showNewTaskForm.set(false);
-            let container = template.find('.new-task');
-            container.innerHTML = '';
-            Blaze.render(Template.newTaskButton, container);
+            let input = template.find('[name="new-task-name"]');
+            input.value = '';
+            $(input).parents('.form-group').get(0).className += " is-empty";
         });
 
 

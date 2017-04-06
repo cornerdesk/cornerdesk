@@ -1,4 +1,5 @@
 let _handleSwitch = (template) => {
+    if (FlowRouter.getRouteName() !== 'calendar') return;
     let calendar = FlowRouter.getParam('calendar');
 
     if (calendar) {
@@ -21,7 +22,6 @@ let _setupReactiveVariables = (template) => {
 };
 
 export default function(template) {
-    if (FlowRouter.getRouteName() !== 'calendar') return;
     _setupReactiveVariables(template);
     Tracker.autorun(() => { _handleSwitch(template); });
 }

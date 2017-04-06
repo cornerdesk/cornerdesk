@@ -5,7 +5,8 @@ Meteor.publish('kanboard', function(isDirect, kanboard) {
     if (isDirect) {
         let user = Meteor.users.findOne({ username: kanboard.replace('@', '') });
         return Kanlists.find({
-            ownerId: this.userId
+            ownerId: user._id,
+            kanboard: null
         });
     } else {
         let selectedKanboard = Kanboards.findOne(kanboard);

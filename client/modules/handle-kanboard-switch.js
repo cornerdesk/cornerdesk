@@ -3,6 +3,7 @@ let _establishSubscription = (template, isDirect, kanboard) => {
 };
 
 let _handleSwitch = (template) => {
+    if (FlowRouter.getRouteName() !== 'kanboard') return;
     let board = FlowRouter.getParam('board');
 
     if (board) {
@@ -26,7 +27,6 @@ let _setupReactiveVariables = (template) => {
 };
 
 export default function(template) {
-    if (FlowRouter.getRouteName() !== 'kanboard') return;
     _setupReactiveVariables(template);
     Tracker.autorun(() => { _handleSwitch(template); });
 }

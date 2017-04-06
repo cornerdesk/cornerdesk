@@ -10,7 +10,9 @@
                         {{#each lists}}
                             {{>kanlist}}
                         {{/each}}
-                        {{>addListForm}}
+                        {{#if canUserEdit}}
+                            {{>addListForm}}
+                        {{/if}}
                     </div>
                 </div>
             </div>
