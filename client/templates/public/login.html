@@ -8,16 +8,17 @@
           </div>
           <div class="content">
             <div class="row">
-              <div class="wol-md-12">
+              <div class="col-md-12">
                 <form id="login" class="login">
-                  <div class="form-group">
-                    <label for="emailAddress">Email Address</label>
-                    <input type="email" name="emailAddress" class="form-control" placeholder="Email Address">
+                  <div class="form-group label-floating is-empty">
+                    <label class="control-label" for="emailAddress">Email Address</label>
+                    <input type="email" name="emailAddress" class="form-control">
                   </div>
-                  <div class="form-group">
-                    <label for="password"><span class="pull-left">Password</span> <a class="pull-right" href="{{pathFor 'recover-password'}}">Forgot Password?</a></label>
-                    <input type="password" name="password" class="form-control" placeholder="Password">
-                  </div>
+                  <div class="form-group label-floating is-empty">
+                    <label class="control-label" for="password">Password</label>
+                    <input type="password" name="password" class="form-control">
+                  </div> 
+                  <a class="pull-right" href="{{pathFor 'recover-password'}}">Forgot Password?</a>
                   <div class="form-group text-center">
                     <input type="submit" class="btn btn-success" value="Login">
                   </div>

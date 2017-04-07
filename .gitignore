@@ -5,5 +5,7 @@ settings-production.json
 npm-debug.log
 debug.log
 .editorconfig
+.deploy
+.vs
 
 node_modules
