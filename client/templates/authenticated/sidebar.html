@@ -30,6 +30,31 @@ RemotR
             <ul class="nav">
               <li class="{{currentCalendar currentUsername}}"><a href="/calendars/@{{currentUsername}}">My calendar</a></li>
               <li>
+                <a data-toggle="collapse" href="#calendar-instances" class="collapsed" aria-expanded="false">
+                  <i class="ti-announcement"></i>
+                  <p>Calendars <i class="icon-plus" aria-label="Create channel" role="button"></i>
+                    <b class="caret"></b>
+                  </p>
+                </a>
+                <div class="collapse" id="calendar-instances" aria-expanded="false" style="height: auto;">
+                  <ul class="nav">
+                    {{#each calendar in calendars}}
+                    <li class="{{currentCalendar calendar.name}}">
+                      <a href="/calendars/{{calendar._id}}">
+            {{calendar.name}}
+          </a>
+                    </li>
+                    {{/each}}
+
+                    <li class="text-center">
+                      <button name="new-calendar-button" class="btn btn-fab btn-fab-mini btn-default">
+                        <i class="btn-icon fa fa-plus"></i>
+                      </button>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+              <li>
                 <a data-toggle="collapse" href="#directCalendars" class="collapsed" aria-expanded="false">
                   <i class="ti-user"></i>
                   <p>Users
@@ -39,11 +64,11 @@ RemotR
                 <div class="collapse" id="directCalendars" aria-expanded="false" style="height: auto;">
                   <ul class="nav">
                     {{#each user in users}}
-                    <li class="{{currentCalendar user.username}}">
-                      <a href="/calendars/@{{user.username}}">
-            {{fullName user.profile.name}}
-          </a>
-                    </li>
+                      <li class="{{currentCalendar user.username}}">
+                        <a href="/calendars/@{{user.username}}">
+                          {{fullName user.profile.name}}
+                        </a>
+                      </li>
                     {{/each}}
                   </ul>
                 </div>
@@ -76,6 +101,12 @@ RemotR
           </a>
                     </li>
                     {{/each}}
+
+                    <li class="text-center">
+                      <button name="new-channel-button" class="btn btn-fab btn-fab-mini btn-default">
+                        <i class="btn-icon fa fa-plus"></i>
+                      </button>
+                    </li>
                   </ul>
                 </div>
               </li>
@@ -110,15 +141,40 @@ RemotR
           </a>
           <div class="collapse" id="boards" aria-expanded="false" style="height: auto;">
             <ul class="nav">
+
               <li><a href="/kanboards/@{{currentUsername}}">Personnal Kanboard</a></li>
               <li>
                 <a data-toggle="collapse" href="#kanboards" class="collapsed" aria-expanded="false">
+                  <i class="ti-announcement"></i>
+                  <p>Kanban boards <i class="icon-plus" aria-label="Create board" role="button"></i>
+                    <b class="caret"></b>
+                  </p>
+                </a>
+                <div class="collapse" id="kanboards" aria-expanded="false" style="height: auto;">
+                  <ul class="nav">
+                    {{#each board in kanboards}}
+                    <li class="{{currentBoard board.name}}">
+                      <a href="/kanboards/{{board._id}}">
+                        {{board.name}}
+                      </a>
+                    </li>
+                    {{/each}}
+                    <li class="text-center">
+                      <button name="new-board-button" class="btn btn-fab btn-fab-mini btn-default">
+                        <i class="btn-icon fa fa-plus"></i>
+                      </button>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+              <li>
+                <a data-toggle="collapse" href="#directKanboards" class="collapsed" aria-expanded="false">
                   <i class="ti-user"></i>
                   <p>Users
                     <b class="caret"></b>
                   </p>
                 </a>
-                <div class="collapse" id="kanboards" aria-expanded="false" style="height: auto;">
+                <div class="collapse" id="directKanboards" aria-expanded="false" style="height: auto;">
                   <ul class="nav">
                     {{#each user in users}}
                     <li class="{{currentBoard user.username}}">

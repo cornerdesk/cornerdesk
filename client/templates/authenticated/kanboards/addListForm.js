@@ -2,7 +2,7 @@ Template.addListForm.events({
     'click [name="new-list-btn"]' (event, template) {
         let nameInput = template.find('[name="new-list-name"]');
         if (nameInput.value !== '') {
-            let boardId = FlowRouter.getParam('board');
+            let boardId = Session.get('board');
             var list = null;
             if (boardId.includes('@')) {
                 let user = Meteor.users.findOne({ username: boardId.replace('@', '') });
@@ -10,7 +10,6 @@ Template.addListForm.events({
                     list = { title: nameInput.value, order: $('.kanlists-container').find('.kanlist').length };
                 }
             } else {
-                // TODO Gestion des membres du board
                 list = { title: nameInput.value, kanboard: boardId, order: $('.kanlists-container').find('.kanlist').length };
             }
             if (list === null) {

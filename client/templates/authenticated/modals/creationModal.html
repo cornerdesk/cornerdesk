@@ -1,0 +1,131 @@
+<template name="newBoardModal">
+    <div id="newBoardModal" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header text-center">
+                    <button type="button" class="close" data-dismiss="modal">×</button>
+                    <h3>New kanban board</h3>
+                </div>
+                <div class="modal-body" id="newBoard">
+                    <div class="row">
+                        <div class="col-md-12 form-group  label-static is-empty">
+                            <label for="kanboard-name" class="form-label">Name</label>
+                            <input type="text" class="form-control "  name="kanboard-name" id="kanboard-name">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 form-group  label-static is-empty">
+                            <label for="kanboard-title">Description</label>
+                            <textarea class="form-control "  rows="2" name="kanboard-description" id="kanboard-description" value=""></textarea>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 text-center form-group">
+                            <label for="kanboard-private">
+                                        <input type="checkbox" class=""  name="kanboard-private" id="kanboard-private" checked value="" >
+                                        Private board
+                                    </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="row">
+                        <div class="col-md-12 text-center">
+                            <button class="btn" data-dismiss="modal">Cancel</button>
+                            <button class="btn btn-primary" id="save">Save</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+
+<template name="newChannelModal">
+    <div id="newChannelModal" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header text-center">
+                    <button type="button" class="close" data-dismiss="modal">×</button>
+                    <h3>New channel</h3>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-12 form-group  label-static is-empty">
+                            <label for="channel-name" class="form-label">Name</label>
+                            <input type="text" class="form-control "  name="channel-name" id="channel-name">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 form-group  label-static is-empty">
+                            <label for="channel-title">Description</label>
+                            <textarea class="form-control "  rows="2" name="channel-description" id="channel-description" value=""></textarea>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 text-center form-group">
+                            <label for="channel-private">
+                                        <input type="checkbox" class=""  name="channel-private" id="channel-private" checked value="" >
+                                        Private channel
+                                    </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="row">
+                        <div class="col-md-12 text-center">
+                            <button class="btn" data-dismiss="modal">Cancel</button>
+                            <button class="btn btn-primary" id="save">Save</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+
+<template name="newCalendarModal">
+    <div id="newCalendarModal" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header text-center">
+                    <button type="button" class="close" data-dismiss="modal">×</button>
+                    <h3>New calendar</h3>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-12 form-group  label-static is-empty">
+                            <label for="calendar-name" class="form-label">Name</label>
+                            <input type="text" class="form-control "  name="calendar-name" id="calendar-name">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 form-group  label-static is-empty">
+                            <label for="calendar-title">Description</label>
+                            <textarea class="form-control "  rows="2" name="calendar-description" id="calendar-description" value=""></textarea>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 text-center form-group">
+                            <label for="calendar-private">
+                                        <input type="checkbox" class=""  name="calendar-private" id="calendar-private" checked value="" >
+                                        Private calendar
+                                    </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="row">
+                        <div class="col-md-12 text-center">
+                            <button class="btn" data-dismiss="modal">Cancel</button>
+                            <button class="btn btn-primary" id="save">Save</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

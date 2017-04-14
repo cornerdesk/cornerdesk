@@ -1,3 +1,14 @@
+Meteor.publish('kanboards', function() {
+    return Kanboards.find({
+        archived: false,
+        $or: [{
+                isPrivate: false,
+            },
+            { members: { $elemMatch: { userId: this.userId, isActive: true } } },
+        ],
+    });
+});
+
 Meteor.publish('kanboard', function(isDirect, kanboard) {
     check(isDirect, Boolean);
     check(kanboard, String);

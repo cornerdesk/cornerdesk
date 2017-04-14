@@ -7,7 +7,7 @@ let _handleSwitch = (template) => {
         template.isDirect.set(isDirect);
     }
 
-    if (template.isDirect) {
+    if (template.isDirect.curValue) {
         let user = Meteor.users.findOne({ username: calendar.replace('@', '') });
         template.name.set(user._id === Meteor.userId() ? "My calendar" : user.profile.name.first + "'s calendar");
     } else {

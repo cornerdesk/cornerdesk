@@ -2,9 +2,20 @@ import handleChannelSwitch from '../../../modules/handle-channel-switch';
 import sortMessages from '../../../modules/sort-messages';
 import handleMessageInsert from '../../../modules/handle-message-insert';
 
+const getUsers = () => {
+    return Meteor.users.find({ _id: { $ne: Meteor.userId() } }).fetch();
+}
+
 Template.channel.onCreated(() => {
     let template = Template.instance();
     handleChannelSwitch(template);
+});
+
+Template.channel.onRendered(() => {
+    this.$('[name="message"]').mention({
+        delimiter: '@',
+        users: getUsers()
+    });
 });
 
 Template.channel.helpers({

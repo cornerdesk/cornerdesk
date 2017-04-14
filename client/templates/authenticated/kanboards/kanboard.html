@@ -1,6 +1,9 @@
 <template name="kanboard">
     <div class="title-wrapper">
         <h3>{{name}}</h3>
+        {{#unless isDirect}}
+            {{> kanboardMembers kanboard}}
+        {{/unless}}
     </div>
     <div class="content-wrapper">
         <div class="card-kanboard">
@@ -17,5 +20,13 @@
                 </div>
             </div>
         </div>
+    </div>
+</template>
+
+<template name="kanboardMembers">
+    <div class="pull-right members">
+        {{#each this.members}}
+            {{> userAvatar }}
+        {{/each}}
     </div>
 </template>

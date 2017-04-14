@@ -1,27 +1,34 @@
 <template name="channel">
-  <div class="conversation">
-    <div id="messages">
-      <div class="messages-list {{#if isLoading}}loading-list{{/if}}">
-        {{#each messages}} {{> message}} {{else}} {{#if isDirect}}
-        <p class="alert alert-warning">You haven't said anything to {{username}} yet. Say hello!</p>
-        {{else}}
-        <p class="alert alert-warning">This channel is pretty quiet. You should say something!</p>
-        {{/if}} {{/each}}
-      </div>
-    </div>
+  <div class="title-wrapper">
+    <h3>Chat</h3>
+  </div>
+  <div class="content-wrapper">
+    <div class="card card-channel">
+      <div class="conversation">
+        <div id="messages">
+          <div class="messages-list {{#if isLoading}}loading-list{{/if}}">
+            {{#each messages}} {{> message}} {{else}} {{#if isDirect}}
+            <p class="alert alert-warning">You haven't said anything to {{username}} yet. Say hello!</p>
+            {{else}}
+            <p class="alert alert-warning">This channel is pretty quiet. You should say something!</p>
+            {{/if}} {{/each}}
+          </div>
+        </div>
 
-    <div class="message-input text-center">
-      <div class="form-group label-floating is-empty mt0">
-        <textarea class="form-control mb0" id="message" name="message" placeholder="Type your message here..." rows="2" ></textarea>
+        <div class="message-input text-center">
+          <div class="form-group label-floating is-empty mt0">
+            <textarea class="form-control mb0" id="message" name="message" placeholder="Type your message here..." rows="2" ></textarea>
+          </div>
+            <span>
+              <i>*italic*</i> 
+              <b> **bold** </b> ~
+              <strike>striked</strike>~ 
+              <code class="code-colors inline">`code`</code> 
+              <code class="code-colors inline">``` <i class="fa fa-level-down"></i> multiple <i class="fa fa-level-down"></i> lines <i class="fa fa-level-down"></i> ```</code>
+              <blockquote class="help-quote"> &gt;citation </blockquote>
+            </span>
+        </div>
       </div>
-        <span>
-          <i>*italic*</i> 
-          <b> **bold** </b> ~
-          <strike>striked</strike>~ 
-          <code class="code-colors inline">`code`</code> 
-          <code class="code-colors inline">``` <i class="fa fa-level-down"></i> multiple <i class="fa fa-level-down"></i> lines <i class="fa fa-level-down"></i> ```</code>
-          <blockquote class="help-quote"> &gt;citation </blockquote>
-        </span>
     </div>
   </div>
 </template>

@@ -6,10 +6,8 @@ Meteor.methods({
         check(list, {
             title: String,
             order: Number,
+            kanboard: Match.Maybe(String)
         });
-        if (list.kanboard !== undefined) {
-            check(list.kanboard, String);
-        }
         try {
             insertList(list);
         } catch (exception) {

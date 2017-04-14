@@ -749,8 +749,8 @@ strong {
     margin: 0;
 }
 
-.sidebar .nav i,
-.off-canvas-sidebar .nav i {
+.sidebar .nav i:not(.btn-icon),
+.off-canvas-sidebar .nav i:not(.btn-icon) {
     font-size: 24px;
     float: left;
     margin-right: 15px;
@@ -8146,11 +8146,17 @@ input.ct-danger+span+label+span.switch-right {
 
 .content {
     .title-wrapper {
-        height: calc(5vh);
-        text-align: center;
+        height: calc(8vh);
+        padding: 15px;
+        // text-align: center;
+        h3,
+        .h3 {
+            text-transform: uppercase;
+            display: inline;
+        }
     }
     .content-wrapper {
-        height: calc(95vh);
+        height: calc(92vh);
     }
 }
 
@@ -8177,4 +8183,40 @@ input.ct-danger+span+label+span.switch-right {
             margin: 5px;
         }
     }
+}
+
+.members {
+    background: none;
+    .member {
+        -webkit-border-radius: 3px;
+        border-radius: 3px;
+        display: block;
+        position: relative;
+        float: left;
+        height: 30px;
+        width: 30px;
+        margin: 0 4px 4px 0;
+        cursor: pointer;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        z-index: 1;
+        text-decoration: none;
+        -webkit-border-radius: 50%;
+        border-radius: 50%;
+        .avatar {
+            width: 30px;
+            border-radius: 50%;
+        }
+    }
+}
+
+.btn.btn-fab.btn-fab-mini,
+.input-group-btn .btn.btn-fab.btn-fab-mini,
+.btn-group-sm .btn.btn-fab,
+.btn-group-sm .input-group-btn .btn.btn-fab {
+    width: 30px;
+    height: 30px;
+    min-width: 30px;
 }
