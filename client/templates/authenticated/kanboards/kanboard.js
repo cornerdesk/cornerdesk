@@ -20,10 +20,10 @@ Template.kanboard.helpers({
         return !instance.isDirect.get() || FlowRouter.getParam('board').replace('@', '') === Meteor.users.findOne(Meteor.userId()).username;
     },
     kanboard() {
-        if (Template.instance().isDirect) {
+        if (Template.instance().isDirect.get() === true) {
             return null;
         }
-        return Kanboards.findOne({ name: FlowRouter.getParam('board') });
+        return Kanboards.findOne(FlowRouter.getParam('board'));
     }
 });
 

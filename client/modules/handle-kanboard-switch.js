@@ -11,7 +11,7 @@ let _handleSwitch = (template) => {
         let isDirect = board.includes('@');
         template.isDirect.set(isDirect);
 
-        if (template.isDirect.curValue) {
+        if (isDirect === true) {
             let user = Meteor.users.findOne({ username: board.replace('@', '') });
             template.name.set(user._id === Meteor.userId() ? "My Kanban board" : user.profile.name.first + "'s Kanban board");
         } else {

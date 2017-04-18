@@ -1,5 +1,6 @@
 <template name="userAvatar">
-    <a class="member js-member ui-draggable ui-draggable-handle" title="Béranger (baobabcoder)" href="#" aria-label="Béranger (baobabcoder)"><img class="avatar avatar-image" src="https://static.berangercampardou.sandcats.io/y5zRnERSbeY4dj3Kx">
+    <a class="member js-member ui-draggable ui-draggable-handle" title="{{member.profile.name.first}} {{member.profile.name.last}} ({{member.username}})" href="#" aria-label="{{member.profile.name.first}} {{member.profile.name.last}} ({{member.username}})">
+        <span class="initials">{{initials}}</span>
         <span class="member-presence-status active"></span><span class="member-type admin"></span>
     </a>
 </template>

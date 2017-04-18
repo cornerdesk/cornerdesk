@@ -4,58 +4,67 @@ Events = new Meteor.Collection('events');
 
 // Autorisation d'ajout si:
 Events.allow({
-  insert: function (userId, doc) {
-    if (userId) {
-      return true;
+    insert: function(userId, doc) {
+        if (userId) {
+            return true;
+        }
+        return false;
+    },
+    update: function(userId, doc, fields, modifier) {
+        if (userId && doc.ownerId === userId) {
+            return true;
+        }
     }
-    return false;
-  },
-  update: function (userId, doc, fields, modifier) {
-    if (userId && doc.ownerId === userId) {
-      return true;
-    }
-  }
 });
 
 let EventsSchema = new SimpleSchema({
-  'calendar': {
-    type: String,
-    label: 'The ID of the calendar this event belongs to.',
-    optional: true
-  },
-  'title': {
-    type: String,
-    label: 'The title of the event.'
-  },
-  'color': {
-    type: String,
-    label: 'The color of the event.'
-  },
-  'start': {
-    type: Date,
-    label: 'The start date and time of the event.'
-  },
-  'end': {
-    type: Date,
-    label: 'The start date and time of the event.'
-  },
-  'description': {
-    type: String,
-    label: 'The description of the event.',
-    optional: true
-  },
-  'allDay': {
-    type: Boolean,
-    label: 'Is the event during all the day.'
-  },
-  'isPrivate': {
-    type: Boolean,
-    label: 'Is the event private.'
-  },
-  'ownerId': {
-    type: String,
-    label: 'The ID of the user that created this event.'
-  }
+    'calendar': {
+        type: String,
+        label: 'The ID of the calendar this event belongs to.',
+        optional: true
+    },
+    'title': {
+        type: String,
+        label: 'The title of the event.'
+    },
+    'color': {
+        type: String,
+        label: 'The color of the event.'
+    },
+    'start': {
+        type: Date,
+        label: 'The start date and time of the event.'
+    },
+    'end': {
+        type: Date,
+        label: 'The start date and time of the event.'
+    },
+    'description': {
+        type: String,
+        label: 'The description of the event.',
+        optional: true
+    },
+    'allDay': {
+        type: Boolean,
+        label: 'Is the event during all the day.'
+    },
+    'isPrivate': {
+        type: Boolean,
+        label: 'Is the event private.'
+    },
+    'ownerId': {
+        type: String,
+        label: 'The ID of the user that created this event.'
+    }
 });
 
-Events.attachSchema( EventsSchema );
+Events.attachSchema(EventsSchema);
+
+Events.helpers({
+    getCalendarName: () => {
+        if (this.calendar !== null) {
+            let calendar = Calendars.findOne(this.calendar);
+            return calendar.name;
+        }
+    }
+});

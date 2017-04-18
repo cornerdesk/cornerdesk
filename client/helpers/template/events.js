@@ -22,9 +22,8 @@ CalHelper.getEvents = (calendar, start, end) => {
             ownerId: calendarOwner._id
         });
     }
-    let calObject = Calendars.findOne({ name: calendar });
     return Events.find({
-        calendar: calObject._id,
+        calendar: calendar,
         $or: [{
                 start: { $lte: end }
             },
@@ -64,12 +63,8 @@ CalHelper.mapDbEventsToEventSource = (eventCursor) => {
     return eventArray;
 };
 
-CalHelper.getCalendarId = () => {
-    return Calendars.findOne({ name: name })._id;
-};
-
 CalHelper.createEvent = (calendar, title, color, start, end, description, allDay, isPrivate) => {
-    let calId = calendar.includes('@') ? null : Calendars.findOne({ name: calendar })._id;
+    let calId = calendar.includes('@') ? null : calendar;
 
     Events.insert({
         title: title,
@@ -123,6 +118,5 @@ CalHelper.canInsert = () => {
         let owner = Meteor.users.findOne({ username: calendar.replace('@', '') });
         return owner._id === userId;
     }
-
-    return true;
+    return Meteor.user().isCalendarMember();
 };

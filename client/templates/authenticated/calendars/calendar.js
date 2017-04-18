@@ -56,10 +56,10 @@ Template.calendar.onRendered(() => {
         });
 
         var view = $fc.fullCalendar('getView');
-        Meteor.subscribe('calendar', FlowRouter.getParam('calendar'), view.start.toDate(), view.end.toDate(), () => {
+        Meteor.subscribe('calendar', Session.get('calendar'), view.start.toDate(), view.end.toDate(), () => {
             $fc.fullCalendar('refetchEvents');
         });
-        CalHelper.getEvents(FlowRouter.getParam('calendar'), view.start.toDate(), view.end.toDate()).fetch();
+        CalHelper.getEvents(Session.get('calendar'), view.start.toDate(), view.end.toDate()).fetch();
         $fc.fullCalendar('refetchEvents');
     });
 });

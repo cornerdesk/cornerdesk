@@ -8196,6 +8196,7 @@ input.ct-danger+span+label+span.switch-right {
         height: 30px;
         width: 30px;
         margin: 0 4px 4px 0;
+        background: white;
         cursor: pointer;
         -webkit-user-select: none;
         -moz-user-select: none;
@@ -8208,6 +8209,12 @@ input.ct-danger+span+label+span.switch-right {
         .avatar {
             width: 30px;
             border-radius: 50%;
+        }
+        .initials {
+            display: block;
+            font-weight: bold;
+            font-size: 16px;
+            padding: 4px;
         }
     }
 }

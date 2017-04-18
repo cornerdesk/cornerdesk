@@ -10,6 +10,7 @@ let _establishSubscription = (template, isDirect, channel) => {
 let _handleSwitch = (template) => {
     if (FlowRouter.getRouteName() !== 'channel') return;
     let channel = FlowRouter.getParam('channel');
+    Session.set('channel', channel);
 
     if (channel) {
         let isDirect = channel.includes('@');

@@ -20,6 +20,14 @@ Template.eventModal.helpers({
             }
         }
     },
+    calendarName: () => {
+        let event = Session.get('selectedEvent'),
+            item = Events.findOne(event._id);
+        if (item.calendar === null || item.calendar === undefined || item.calendar === Session.get('calendar')) {
+            return '';
+        }
+        return ' (' + item.getCalendarName() + ')';
+    },
     formatDate: (date) => {
         let event = Session.get('selectedEvent');
         if (typeof event === 'undefined') {

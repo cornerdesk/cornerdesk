@@ -1,31 +1,48 @@
-Meteor.publish('calendar', function (calendar, start, end) {
+Meteor.publish('calendar', function(calendar, start, end) {
     check(calendar, String);
     check(start, Date);
     check(end, Date);
 
-    let isDirect = calendar.includes( '@' );
+    let isDirect = calendar.includes('@');
 
     if (isDirect) {
-        let user = Meteor.users.findOne({ username: calendar.replace('@', '') });
+        let calendarOwner = Meteor.users.findOne({ username: calendar.replace('@', '') });
         return Events.find({
-            ownerId: user._id,
-            start: {
-                $gte: start
-            },
-            end: {
-                $lte: end
-            }
+            $or: [{
+                    start: { $lte: end }
+                },
+                {
+                    end: { $gte: start }
+                }
+            ],
+            $or: [{
+                    isPrivate: false
+                },
+                {
+                    isPrivate: true,
+                    ownerId: this.userId
+                }
+            ],
+            ownerId: calendarOwner._id
         });
     } else {
-        let selectedCalendar = Calendars.findOne({ name: calendar });
         return Events.find({
-            calendar: selectedCalendar._id,
-            start: {
-                $gte: start
-            },
-            end: {
-                $lte: end
-            }
+            calendar: calendar,
+            $or: [{
+                    start: { $lte: end }
+                },
+                {
+                    end: { $gte: start }
+                }
+            ],
+            $or: [{
+                    isPrivate: false
+                },
+                {
+                    isPrivate: true,
+                    ownerId: this.userId
+                }
+            ]
         });
     }
 });

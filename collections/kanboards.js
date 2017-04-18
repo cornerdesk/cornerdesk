@@ -44,7 +44,7 @@ Kanboards.helpers({
     /**
      * Is supplied user authorized to view this board?
      */
-    isVisibleBy(user) {
+    isVisibleBy: (user) => {
         if (this.isPublic()) {
             // public boards are visible to everyone
             return true;
@@ -60,7 +60,7 @@ Kanboards.helpers({
      * @param userId
      * @returns {boolean} the member that matches, or undefined/false
      */
-    isActiveMember(userId) {
+    isActiveMember: (userId) => {
         if (userId) {
             return this.members.find((member) => (member.userId === userId && member.isActive));
         } else {
@@ -68,11 +68,11 @@ Kanboards.helpers({
         }
     },
 
-    isPublic() {
+    isPublic: () => {
         return !this.isPrivate;
     },
 
-    lists() {
+    lists: () => {
         return Kanlists.find({ kanboard: this._id }, { sort: { sort: 1 } });
     },
 
@@ -80,56 +80,56 @@ Kanboards.helpers({
     //     return Activities.find({ boardId: this._id }, { sort: { createdAt: -1 } });
     // },
 
-    activeMembers() {
+    activeMembers: () => {
         return _.where(this.members, { isActive: true });
     },
 
-    activeAdmins() {
+    activeAdmins: () => {
         return _.where(this.members, { isActive: true, isAdmin: true });
     },
 
-    memberUsers() {
+    memberUsers: () => {
         return Meteor.users.find({ _id: { $in: _.pluck(this.members, 'userId') } });
     },
 
-    labelIndex(labelId) {
+    labelIndex: (labelId) => {
         return _.pluck(this.labels, '_id').indexOf(labelId);
     },
 
-    memberIndex(memberId) {
+    memberIndex: (memberId) => {
         return _.pluck(this.members, 'userId').indexOf(memberId);
     },
 
-    hasMember(memberId) {
+    hasMember: (memberId) => {
         return !!_.findWhere(this.members, { userId: memberId, isActive: true });
     },
 
-    hasAdmin(memberId) {
+    hasAdmin: (memberId) => {
         return !!_.findWhere(this.members, { userId: memberId, isActive: true, isAdmin: true });
     },
 
-    absoluteUrl() {
+    absoluteUrl: () => {
         return FlowRouter.url('kanboard', { id: this._id });
     },
 });
 
 Kanboards.mutations({
-    rename(title) {
+    rename: (title) => {
         check(title, String);
         return { $set: { title } };
     },
 
-    setDesciption(description) {
+    setDesciption: (description) => {
         check(description, String);
         return { $set: { description } };
     },
 
-    setVisibility(visibility) {
+    setVisibility: (visibility) => {
         check(visibility, Boolean);
         return { $set: { isPrivate: visibility } };
     },
 
-    addMember(memberId) {
+    addMember: (memberId) => {
         check(memberId, String);
         const memberIndex = this.memberIndex(memberId);
         if (memberIndex >= 0) {
@@ -151,7 +151,7 @@ Kanboards.mutations({
         };
     },
 
-    removeMember(memberId) {
+    removeMember: (memberId) => {
         check(memberId, String);
         const memberIndex = this.memberIndex(memberId);
 
@@ -173,7 +173,7 @@ Kanboards.mutations({
         };
     },
 
-    setMemberPermission(memberId, isAdmin) {
+    setMemberPermission: (memberId, isAdmin) => {
         check(memberId, String);
         check(isAdmin, Boolean);
         const memberIndex = this.memberIndex(memberId);
