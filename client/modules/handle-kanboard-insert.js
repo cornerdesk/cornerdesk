@@ -1,3 +1,4 @@
+import ModalHelper from '../helpers/template/open-modal';
 let _handleInsert = (event, template) => {
     let name = template.find('[name="kanboard-name"]').value,
         description = template.find('[name="kanboard-description"]').value,
@@ -13,6 +14,7 @@ let _handleInsert = (event, template) => {
             return;
         }
         Bert.alert('Your new kanban board is ready !', 'success');
+        Modal.hide('newBoardModal');
     });
     event.target.value = '';
 };

@@ -76,14 +76,14 @@ Template.sidebar.helpers({
 
 Template.sidebar.events({
     'click [name="new-calendar-button"]': (event, template) => {
-        ModalHelper.showModal('newCalendarModal', event, template);
+        Modal.show('newCalendarModal');
 
     },
     'click [name="new-channel-button"]': (event, template) => {
-        ModalHelper.showModal('newChannelModal', event, template);
+        Modal.show('newChannelModal');
 
     },
     'click [name="new-board-button"]': (event, template) => {
-        ModalHelper.showModal('newBoardModal', event, template);
+        Modal.show('newBoardModal');
     },
 });

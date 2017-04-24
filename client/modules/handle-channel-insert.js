@@ -1,3 +1,4 @@
+import ModalHelper from '../helpers/template/open-modal';
 let _handleInsert = (event, template) => {
     let name = template.find('[name="channel-name"]').value,
         description = template.find('[name="channel-description"]').value,
@@ -13,6 +14,7 @@ let _handleInsert = (event, template) => {
             return;
         }
         Bert.alert('Your new channel is ready !', 'success');
+        Modal.hide('newChannelModal');
     });
     event.target.value = '';
 };

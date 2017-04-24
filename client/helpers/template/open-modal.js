@@ -36,7 +36,3 @@ ModalHelper.openEventModal = (calEvent, jsEvent, view) => {
     Session.set('selectedEvent', calEvent);
     Modal.show('eventModal', () => { return calEvent; });
 };
-
-ModalHelper.showModal = (name, event, view) => {
-    Modal.show(name);
-};
