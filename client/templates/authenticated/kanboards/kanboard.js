@@ -9,6 +9,9 @@ Template.kanboard.helpers({
     isDirect() {
         return Template.instance().isDirect.get();
     },
+    isPublic() {
+        return !Kanboards.findOne(FlowRouter.getParam('item')).isPrivate;
+    },
     name() {
         return Template.instance().name.get();
     },
@@ -17,13 +20,13 @@ Template.kanboard.helpers({
     },
     canUserEdit() {
         let instance = Template.instance();
-        return !instance.isDirect.get() || FlowRouter.getParam('board').replace('@', '') === Meteor.users.findOne(Meteor.userId()).username;
+        return !instance.isDirect.get() || FlowRouter.getParam('item').replace('@', '') === Meteor.users.findOne(Meteor.userId()).username;
     },
     kanboard() {
         if (Template.instance().isDirect.get() === true) {
             return null;
         }
-        return Kanboards.findOne(FlowRouter.getParam('board'));
+        return Kanboards.findOne(FlowRouter.getParam('item'));
     }
 });
 

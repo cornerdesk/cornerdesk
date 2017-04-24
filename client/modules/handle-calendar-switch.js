@@ -1,6 +1,6 @@
 let _handleSwitch = (template) => {
     if (FlowRouter.getRouteName() !== 'calendar') return;
-    let calendar = FlowRouter.getParam('calendar');
+    let calendar = FlowRouter.getParam('item');
     Session.set('calendar', calendar);
 
     if (calendar) {

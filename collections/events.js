@@ -1,3 +1,4 @@
+import SimpleSchema from 'simpl-schema';
 // Définition de la collection Events dans la base MongoDB
 Events = new Meteor.Collection('events');
 

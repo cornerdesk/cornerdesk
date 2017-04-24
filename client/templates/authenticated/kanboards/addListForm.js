@@ -2,7 +2,7 @@ Template.addListForm.events({
     'click [name="new-list-btn"]' (event, template) {
         let nameInput = template.find('[name="new-list-name"]');
         if (nameInput.value !== '') {
-            let boardId = Session.get('board');
+            let boardId = Session.get('item');
             var list = null;
             if (boardId.includes('@')) {
                 let user = Meteor.users.findOne({ username: boardId.replace('@', '') });

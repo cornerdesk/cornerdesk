@@ -1,3 +1,4 @@
+import SimpleSchema from 'simpl-schema';
 Calendars = new Mongo.Collection('calendars');
 
 Calendars.allow({
@@ -27,7 +28,7 @@ let CalendarsSchema = new SimpleSchema({
         label: 'Is the event private.'
     },
     'members': {
-        type: [Object],
+        type: Array,
         autoValue() { // eslint-disable-line consistent-return
             if (this.isInsert && !this.isSet) {
                 return [{
@@ -37,6 +38,9 @@ let CalendarsSchema = new SimpleSchema({
                 }];
             }
         },
+    },
+    'members.$': {
+        type: Object,
     },
     'members.$.userId': {
         type: String,
@@ -136,17 +140,7 @@ Calendars.mutations({
         return { $set: { isPrivate: visibility } };
     },
 
-    addMember(memberId) {
-        check(memberId, String);
-        const memberIndex = this.memberIndex(memberId);
-        if (memberIndex >= 0) {
-            return {
-                $set: {
-                    [`members.${memberIndex}.isActive`]: true,
-                },
-            };
-        }
-
+    addMember: (memberId) => {
         return {
             $push: {
                 members: {

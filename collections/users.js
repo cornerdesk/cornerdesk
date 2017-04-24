@@ -1,15 +1,19 @@
-Meteor.users.allow({
-    insert: () => false,
-    update: () => false,
-    remove: () => false
-});
-
-Meteor.users.deny({
-    insert: () => true,
-    update: () => true,
-    remove: () => true
-});
-
+let _getItem = () => {
+    let type = FlowRouter.getRouteName(),
+        itemId = FlowRouter.getParam('item');
+    switch (type) {
+        case 'kanboard':
+            return Kanboards.findOne(itemId);
+            break;
+        case 'channel':
+            return Channels.findOne({ name: itemId });
+            break;
+        case 'calendar':
+            return Calendars.findOne(itemId);
+            break;
+    }
+    return null;
+}
 
 if (Meteor.isClient) {
     Meteor.users.helpers({
@@ -24,34 +28,40 @@ if (Meteor.isClient) {
                 return this.username[0].toUpperCase();
             }
         },
-        isBoardMember() {
-            const board = Kanboards.findOne(Session.get('board'));
-            return board && board.hasMember(this._id);
+        isItemAdmin() {
+            let item = _getItem();
+            return item.hasAdmin(this._id);
         },
-
-        isBoardAdmin() {
-            const board = Kanboards.findOne(Session.get('board'));
-            return board && board.hasAdmin(this._id);
+        isItemMember() {
+            let item = _getItem();
+            return item.hasMember(this._id);
         },
+    });
+}
 
-        isCalendarMember() {
-            const cal = Calendars.findOne(Session.get('calendar'));
-            return cal && cal.hasMember(this._id);
-        },
+if (Meteor.isServer) {
+    Meteor.methods({
+        inviteUserTo(type, itemId, memberId) {
+            check(type, String);
+            check(itemId, String);
+            check(memberId, String);
 
-        isCalendarAdmin() {
-            const cal = Kanboards.findOne(Session.get('calendar'));
-            return cal && cal.hasAdmin(this._id);
-        },
-
-        isChannelMember() {
-            const channel = Kanboards.findOne(Session.get('channel'));
-            return channel && channel.hasMember(this._id);
-        },
-
-        isChannelAdmin() {
-            const channel = Kanboards.findOne(Session.get('channel'));
-            return channel && channel.hasAdmin(this._id);
+            let item;
+            switch (type) {
+                case 'kanboard':
+                    item = Kanboards.findOne(itemId);
+                    break;
+                case 'channel':
+                    item = Channels.findOne(itemId);
+                    break;
+                case 'calendar':
+                    item = Calendars.findOne(itemId);
+                    break;
+            }
+            if (item.memberIndex(memberId) >= 0) {
+                throw new Error('User is already a member.');
+            }
+            item.addMember(memberId);
         },
     });
 }

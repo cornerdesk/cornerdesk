@@ -1,3 +1,4 @@
+import SimpleSchema from 'simpl-schema';
 Channels = new Mongo.Collection('channels');
 
 Channels.allow({
@@ -27,9 +28,9 @@ let ChannelsSchema = new SimpleSchema({
         label: 'Is the event private.'
     },
     'members': {
-        type: [Object],
+        type: Array,
         autoValue() { // eslint-disable-line consistent-return
-            if (this.isInsert && !this.isSet) {
+            if (this.isInsert && !this.isSet && this.userId) {
                 return [{
                     userId: this.userId,
                     isAdmin: true,
@@ -37,6 +38,10 @@ let ChannelsSchema = new SimpleSchema({
                 }];
             }
         },
+        optional: true
+    },
+    'members.$': {
+        type: Object,
     },
     'members.$.userId': {
         type: String,
@@ -136,17 +141,7 @@ Channels.mutations({
         return { $set: { isPrivate: visibility } };
     },
 
-    addMember(memberId) {
-        check(memberId, String);
-        const memberIndex = this.memberIndex(memberId);
-        if (memberIndex >= 0) {
-            return {
-                $set: {
-                    [`members.${memberIndex}.isActive`]: true,
-                },
-            };
-        }
-
+    addMember: (memberId) => {
         return {
             $push: {
                 members: {

@@ -65,7 +65,7 @@ Template.kanlist.onRendered(() => {
 
 Template.kanlist.events({
     'click .removeListBtn' (event, template) {
-        if (FlowRouter.getParam('board').includes('@') && this.ownerId !== Meteor.userId()) {
+        if (FlowRouter.getParam('item').includes('@') && this.ownerId !== Meteor.userId()) {
             Bert.alert('You can\'t remove this list.', 'warning');
         }
         let listId = this._id;
@@ -91,7 +91,7 @@ Template.kanlist.events({
     },
     'click [name="save-new-task-btn"]' (event, template) {
         let title = template.find('[name="new-task-name"]').value;
-        let boardId = FlowRouter.getParam('board');
+        let boardId = FlowRouter.getParam('item');
 
         if (title === '') {
             Bert.alert('The title cannot be empty', 'warning');

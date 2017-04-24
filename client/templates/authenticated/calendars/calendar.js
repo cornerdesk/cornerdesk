@@ -16,8 +16,17 @@ Template.calendar.helpers({
     isDirect() {
         return Template.instance().isDirect.get();
     },
+    isPublic() {
+        return !Calendars.findOne(FlowRouter.getParam('item')).isPrivate;
+    },
     name() {
         return Template.instance().name.get();
+    },
+    calendar() {
+        if (Template.instance().isDirect.get() === true) {
+            return null;
+        }
+        return Calendars.findOne(FlowRouter.getParam('item'));
     }
 });
 

@@ -2,7 +2,9 @@
     <div class="title-wrapper">
         <h3>{{name}}</h3>
         {{#unless isDirect}}
-            {{> kanboardMembers kanboard}}
+            {{#unless isPublic}}
+                {{> members kanboard}}
+            {{/unless}}
         {{/unless}}
     </div>
     <div class="content-wrapper">
@@ -20,13 +22,5 @@
                 </div>
             </div>
         </div>
-    </div>
-</template>
-
-<template name="kanboardMembers">
-    <div class="pull-right members">
-        {{#each this.members}}
-            {{> userAvatar }}
-        {{/each}}
     </div>
 </template>

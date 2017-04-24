@@ -14,14 +14,14 @@ authenticatedRoutes.route('/', {
     }
 });
 
-authenticatedRoutes.route('/messages/:channel', {
+authenticatedRoutes.route('/messages/:item', {
     name: 'channel',
     action() {
         BlazeLayout.render('default', { yield: 'channel' });
     }
 });
 
-authenticatedRoutes.route('/calendars/:calendar', {
+authenticatedRoutes.route('/calendars/:item', {
     name: 'calendar',
     action() {
         BlazeLayout.render('default', { yield: 'calendar' });
@@ -57,7 +57,7 @@ authenticatedRoutes.route('/calendars/:calendar', {
 //     }
 // });
 
-authenticatedRoutes.route('/kanboards/:board', {
+authenticatedRoutes.route('/kanboards/:item', {
     name: 'kanboard',
     action(params) {
         const currentBoard = params.board;

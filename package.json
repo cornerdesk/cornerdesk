@@ -1,16 +1,18 @@
 {
-    "name": "Remotr",
-    "version": "1.0.0",
-    "description": "Agile tools for smart people.",
-    "scripts": {
-        "start": "meteor --settings settings-development.json",
-        "staging": "meteor deploy staging.meteor.com --settings settings-development.json",
-        "production": "meteor deploy production.meteor.com --settings settings-production.json"
-    },
-    "devDependencies": {},
-    "dependencies": {
-        "babel-runtime": "^6.23.0",
-        "bcrypt": "^1.0.2",
-        "lodash": "^4.5.1"
-    }
+  "name": "Remotr",
+  "version": "1.0.0",
+  "description": "Agile tools for smart people.",
+  "scripts": {
+    "start": "meteor --settings settings-development.json",
+    "staging": "meteor deploy staging.meteor.com --settings settings-development.json",
+    "production": "meteor deploy production.meteor.com --settings settings-production.json"
+  },
+  "devDependencies": {},
+  "dependencies": {
+    "babel-runtime": "^6.23.0",
+    "bcrypt": "^1.0.2",
+    "lodash": "^4.5.1",
+    "meteor-node-stubs": "^0.2.6",
+    "simpl-schema": "^0.2.3"
+  }
 }

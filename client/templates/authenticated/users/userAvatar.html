@@ -4,3 +4,16 @@
         <span class="member-presence-status active"></span><span class="member-type admin"></span>
     </a>
 </template>
+
+<template name="addMember">
+    <button name="add-member-button" class="btn btn-fab btn-fab-mini btn-default" href="#" >
+        <i class="ti ti-plus"></i>
+    </button>
+</template>
+
+<template name="addMemberForm">
+    <input class="typeahead" data-source="getUsers" type="text" name="member-selector" id="memberSelector" />
+    <button name="new-member-form-close" class="btn btn-fab btn-fab-mini btn-default">
+        <i class="ti ti-close" aria-hidden="true"></i>
+    </button>
+</template>

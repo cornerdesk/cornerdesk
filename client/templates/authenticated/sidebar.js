@@ -3,10 +3,18 @@ Template.sidebar.onCreated(() => {
     template.subscribe('sidebar');
 });
 
+Template.sidebar.onRendered(() => {
+    let sidebar = Template.instance().find('#sidebarMenu');
+    $(sidebar).perfectScrollbar();
+    $(sidebar).on('mouseenter', () => {
+        $(sidebar).perfectScrollbar('update');
+    });
+});
+
 Template.sidebar.helpers({
     currentChannel(name) {
         if (FlowRouter.getRouteName() === 'channel') {
-            let current = FlowRouter.getParam('channel');
+            let current = FlowRouter.getParam('item');
             if (current) {
                 return current === name || current === `@${name}` ? 'active' : false;
             }
@@ -15,7 +23,7 @@ Template.sidebar.helpers({
     },
     currentCalendar(name) {
         if (FlowRouter.getRouteName() === 'calendar') {
-            let current = FlowRouter.getParam('calendar');
+            let current = FlowRouter.getParam('item');
             if (current) {
                 return current === name || current === `@${name}` ? 'active' : false;
             }
@@ -24,7 +32,7 @@ Template.sidebar.helpers({
     },
     currentBoard(name) {
         if (FlowRouter.getRouteName() === 'kanboard') {
-            let current = FlowRouter.getParam('board');
+            let current = FlowRouter.getParam('item');
             if (current) {
                 return current === name || current === `@${name}` ? 'active' : false;
             }
@@ -77,5 +85,5 @@ Template.sidebar.events({
     },
     'click [name="new-board-button"]': (event, template) => {
         ModalHelper.showModal('newBoardModal', event, template);
-    }
+    },
 });

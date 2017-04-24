@@ -1,6 +1,11 @@
 <template name="calendar">
     <div class="title-wrapper">
         <h3>{{name}}</h3>
+        {{#unless isDirect}}
+            {{#unless isPublic}}
+                {{> members channel}}
+            {{/unless}}
+        {{/unless}}
     </div>
     <div class="content-wrapper">
         <div class="card card-calendar">

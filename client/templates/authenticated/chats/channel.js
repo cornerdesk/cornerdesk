@@ -12,10 +12,10 @@ Template.channel.onCreated(() => {
 });
 
 Template.channel.onRendered(() => {
-    this.$('[name="message"]').mention({
-        delimiter: '@',
-        users: getUsers()
-    });
+    // this.$('[name="message"]').mention({
+    //     delimiter: '@',
+    //     users: getUsers()
+    // });
 });
 
 Template.channel.helpers({
@@ -25,14 +25,23 @@ Template.channel.helpers({
     isDirect() {
         return Template.instance().isDirect.get();
     },
+    isPublic() {
+        return !Channels.findOne({ name: FlowRouter.getParam('item') }).isPrivate;
+    },
     username() {
-        return FlowRouter.getParam('channel');
+        return FlowRouter.getParam('item');
     },
     messages() {
         let messages = Messages.find({}, { sort: { timestamp: 1 } });
         if (messages) {
             return sortMessages(messages);
         }
+    },
+    channel() {
+        if (Template.instance().isDirect.get() === true) {
+            return null;
+        }
+        return Channels.findOne({ name: FlowRouter.getParam('item') });
     }
 });
 

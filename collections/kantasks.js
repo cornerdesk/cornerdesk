@@ -1,3 +1,4 @@
+import SimpleSchema from 'simpl-schema';
 Kantasks = new Meteor.Collection('kantasks');
 
 Kantasks.allow({

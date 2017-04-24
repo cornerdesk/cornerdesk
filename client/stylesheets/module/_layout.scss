@@ -1,5 +1,13 @@
 body {
     position: relative;
+    &.sidebarToggled {
+        .sidebar {
+            display: none;
+        }
+        .main-panel {
+            width: 100%;
+        }
+    }
 }
 
 
@@ -8226,4 +8234,5 @@ input.ct-danger+span+label+span.switch-right {
     width: 30px;
     height: 30px;
     min-width: 30px;
+    font-size: 20px;
 }

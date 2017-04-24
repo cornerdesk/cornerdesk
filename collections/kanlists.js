@@ -1,3 +1,4 @@
+import SimpleSchema from 'simpl-schema';
 Kanlists = new Meteor.Collection('kanlists');
 
 Kanlists.allow({

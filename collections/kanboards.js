@@ -1,3 +1,4 @@
+import SimpleSchema from 'simpl-schema';
 Kanboards = new Meteor.Collection('kanboards');
 
 let KanboardsSchema = new SimpleSchema({
@@ -16,7 +17,7 @@ let KanboardsSchema = new SimpleSchema({
         label: 'Is the event private.'
     },
     'members': {
-        type: [Object],
+        type: Array,
         autoValue() { // eslint-disable-line consistent-return
             if (this.isInsert && !this.isSet) {
                 return [{
@@ -26,6 +27,9 @@ let KanboardsSchema = new SimpleSchema({
                 }];
             }
         },
+    },
+    'members.$': {
+        type: Object,
     },
     'members.$.userId': {
         type: String,
@@ -105,7 +109,8 @@ Kanboards.helpers({
     },
 
     hasAdmin: (memberId) => {
-        return !!_.findWhere(this.members, { userId: memberId, isActive: true, isAdmin: true });
+        var that = this;
+        return _.findWhere(that.members, { userId: memberId, isActive: true, isAdmin: true }) !== null;
     },
 
     absoluteUrl: () => {
@@ -130,16 +135,6 @@ Kanboards.mutations({
     },
 
     addMember: (memberId) => {
-        check(memberId, String);
-        const memberIndex = this.memberIndex(memberId);
-        if (memberIndex >= 0) {
-            return {
-                $set: {
-                    [`members.${memberIndex}.isActive`]: true,
-                },
-            };
-        }
-
         return {
             $push: {
                 members: {
