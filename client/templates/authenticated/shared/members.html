@@ -1,0 +1,10 @@
+<template name="members">
+    <div class="pull-right members">
+        {{#each this.members}}
+            {{> userAvatar }}
+        {{/each}}
+        <span id="newMember">
+            {{> addMember }}
+        </span>
+    </div>
+</template>
