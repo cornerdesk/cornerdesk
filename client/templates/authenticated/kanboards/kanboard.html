@@ -15,6 +15,7 @@
                         {{#each lists}}
                             {{>kanlist}}
                         {{/each}}
+                        {{> kantrash}}
                         {{#if canUserEdit}}
                             {{>addListForm}}
                         {{/if}}
@@ -23,4 +24,7 @@
             </div>
         </div>
     </div>
+    <!--<div class="trash-container">
+        <i class="ti ti-trash"></i>
+    </div>-->
 </template>

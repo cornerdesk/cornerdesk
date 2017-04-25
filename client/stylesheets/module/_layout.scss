@@ -1,3 +1,4 @@
+@import 'variables';
 body {
     position: relative;
     &.sidebarToggled {
@@ -648,7 +649,7 @@ strong {
 
 .sidebar .user a {
     opacity: .7;
-    color: #66615b;
+    color: $maincolor;
     padding: 7px 11px;
     text-align: center;
     display: block;
@@ -657,7 +658,7 @@ strong {
 .sidebar .user a:hover,
 .sidebar .user a:visited,
 .sidebar .user a:focus {
-    color: #66615b;
+    color: $maincolor;
     opacity: 1;
 }
 
@@ -821,7 +822,7 @@ strong {
 .off-canvas-sidebar .mini-logo p,
 .off-canvas-sidebar[data-background-color="white"] .logo p,
 .off-canvas-sidebar[data-background-color="white"] .mini-logo p {
-    color: #66615B;
+    color: $maincolor;
 }
 
 .sidebar .logo .simple-text,
@@ -832,14 +833,14 @@ strong {
 .off-canvas-sidebar .mini-logo .simple-text,
 .off-canvas-sidebar[data-background-color="white"] .logo .simple-text,
 .off-canvas-sidebar[data-background-color="white"] .mini-logo .simple-text {
-    color: #66615B;
+    color: $maincolor;
 }
 
 .sidebar .nav li:not(.active)>a,
 .sidebar[data-background-color="white"] .nav li:not(.active)>a,
 .off-canvas-sidebar .nav li:not(.active)>a,
 .off-canvas-sidebar[data-background-color="white"] .nav li:not(.active)>a {
-    color: #66615B;
+    color: $maincolor;
 }
 
 .sidebar .nav .divider,
@@ -867,7 +868,7 @@ strong {
 .sidebar[data-background-color="brown"]:before,
 .off-canvas-sidebar[data-background-color="brown"]:after,
 .off-canvas-sidebar[data-background-color="brown"]:before {
-    background-color: #66615b;
+    background-color: $maincolor;
 }
 
 .sidebar[data-background-color="brown"] .user,
@@ -1024,7 +1025,7 @@ strong {
     }
     .sidebar-mini [data-background-color="brown"] .nav .collapse li:not(.active)>a,
     .sidebar-mini [data-background-color="brown"] .user .collapse li:not(.active)>a {
-        color: #66615b;
+        color: $maincolor;
     }
     .sidebar-mini .sidebar {
         width: 80px;
@@ -1050,7 +1051,7 @@ strong {
     }
     .sidebar-mini .sidebar .sidebar-wrapper .collapse .nav li>a:hover,
     .sidebar-mini .sidebar .sidebar-wrapper .collapse .nav li>a:focus {
-        background-color: #66615B;
+        background-color: $maincolor;
         color: rgba(255, 255, 255, 0.85);
         opacity: 1;
         text-decoration: none;
@@ -1165,8 +1166,8 @@ strong {
     font-size: 14px;
     font-weight: 600;
     padding: 7px 18px;
-    border-color: #66615B;
-    color: #66615B;
+    border-color: $maincolor;
+    color: $maincolor;
     -webkit-transition: all 150ms linear;
     -moz-transition: all 150ms linear;
     -o-transition: all 150ms linear;
@@ -1192,9 +1193,9 @@ strong {
 .open>.navbar .navbar-nav>li>a.btn.dropdown-toggle,
 .open>.navbar .navbar-nav>li>a.btn.dropdown-toggle:focus,
 .open>.navbar .navbar-nav>li>a.btn.dropdown-toggle:hover {
-    background-color: #66615B;
+    background-color: $maincolor;
     color: rgba(255, 255, 255, 0.85);
-    border-color: #66615B;
+    border-color: $maincolor;
 }
 
 .btn:hover .caret,
@@ -1267,13 +1268,13 @@ fieldset[disabled] .navbar .navbar-nav>li>a.btn.focus,
 fieldset[disabled] .navbar .navbar-nav>li>a.btn:active,
 fieldset[disabled] .navbar .navbar-nav>li>a.btn.active {
     background-color: transparent;
-    border-color: #66615B;
+    border-color: $maincolor;
 }
 
 .btn.btn-fill,
 .navbar .navbar-nav>li>a.btn.btn-fill {
     color: #FFFFFF;
-    background-color: #66615B;
+    background-color: $maincolor;
     opacity: 1;
     filter: alpha(opacity=100);
 }
@@ -1319,7 +1320,7 @@ fieldset[disabled] .navbar .navbar-nav>li>a.btn.active {
 
 .btn .caret,
 .navbar .navbar-nav>li>a.btn .caret {
-    border-top-color: #66615B;
+    border-top-color: $maincolor;
 }
 
 .btn:hover,
@@ -2232,12 +2233,12 @@ fieldset[disabled] .btn-neutral.active {
 
 .btn-neutral:hover,
 .btn-neutral:focus {
-    color: #66615B;
+    color: $maincolor;
 }
 
 .btn-neutral:hover i,
 .btn-neutral:focus i {
-    color: #66615B;
+    color: $maincolor;
     opacity: 1;
 }
 
@@ -2245,22 +2246,22 @@ fieldset[disabled] .btn-neutral.active {
 .btn-neutral.active,
 .open>.btn-neutral.dropdown-toggle {
     background-color: #FFFFFF;
-    color: #66615B;
+    color: $maincolor;
 }
 
 .btn-neutral:active i,
 .btn-neutral.active i,
 .open>.btn-neutral.dropdown-toggle i {
-    color: #66615B;
+    color: $maincolor;
     opacity: 1;
 }
 
 .btn-neutral.btn-fill {
-    color: #66615B;
+    color: $maincolor;
 }
 
 .btn-neutral.btn-fill i {
-    color: #66615B;
+    color: $maincolor;
     opacity: 1;
 }
 
@@ -2393,7 +2394,7 @@ fieldset[disabled] .btn-neutral.active {
 /*     General overwrite     */
 
 body {
-    color: #66615b;
+    color: $maincolor;
     font-size: 14px;
     font-family: 'Muli', Arial, sans-serif;
 }
@@ -2575,7 +2576,7 @@ a.dropdown-toggle[aria-expanded="true"] .caret {
     background-color: #F3F2EE;
     border: 1px solid #e8e7e3;
     border-radius: 4px;
-    color: #66615b;
+    color: $maincolor;
     font-size: 14px;
     padding: 7px 18px;
     height: 40px;
@@ -2600,7 +2601,7 @@ a.dropdown-toggle[aria-expanded="true"] .caret {
 
 .has-success .form-control,
 .form-control.valid {
-    color: #66615b;
+    color: $maincolor;
     border-color: #e8e7e3;
 }
 
@@ -3785,7 +3786,7 @@ star {
 }
 
 .navbar-default .brand {
-    color: #66615b !important;
+    color: $maincolor !important;
 }
 
 .navbar-default .navbar-nav>li>a:not(.btn) {
@@ -3941,7 +3942,7 @@ star {
 }
 
 .footer nav ul a:not(.btn) {
-    color: #66615b;
+    color: $maincolor;
     display: block;
     margin-bottom: 3px;
 }
@@ -3952,7 +3953,7 @@ star {
 }
 
 .footer .copyright {
-    color: #66615b;
+    color: $maincolor;
     padding: 10px 15px;
     font-size: 14px;
     margin: 15px 3px;
@@ -3979,15 +3980,15 @@ star {
 }
 
 .footer-black .copyright {
-    color: #66615b;
+    color: $maincolor;
 }
 
 .footer-black .copyright ul>li a:not(.btn) {
-    color: #66615b;
+    color: $maincolor;
 }
 
 .footer-black hr {
-    border-color: #66615b;
+    border-color: $maincolor;
 }
 
 .footer-transparent {
@@ -4132,7 +4133,7 @@ star {
 
 .card .description {
     font-size: 16px;
-    color: #66615b;
+    color: $maincolor;
 }
 
 .card h6 {
@@ -4505,7 +4506,7 @@ star {
 }
 
 .card-image .details .author .name {
-    color: #66615b;
+    color: $maincolor;
     font-size: 1.1em;
     font-weight: bold;
     line-height: 1.15;
@@ -4818,7 +4819,7 @@ star {
 }
 
 .label-default {
-    background-color: #66615b;
+    background-color: $maincolor;
 }
 
 .label-primary {
@@ -5051,13 +5052,13 @@ input.textarea {
     font-size: 14px;
     font-weight: normal;
     line-height: 1.5;
-    color: #66615b;
+    color: $maincolor;
     cursor: pointer;
 }
 
 .checkbox .icons,
 .radio .icons {
-    color: #66615b;
+    color: $maincolor;
     display: block;
     height: 20px;
     left: 0;
@@ -5260,12 +5261,12 @@ input.textarea {
 .dropup .dropdown-menu>.active>a:hover,
 .dropup .dropdown-menu>.active>a:focus {
     background-color: #F9F7F3;
-    color: #66615b;
+    color: $maincolor;
 }
 
 .dropup .dropdown-menu>li>a:hover,
 .dropup .dropdown-menu>li>a:focus {
-    background-color: #66615B;
+    background-color: $maincolor;
     color: rgba(255, 255, 255, 0.85);
     opacity: 1;
     text-decoration: none;
@@ -5345,7 +5346,7 @@ input.textarea {
 }
 
 .dropdown-menu>li>a {
-    color: #66615b;
+    color: $maincolor;
     font-size: 14px;
     padding: 10px 15px;
     -webkit-transition: none;
@@ -5379,7 +5380,7 @@ input.textarea {
 
 .dropdown-menu>li>a:hover,
 .dropdown-menu>li>a:focus {
-    background-color: #66615B;
+    background-color: $maincolor;
     color: rgba(255, 255, 255, 0.85);
     opacity: 1;
     text-decoration: none;
@@ -5440,22 +5441,22 @@ input.textarea {
 .select .no-style:active,
 .select .no-style:focus {
     background-color: #FFFFFF;
-    color: #66615b;
+    color: $maincolor;
 }
 
 .select .no-style:hover .caret,
 .select .no-style:active .caret,
 .select .no-style:focus .caret {
-    border-top-color: #66615b;
+    border-top-color: $maincolor;
 }
 
 .open .no-style {
     background-color: #FFFFFF !important;
-    color: #66615b !important;
+    color: $maincolor !important;
 }
 
 .open .no-style .caret {
-    border-top-color: #66615b !important;
+    border-top-color: $maincolor !important;
 }
 
 .btn-group.select {
@@ -5485,13 +5486,13 @@ input.textarea {
 
 .dropdown-notification-list>li {
     border-bottom: 1px solid #F1EAE0;
-    color: #66615b;
+    color: $maincolor;
     font-size: 14px;
     padding: 10px 5px;
 }
 
 .dropdown-notification-list>li>a {
-    color: #66615b;
+    color: $maincolor;
     white-space: normal;
 }
 
@@ -5530,7 +5531,7 @@ input.textarea {
 .dropdown-notification-list>li:hover,
 .dropdown-notification-list>li:focus {
     background-color: #F0EFEB;
-    color: #66615b;
+    color: $maincolor;
     opacity: 1;
     text-decoration: none;
 }
@@ -5548,7 +5549,7 @@ input.textarea {
 }
 
 .dropdown-sharing li {
-    color: #66615b;
+    color: $maincolor;
     font-size: 14px;
 }
 
@@ -5568,7 +5569,7 @@ input.textarea {
 .dropdown-sharing li:focus a,
 .dropdown-sharing li:focus .action-line {
     background-color: #F9F7F3;
-    color: #66615b;
+    color: $maincolor;
     opacity: 1;
     text-decoration: none;
 }
@@ -5600,7 +5601,7 @@ input.textarea {
 .dropdown-actions li:hover a,
 .dropdown-actions li:focus a {
     background-color: #F0EFEB;
-    color: #66615b;
+    color: $maincolor;
     opacity: 1;
     text-decoration: none;
 }
@@ -6399,7 +6400,7 @@ input.textarea {
 }
 
 .tagsinput .tag {
-    background-color: #66615b;
+    background-color: $maincolor;
     cursor: pointer;
     margin: 5px 3px 5px 0;
     position: relative;
@@ -6450,7 +6451,7 @@ input.textarea {
 }
 
 .tagsinput .tagsinput-add {
-    color: #66615b;
+    color: $maincolor;
     cursor: pointer;
     display: inline-block;
     font-size: 0.9em;
@@ -6476,7 +6477,7 @@ input.textarea {
 .tagsinput input {
     background: transparent;
     border: none;
-    color: #66615b !important;
+    color: $maincolor !important;
     font-size: 0.9em;
     margin: 0;
     outline: medium none !important;
@@ -6532,7 +6533,7 @@ input.textarea {
 }
 
 .panel-default a {
-    color: #66615b;
+    color: $maincolor;
 }
 
 .panel-default a:hover,
@@ -6727,7 +6728,7 @@ input.textarea {
 }
 
 .has-switch span.switch-left {
-    background-color: #66615b;
+    background-color: $maincolor;
     border-left: 1px solid transparent;
     border-radius: 30px 0 0 30px;
     color: #FFFFFF;
@@ -6738,7 +6739,7 @@ input.textarea {
 }
 
 .has-switch span.switch-right {
-    background-color: #66615b;
+    background-color: $maincolor;
     border-radius: 0 30px 30px 0;
     color: #FFFFFF;
     text-indent: 1px;
@@ -6904,13 +6905,13 @@ input.ct-danger+span+label+span.switch-right {
 
 .login-page .card .header .title,
 .lock-page .card .header .title {
-    color: #66615b;
+    color: $maincolor;
     margin-bottom: 20px;
 }
 
 .login-page .card label,
 .lock-page .card label {
-    color: #66615b;
+    color: $maincolor;
 }
 
 .login-page .card .btn-wd,
@@ -7031,11 +7032,11 @@ input.ct-danger+span+label+span.switch-right {
 }
 
 .nav-tabs>li>a:hover {
-    color: #66615b;
+    color: $maincolor;
 }
 
 .nav-tabs>li.active {
-    color: #66615b;
+    color: $maincolor;
     position: relative;
 }
 
@@ -7082,11 +7083,11 @@ input.ct-danger+span+label+span.switch-right {
 }
 
 .nav-stacked>li>a:hover {
-    color: #66615b;
+    color: $maincolor;
 }
 
 .nav-stacked>li.active>a {
-    color: #66615b;
+    color: $maincolor;
 }
 
 .nav-stacked>li.active :after {
@@ -7130,9 +7131,9 @@ input.ct-danger+span+label+span.switch-right {
 }
 
 .nav-pills>li>a {
-    border: 2px solid #66615B;
+    border: 2px solid $maincolor;
     border-radius: 0;
-    color: #66615B;
+    color: $maincolor;
     font-weight: 600;
     margin-left: -1px;
     padding: 10px 20px;
@@ -7141,7 +7142,7 @@ input.ct-danger+span+label+span.switch-right {
 .nav-pills>li.active>a,
 .nav-pills>li.active>a:hover,
 .nav-pills>li.active>a:focus {
-    background-color: #66615B;
+    background-color: $maincolor;
     color: #FFFFFF;
 }
 
@@ -7164,9 +7165,9 @@ input.ct-danger+span+label+span.switch-right {
 .pagination>li>a,
 .pagination>li>span {
     background-color: transparent;
-    border: 2px solid #66615B;
+    border: 2px solid $maincolor;
     border-radius: 20px;
-    color: #66615B;
+    color: $maincolor;
     height: 36px;
     font-weight: 600;
     margin: 0 2px;
@@ -7185,8 +7186,8 @@ input.ct-danger+span+label+span.switch-right {
 .pagination>li.active>span:hover,
 .pagination>li.active>a:focus,
 .pagination>li.active>span:focus {
-    background-color: #66615B;
-    border-color: #66615B;
+    background-color: $maincolor;
+    border-color: $maincolor;
     color: #FFFFFF;
 }
 
@@ -8235,4 +8236,24 @@ input.ct-danger+span+label+span.switch-right {
     height: 30px;
     min-width: 30px;
     font-size: 20px;
+}
+
+.card-kanboard .kanboard .kanboard-canvas .kanlists-container .kanlist.trash-container {
+    background: lighten($warning, 10);
+    color: #ffffff;
+    // padding: 10px;
+    // border: 3px solid $maincolor;
+    // border-radius: 50%;
+    // position: fixed;
+    // bottom: 10px;
+    // right: 10px;
+    max-width: 0;
+    visibility: hidden;
+    &.dragging {
+        visibility: visible;
+        max-width: $listWidth;
+    }
+    i {
+        font-size: 50px;
+    }
 }

@@ -40,6 +40,7 @@ Template.kanboard.onRendered(() => {
         placeholder: 'kanlist placeholder',
         distance: 7,
         start(evt, ui) {
+            // $('.trash-container').addClass('dragging');
             ui.placeholder.height(ui.helper.height());
         },
         stop() {
@@ -52,6 +53,7 @@ Template.kanboard.onRendered(() => {
                     }, (err) => {});
                 }
             );
+            // $('.trash-container').removeClass('dragging');
         },
     });
 

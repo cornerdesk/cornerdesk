@@ -42,7 +42,11 @@ Template.kanlist.onRendered(() => {
         scroll: false,
         placeholder: 'kantask-wrapper placeholder',
         start(evt, ui) {
+            $('.trash-container').addClass('dragging');
             ui.placeholder.height(ui.helper.height());
+        },
+        stop(evt, ui) {
+            $('.trash-container').removeClass('dragging');
         },
         receive(evt, ui) {
             let kanlist = ui.item.parents('.kanlist').get(0);
@@ -56,9 +60,9 @@ Template.kanlist.onRendered(() => {
 
             const taskDomElement = ui.item.get(0);
             const task = Blaze.getData(taskDomElement);
-            console.log('task id : ' + task._id);
-            console.log('list id : ' + listId);
-            Meteor.call('updateTask', task._id, { $set: { kanlist: listId } });
+            if (listId !== task.kanlist) {
+                Meteor.call('updateTask', task._id, { $set: { kanlist: listId } });
+            }
         },
     });
 });
@@ -125,4 +129,33 @@ Template.kanlist.events({
 
 
     }
+});
+
+Template.kantrash.onRendered(() => {
+    const $tasks = Template.instance().$('.tasks-container');
+    $tasks.sortable({
+        connectWith: '.tasks-container',
+        tolerance: 'pointer',
+        appendTo: 'body',
+        helper(evt, item) {
+            return item.clone();
+        },
+        distance: 7,
+        items: '.kantask-wrapper:not(.new-task)',
+        scroll: false,
+        placeholder: 'kantask-wrapper placeholder',
+        start(evt, ui) {
+            $('.trash-container').addClass('dragging');
+            ui.placeholder.height(ui.helper.height());
+        },
+        stop(evt, ui) {
+            $('.trash-container').removeClass('dragging');
+        },
+        receive(evt, ui) {
+            let kanlist = ui.item.parents('.kanlist').get(0);
+            const taskDomElement = ui.item.get(0);
+            const task = Blaze.getData(taskDomElement);
+            Meteor.call('removeTask', task._id);
+        },
+    });
 });
