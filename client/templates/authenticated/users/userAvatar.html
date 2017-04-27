@@ -1,5 +1,6 @@
 <template name="userAvatar">
-    <a class="member js-member ui-draggable ui-draggable-handle" title="{{member.profile.name.first}} {{member.profile.name.last}} ({{member.username}})" href="#" aria-label="{{member.profile.name.first}} {{member.profile.name.last}} ({{member.username}})">
+    <a class="member js-member ui-draggable ui-draggable-handle" title="{{member.profile.name.first}} {{member.profile.name.last}} ({{member.username}})" href="#" aria-label="{{member.profile.name.first}} {{member.profile.name.last}} ({{member.username}})"
+    data-user-id="{{userId}}">
         <span class="initials">{{initials}}</span>
         <span class="member-presence-status active"></span><span class="member-type admin"></span>
     </a>
@@ -12,7 +13,9 @@
 </template>
 
 <template name="addMemberForm">
-    <input class="typeahead" data-source="getUsers" type="text" name="member-selector" id="memberSelector" />
+    <span class="twitter-typeahead form-group">
+    <input class="typeahead form-control form-inline" data-source="getUsers" type="text" name="member-selector" id="memberSelector" />
+    </span>
     <button name="new-member-form-close" class="btn btn-fab btn-fab-mini btn-default">
         <i class="ti ti-close" aria-hidden="true"></i>
     </button>

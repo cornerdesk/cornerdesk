@@ -29,8 +29,8 @@ Template.kanlist.onRendered(() => {
     });
 
     // Drag n drop of the tasks
-    const $tasks = Template.instance().$('.tasks-container');
-    $tasks.sortable({
+    const $tasksLists = this.$('.tasks-container');
+    $tasksLists.sortable({
         connectWith: '.tasks-container',
         tolerance: 'pointer',
         appendTo: 'body',
@@ -44,18 +44,13 @@ Template.kanlist.onRendered(() => {
         start(evt, ui) {
             $('.trash-container').addClass('dragging');
             ui.placeholder.height(ui.helper.height());
+            ui.placeholder.width(ui.helper.width());
         },
         stop(evt, ui) {
             $('.trash-container').removeClass('dragging');
         },
         receive(evt, ui) {
             let kanlist = ui.item.parents('.kanlist').get(0);
-            let $listItems = $(kanlist).find('.kantask-wrapper');
-            const itemIndex = $listItems.index(ui.item.get(0));
-            const nbItems = $listItems.length;
-            if (itemIndex === nbItems - 1) {
-                $(kanlist).find('.new-task:eq(0)').insertAfter(ui.item.get(0));
-            }
             const listId = Blaze.getData(kanlist)._id;
 
             const taskDomElement = ui.item.get(0);
@@ -132,7 +127,7 @@ Template.kanlist.events({
 });
 
 Template.kantrash.onRendered(() => {
-    const $tasks = Template.instance().$('.tasks-container');
+    const $tasks = this.$('.tasks-container');
     $tasks.sortable({
         connectWith: '.tasks-container',
         tolerance: 'pointer',
@@ -152,10 +147,75 @@ Template.kantrash.onRendered(() => {
             $('.trash-container').removeClass('dragging');
         },
         receive(evt, ui) {
-            let kanlist = ui.item.parents('.kanlist').get(0);
             const taskDomElement = ui.item.get(0);
             const task = Blaze.getData(taskDomElement);
-            Meteor.call('removeTask', task._id);
+            sweetAlert({
+                    title: "Are you sure?",
+                    text: "You will not be able to recover this imaginary file!",
+                    type: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#DD6B55",
+                    confirmButtonText: "Yes, delete it!",
+                    closeOnConfirm: false,
+                    closeOnCancel: false
+                },
+                (confirmation) => {
+                    if (confirmation === false) {
+                        $(ui.sender).sortable('cancel');
+                        sweetAlert.close();
+                        return;
+                    }
+
+                    Meteor.call('removeTask', task._id, () => { sweetAlert.close(); });
+                });
+
         },
+    });
+
+    // Remove members
+    $('.trash-container').droppable({
+        hoverClass: 'ui-state-active',
+        tolerance: 'pointer',
+        accept: function(event, ui) {
+            return true;
+        },
+        drop: function(event, ui) {
+            var obj;
+            if ($(ui.helper).hasClass('ui-draggable') && $(ui.helper).hasClass('js-member')) {
+                var memberId = $(ui.helper).data('user-id');
+                // handle remove after confirm
+                sweetAlert({
+                        title: "Delete?",
+                        text: "Do you really wan't to do this ?",
+                        type: "warning",
+                        showCancelButton: true,
+                        confirmButtonColor: "#DD6B55",
+                        confirmButtonText: "Yes, delete it!",
+                        closeOnConfirm: false,
+                        closeOnCancel: false
+                    },
+                    (confirmation) => {
+                        if (confirmation === false) {
+                            $(ui.sender).droppable('cancel');
+                            sweetAlert.close();
+                            return;
+                        }
+
+                        Meteor.call('removeUserFrom',
+                            FlowRouter.getRouteName(),
+                            FlowRouter.getParam('item'),
+                            memberId,
+                            (err, result) => {
+                                sweetAlert.close();
+                                if (err) {
+                                    Bert.alert('An error occurred', 'danger');
+                                    return;
+                                }
+                                Bert.alert('Done', 'success');
+                            }
+                        );
+                    });
+            }
+        }
     });
 });

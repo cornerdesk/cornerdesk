@@ -9,6 +9,12 @@ Meteor.publish('kanboards', function() {
     });
 });
 
+Meteor.publish('kanboardMembers', (kanboard) => {
+    check(kanboard, String);
+
+    return Kanboards.findOne(kanboard).activeMembers();
+});
+
 Meteor.publish('kanboard', function(isDirect, kanboard) {
     check(isDirect, Boolean);
     check(kanboard, String);

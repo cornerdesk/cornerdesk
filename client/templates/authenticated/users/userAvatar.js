@@ -16,7 +16,10 @@ Template.userAvatar.helpers({
         return Meteor.users.findOne(Template.instance().data.userId).getInitials();
     },
     memberType: () => {
-        return Template.instance().data.isAdmin ? 'admin' : 'collab';
+        return Template.instance().data.isAdmin ? 'admin' : 'normal';
+    },
+    userId: () => {
+        return Template.instance().data.userId;
     }
 });
 
@@ -48,12 +51,40 @@ Template.addMemberForm.onRendered(() => {
     this.$('[name="member-selector"]').typeahead({
         hint: true,
         highlight: true,
-        minLength: 1
+        minLength: 0,
+        classNames: {
+            input: 'tt-input',
+            menu: 'dropdown-menu',
+            hint: 'tt-hint',
+            selectable: 'tt-selectable'
+        }
     }, {
-        name: 'states',
+        name: 'members',
         displayKey: 'username',
         source: substringMatcher(getUsers())
     }).bind('typeahead:select', function(ev, suggestion) {
         handleMemberInsert(suggestion._id);
+        let container = document.getElementById('newMember');
+        container.innerHTML = '';
+        Blaze.render(Template.addMember, container);
+    });
+});
+
+Template.userAvatar.onRendered(() => {
+
+    let $members = this.$('.js-member');
+    $members.draggable({
+        cursor: 'pointer',
+        revert: 'invalid',
+        helper: function() {
+            return $(this).clone();
+        },
+        distance: 20,
+        start(evt, ui) {
+            $('.trash-container').addClass('dragging');
+        },
+        stop(evt, ui) {
+            $('.trash-container').removeClass('dragging');
+        }
     });
 });

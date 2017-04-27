@@ -10,3 +10,21 @@ Template.members.events({
         Blaze.render(Template.addMember, container);
     }
 });
+
+Template.members.helpers({
+    // activeMembers() {
+    //     return this.data.activeMembers();
+    // }
+});
+
+Template.members.onCreated(() => {
+    let template = Template.instance();
+    template.activeMembers = new ReactiveVar();
+    Tracker.autorun(() => {
+        template.activeMembers.set(template.data.activeMembers());
+    });
+});
+
+Template.members.onRendered(() => {
+
+});

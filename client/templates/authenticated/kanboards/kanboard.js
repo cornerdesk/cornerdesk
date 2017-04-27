@@ -10,7 +10,7 @@ Template.kanboard.helpers({
         return Template.instance().isDirect.get();
     },
     isPublic() {
-        return !Kanboards.findOne(FlowRouter.getParam('item')).isPrivate;
+        return !Template.instance().isDirect.get() && !Kanboards.findOne(FlowRouter.getParam('item')).isPrivate;
     },
     name() {
         return Template.instance().name.get();
@@ -43,7 +43,7 @@ Template.kanboard.onRendered(() => {
             // $('.trash-container').addClass('dragging');
             ui.placeholder.height(ui.helper.height());
         },
-        stop() {
+        stop(evt) {
             $('.kanlists-container').find('.kanlist').each(
                 (i, ui) => {
                     Meteor.call('updateList', Blaze.getData(ui)._id, {

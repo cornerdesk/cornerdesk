@@ -47,7 +47,7 @@ RemotR
                     {{/each}}
 
                     <li class="text-center">
-                      <button name="new-calendar-button" class="btn btn-fab btn-fab-mini btn-default">
+                      <button name="new-calendar-button" class="btn btn-fill btn-icon btn-sm">
                         <i class="btn-icon ti ti-plus"></i>
                       </button>
                     </li>
@@ -66,7 +66,10 @@ RemotR
                     {{#each user in users}}
                       <li class="{{currentCalendar user.username}}">
                         <a href="/calendars/@{{user.username}}">
+                        <span class="sidebar-mini">{{initials user.profile.name}}</span>
+                        <span class="sidebar-normal">
                           {{fullName user.profile.name}}
+                        </span>
                         </a>
                       </li>
                     {{/each}}
@@ -103,7 +106,7 @@ RemotR
                     {{/each}}
 
                     <li class="text-center">
-                      <button name="new-channel-button" class="btn btn-fab btn-fab-mini btn-default">
+                      <button name="new-channel-button" class="btn btn-fill btn-icon btn-sm">
                         <i class="btn-icon ti ti-plus"></i>
                       </button>
                     </li>
@@ -122,7 +125,10 @@ RemotR
                     {{#each user in users}}
                     <li class="{{currentChannel user.username}}">
                       <a href="/messages/@{{user.username}}">
-            {{fullName user.profile.name}}
+                        <span class="sidebar-mini">{{initials user.profile.name}}</span>
+                        <span class="sidebar-normal">
+                          {{fullName user.profile.name}}
+                        </span>
           </a>
                     </li>
                     {{/each}}
@@ -160,7 +166,7 @@ RemotR
                     </li>
                     {{/each}}
                     <li class="text-center">
-                      <button name="new-board-button" class="btn btn-fab btn-fab-mini btn-default">
+                      <button name="new-board-button" class="btn btn-fill btn-icon btn-sm">
                         <i class="btn-icon ti ti-plus"></i>
                       </button>
                     </li>
@@ -179,8 +185,11 @@ RemotR
                     {{#each user in users}}
                     <li class="{{currentBoard user.username}}">
                       <a href="/kanboards/@{{user.username}}">
-            {{fullName user.profile.name}}
-          </a>
+                        <span class="sidebar-mini">{{initials user.profile.name}}</span>
+                        <span class="sidebar-normal">
+                          {{fullName user.profile.name}}
+                        </span>
+                      </a>
                     </li>
                     {{/each}}
                   </ul>

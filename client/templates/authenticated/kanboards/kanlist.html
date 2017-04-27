@@ -15,12 +15,12 @@
         </div>
         <div class="kanlist-body">
             <div class="tasks-container clearfix">
-                {{#each tasks}}
-                    {{> kantask}}
-                {{/each}}
                 <div class="new-task">
                     {{> newTaskButton}}
                 </div>
+                {{#each tasks}}
+                    {{> kantask}}
+                {{/each}}
             </div>
         </div>
     </div>

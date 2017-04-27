@@ -67,6 +67,9 @@ Template.sidebar.helpers({
             return users;
         }
     },
+    initials(name) {
+        return name.first[0].toUpperCase() + name.last[0].toUpperCase()
+    },
     fullName(name) {
         if (name) {
             return `${name.first} ${name.last}`;

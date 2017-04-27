@@ -120,7 +120,7 @@ Calendars.helpers({
     },
 
     absoluteUrl() {
-        return FlowRouter.url('kanboard', { id: this._id });
+        return FlowRouter.url('calendar', { item: this._id });
     },
 });
 

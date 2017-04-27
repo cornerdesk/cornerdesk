@@ -121,7 +121,7 @@ Channels.helpers({
     },
 
     absoluteUrl() {
-        return FlowRouter.url('kanboard', { id: this._id });
+        return FlowRouter.url('channel', { item: this.name });
     },
 });
 

@@ -5,3 +5,20 @@ Template.newTaskForm.events({
         }
     }
 });
+
+Template.kantask.onRendered(() => {
+    // add member to task
+    this.$('.kantask-wrapper').droppable({
+        hoverClass: 'ui-state-active',
+        tolerance: 'pointer',
+        accept: function(event, ui) {
+            return true;
+        },
+        drop: function(event, ui) {
+            var obj;
+            if ($(ui.helper).hasClass('draggable')) {
+                // handle member addition
+            }
+        }
+    });
+})

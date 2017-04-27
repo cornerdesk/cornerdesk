@@ -1,6 +1,6 @@
-let _getItem = () => {
-    let type = FlowRouter.getRouteName(),
-        itemId = FlowRouter.getParam('item');
+let _getItem = (type, itemId) => {
+    type = type !== undefined ? type : FlowRouter.getRouteName();
+    itemId = itemId !== undefined ? itemId : FlowRouter.getParam('item');
     switch (type) {
         case 'kanboard':
             return Kanboards.findOne(itemId);
@@ -46,22 +46,21 @@ if (Meteor.isServer) {
             check(itemId, String);
             check(memberId, String);
 
-            let item;
-            switch (type) {
-                case 'kanboard':
-                    item = Kanboards.findOne(itemId);
-                    break;
-                case 'channel':
-                    item = Channels.findOne(itemId);
-                    break;
-                case 'calendar':
-                    item = Calendars.findOne(itemId);
-                    break;
-            }
-            if (item.memberIndex(memberId) >= 0) {
-                throw new Error('User is already a member.');
-            }
+            let item = _getItem(type, itemId);
+
             item.addMember(memberId);
+        },
+        removeUserFrom(type, itemId, memberId) {
+            check(type, String);
+            check(itemId, String);
+            check(memberId, String);
+
+            let item = _getItem(type, itemId);
+            if (item.hasAdmin(this.userId) && item.hasMember(memberId)) {
+                item.removeMember(memberId);
+                return true;
+            }
+            return false;
         },
     });
 }
