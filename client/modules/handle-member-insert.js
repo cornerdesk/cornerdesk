@@ -1,7 +1,7 @@
 let _handleInsert = (memberId) => {
     Meteor.call('inviteUserTo', FlowRouter.getRouteName(), FlowRouter.getParam('item'), memberId, (err) => {
         if (err) {
-            Bert.alert('An error occured', 'error');
+            Bert.alert('An error occured', 'danger');
             return;
         }
         Bert.alert('Done !', 'success');

@@ -81,7 +81,7 @@ CalHelper.createEvent = (calendar, title, color, start, end, description, allDay
 
 CalHelper.updateEvent = (id, modifier) => {
     Events.update({ _id: id }, { $set: modifier }, function(err) {
-        if (err) { Bert.alert('Oups... An error occured...', 'error'); }
+        if (err) { Bert.alert('Oups... An error occured...', 'danger'); }
         Bert.alert('Event updated !', 'success');
     });
 };
@@ -112,11 +112,11 @@ CalHelper.dateToMoment = (date) => {
 
 CalHelper.canInsert = () => {
     let userId = Meteor.userId(),
-        calendar = FlowRouter.getParam('calendar');
+        calendar = Session.get('item');
 
     if (calendar.includes('@')) {
         let owner = Meteor.users.findOne({ username: calendar.replace('@', '') });
         return owner._id === userId;
     }
-    return Meteor.user().isCalendarMember();
+    return Meteor.user().isItemMember();
 };

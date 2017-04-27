@@ -1,4 +1,3 @@
-
 let dateFormat = 'DD/MM/YYYY HH:mm';
 
 let _handleInsert = (event, template) => {
@@ -11,7 +10,7 @@ let _handleInsert = (event, template) => {
         end = moment(template.find('#event-end', form).value, dateFormat).toDate(),
         eventId = template.find('#event-id', form).value,
         description = template.find('#event-description', form).value,
-        calendar = FlowRouter.getParam('calendar');
+        calendar = Session.get('item');
     if (eventId === "") {
         CalHelper.createEvent(calendar, title, color, start, end, description, allDay, isPrivate);
     } else {
@@ -39,21 +38,21 @@ let _handleInsert = (event, template) => {
 
 let _canInsert = () => {
     let userId = Meteor.userId(),
-        calendar = FlowRouter.getParam('calendar');
+        calendar = Session.get('item');
 
-    if(calendar.includes('@')) {
-        let owner = Meteor.users.findOne({username: calendar.replace('@','')});
+    if (calendar.includes('@')) {
+        let owner = Meteor.users.findOne({ username: calendar.replace('@', '') });
         return owner._id === userId;
     }
 
     return true;
 };
 
-export default function (event, template) {
+export default function(event, template) {
 
     if (_canInsert()) {
         _handleInsert(event, template);
     } else {
-        Bert.alert('Come on ! It\'s not your calendar. You can\'t do that.' , 'danger');
+        Bert.alert('Come on ! It\'s not your calendar. You can\'t do that.', 'danger');
     }
 }

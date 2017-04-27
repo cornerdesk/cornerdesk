@@ -32,5 +32,8 @@ Template.default.helpers({
     },
     redirectPublic() {
         return handleRedirect(['channel', 'home', 'calendar', 'kanboard'], '/login');
+    },
+    route() {
+        return FlowRouter.getRouteName();
     }
 });

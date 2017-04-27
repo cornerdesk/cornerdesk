@@ -24,7 +24,7 @@ Template.addListForm.events({
                 });
             }
         } else {
-            Bert.alert('The list name cannot be empty', 'error');
+            Bert.alert('The list name cannot be empty', 'danger');
         }
         let input = template.find('[name="new-list-name"]');
         input.value = '';

@@ -68,7 +68,6 @@ Template.calendar.onRendered(() => {
         Meteor.subscribe('calendar', Session.get('item'), view.start.toDate(), view.end.toDate(), () => {
             $fc.fullCalendar('refetchEvents');
         });
-        CalHelper.getEvents(Session.get('item'), view.start.toDate(), view.end.toDate()).fetch();
         $fc.fullCalendar('refetchEvents');
     });
 });

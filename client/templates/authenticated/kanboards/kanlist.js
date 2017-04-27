@@ -70,7 +70,7 @@ Template.kanlist.events({
         let listId = this._id;
         Meteor.call('removeList', listId, (err) => {
             if (err) {
-                Bert.alert('An error occured while removing the list.', 'error');
+                Bert.alert('An error occured while removing the list.', 'danger');
                 return;
             }
             Bert.alert('The list is now removed.', 'success');

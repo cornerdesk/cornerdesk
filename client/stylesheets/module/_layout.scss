@@ -2397,17 +2397,23 @@ body {
     color: $maincolor;
     font-size: 14px;
     font-family: 'Muli', Arial, sans-serif;
-}
-
-body .wrapper {
-    min-height: 100vh;
-    position: relative;
-}
-
-body .wrapper:after {
-    display: table;
-    content: " ";
-    clear: both;
+    .wrapper {
+        min-height: 100vh;
+        position: relative;
+        &:after {
+            display: table;
+            content: " ";
+            clear: both;
+        }
+        &.login {
+            overflow: hidden;
+            background-image: url('..//images/login-background.jpg');
+            background-repeat: no-repeat;
+            background-position: 50% 50%;
+            background-attachment: fixed;
+            background-size: 100% auto;
+        }
+    }
 }
 
 a {

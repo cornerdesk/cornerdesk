@@ -1,5 +1,5 @@
 <template name="default">
-	<div class="wrapper">
+	<div class="wrapper {{route}}">
 		{{>bertAlert}} 
 			{{#if loggingIn}} 
 				{{> loading}} 
@@ -9,16 +9,20 @@
 							{{> sidebar}}
 						<div class="main-panel ps-container ps-theme-default ps-active-y">
 							{{>header}}
-							<div class="content">
-								{{> Template.dynamic template=yield}}
-							</div>
+							{{#transition wrap="true" in="fadeIn" out="fadeOut"}}
+								<div class="content">
+										{{> Template.dynamic template=yield}}
+								</div>
+							{{/transition}}
 						</div>
 					{{/unless}}
 				{{else}}
 					{{#unless redirectPublic}} 
 						{{> header}}
 						<div class="content"> 
-							{{> Template.dynamic template=yield}}
+  							{{#transition in="zoomIn" out="zoomOut"}}
+								{{> Template.dynamic template=yield}}
+							{{/transition}}
 						</div>
 					{{/unless}} 
 				{{/if}}

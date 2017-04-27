@@ -10,7 +10,7 @@ let _handleInsert = (event, template) => {
         isPrivate: isPrivate,
     }, function(error) {
         if (error) {
-            Bert.alert(error, 'error');
+            Bert.alert(error, 'danger');
             return;
         }
         Bert.alert('Your new calendar is ready !', 'success');
