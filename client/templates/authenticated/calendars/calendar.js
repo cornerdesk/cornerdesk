@@ -17,16 +17,16 @@ Template.calendar.helpers({
         return Template.instance().isDirect.get();
     },
     isPublic() {
-        return !Calendars.findOne(FlowRouter.getParam('item')).isPrivate;
+        return !Template.instance().isDirect.get() && Calendars.findOne(Session.get('item')).isPublic();
     },
     name() {
         return Template.instance().name.get();
     },
-    calendar() {
+    item() {
         if (Template.instance().isDirect.get() === true) {
             return null;
         }
-        return Calendars.findOne(FlowRouter.getParam('item'));
+        return Calendars.findOne(Session.get('item'));
     }
 });
 
@@ -45,12 +45,12 @@ Template.calendar.onRendered(() => {
             defaultView: 'agendaWeek',
             editable: true,
             selectable: true,
-            aspectRatio: 2,
+            aspectRatio: 2.5,
             events: function(start, end, tz, callback) {
 
                 //find all, because we've already subscribed to a specific range
                 let events = CalHelper.mapDbEventsToEventSource(
-                    CalHelper.getEvents(FlowRouter.getParam('calendar'),
+                    CalHelper.getEvents(Session.get('item'),
                         start.toDate(),
                         end.toDate()));
                 if (events) {
@@ -65,10 +65,10 @@ Template.calendar.onRendered(() => {
         });
 
         var view = $fc.fullCalendar('getView');
-        Meteor.subscribe('calendar', Session.get('calendar'), view.start.toDate(), view.end.toDate(), () => {
+        Meteor.subscribe('calendar', Session.get('item'), view.start.toDate(), view.end.toDate(), () => {
             $fc.fullCalendar('refetchEvents');
         });
-        CalHelper.getEvents(Session.get('calendar'), view.start.toDate(), view.end.toDate()).fetch();
+        CalHelper.getEvents(Session.get('item'), view.start.toDate(), view.end.toDate()).fetch();
         $fc.fullCalendar('refetchEvents');
     });
 });

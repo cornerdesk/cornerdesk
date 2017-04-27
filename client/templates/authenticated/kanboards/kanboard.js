@@ -10,7 +10,7 @@ Template.kanboard.helpers({
         return Template.instance().isDirect.get();
     },
     isPublic() {
-        return !Template.instance().isDirect.get() && !Kanboards.findOne(FlowRouter.getParam('item')).isPrivate;
+        return !Template.instance().isDirect.get() && Kanboards.findOne(FlowRouter.getParam('item')).isPublic();
     },
     name() {
         return Template.instance().name.get();

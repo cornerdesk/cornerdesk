@@ -8202,8 +8202,8 @@ input.ct-danger+span+label+span.switch-right {
         display: block;
         position: relative;
         float: left;
-        height: 30px;
-        width: 30px;
+        height: 32px;
+        width: 32px;
         margin: 0 4px 4px 0;
         background: white;
         cursor: pointer;
@@ -8215,6 +8215,16 @@ input.ct-danger+span+label+span.switch-right {
         text-decoration: none;
         -webkit-border-radius: 50%;
         border-radius: 50%;
+        border: 1px solid;
+        text-align: center;
+        &[data-member-type="admin"] {
+            background-color: $yellow-bg-color;
+            color: $yellow-bg-font-color;
+        }
+        &[data-member-type="normal"] {
+            background-color: $blue-bg-color;
+            color: $blue-bg-font-color;
+        }
         .avatar {
             width: 30px;
             border-radius: 50%;
@@ -8248,12 +8258,59 @@ input.ct-danger+span+label+span.switch-right {
     // bottom: 10px;
     // right: 10px;
     max-width: 0;
+    -webkit-transition: max-width 0.5s;
+    transition: max-width 0.5s;
     visibility: hidden;
     &.dragging {
         visibility: visible;
+        -webkit-transition: max-width 0.5s;
+        transition: max-width 0.5s;
         max-width: $listWidth;
     }
     i {
         font-size: 50px;
+    }
+}
+
+.trash-container {
+    position: fixed;
+    bottom: 60px;
+    right: 60px;
+    background-color: $orange-bg-color;
+    color: $orange-bg-font-color;
+    border-radius: 50%;
+    padding: 0;
+    border: 0;
+    width: 0;
+    height: 0;
+    -webkit-transition: all 0.5s;
+    transition: all 0.5s;
+    opacity: 0;
+    visibility: hidden;
+    z-index: 9999;
+    text-align: center;
+    vertical-align: middle;
+    i {
+        font-size: 0;
+        -webkit-transition: all 0.5s;
+        transition: all 0.5s;
+    }
+    &.dragging {
+        width: 80px;
+        height: 80px;
+        visibility: visible;
+        opacity: 1;
+        -webkit-transition: all 0.5s;
+        transition: all 0.5s;
+        max-width: $listWidth;
+        padding: 10px;
+        border: 3px solid $orange-bg-font-color;
+        bottom: 40px;
+        right: 40px;
+        i {
+            font-size: 50px;
+            -webkit-transition: all 0.5s;
+            transition: all 0.5s;
+        }
     }
 }

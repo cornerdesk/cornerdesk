@@ -80,6 +80,7 @@ Template.userAvatar.onRendered(() => {
             return $(this).clone();
         },
         distance: 20,
+        zIndex: 999999,
         start(evt, ui) {
             $('.trash-container').addClass('dragging');
         },

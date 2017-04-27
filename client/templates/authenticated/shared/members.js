@@ -24,7 +24,3 @@ Template.members.onCreated(() => {
         template.activeMembers.set(template.data.activeMembers());
     });
 });
-
-Template.members.onRendered(() => {
-
-});

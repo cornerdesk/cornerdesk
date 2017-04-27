@@ -3,7 +3,7 @@
         <h3>{{name}}</h3>
         {{#unless isDirect}}
             {{#unless isPublic}}
-                {{> members channel}}
+                {{> members item}}
             {{/unless}}
         {{/unless}}
     </div>
@@ -11,5 +11,6 @@
         <div class="card card-calendar">
             <div id="fullcalendar" class="fc"></div>
         </div>
+        {{> trash }}
     </div>
 </template>
