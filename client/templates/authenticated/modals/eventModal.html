@@ -35,17 +35,21 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-6 text-center form-group  label-static is-empty">
-                            <label for="event-allday">
-                                        <input type="checkbox" class="{{readonly}}" {{readonly}} name="event-allday" id="event-allday" value="">
-                                        All day
-                                    </label>
-                        </div>
-                        <div class="col-md-6 text-center form-group  label-static is-empty">
-                            <label for="event-private">
-                                        <input type="checkbox" class="{{readonly}}" {{readonly}} name="event-private" id="event-private" value="" >
-                                        Make this event private
-                                    </label>
+                        <div class="col-md-6 col-md-offset-3">
+                            <div class="togglebutton">
+                                <label for="event-allday">
+                                    <input type="checkbox" class="{{readonly}}" {{readonly}} name="event-allday" id="event-allday" value="">
+                                    <span class="toggle"></span>
+                                    All day
+                                </label>
+                            </div>
+                            <div class="togglebutton">
+                                <label for="event-private">
+                                    <input type="checkbox" class="{{readonly}}" {{readonly}} name="event-private" id="event-private" value="" >
+                                    <span class="toggle"></span>
+                                    Make this event private
+                                </label>
+                            </div>
                         </div>
                     </div>
                 </div>
