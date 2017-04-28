@@ -9,20 +9,16 @@
 							{{> sidebar}}
 						<div class="main-panel ps-container ps-theme-default ps-active-y">
 							{{>header}}
-							{{#transition wrap="true" in="fadeIn" out="fadeOut"}}
-								<div class="content">
-										{{> Template.dynamic template=yield}}
-								</div>
-							{{/transition}}
+							<div class="content">
+								{{> Template.dynamic template=yield}}
+							</div>
 						</div>
 					{{/unless}}
 				{{else}}
 					{{#unless redirectPublic}} 
 						{{> header}}
 						<div class="content"> 
-  							{{#transition in="zoomIn" out="zoomOut"}}
-								{{> Template.dynamic template=yield}}
-							{{/transition}}
+							{{> Template.dynamic template=yield}}
 						</div>
 					{{/unless}} 
 				{{/if}}

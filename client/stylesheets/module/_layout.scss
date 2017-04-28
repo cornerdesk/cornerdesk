@@ -2551,7 +2551,7 @@ a.dropdown-toggle[aria-expanded="true"] .caret {
 }
 
 .section-white {
-    background-color: #FFFFFF;
+    background-color: $background-color-2;
 }
 
 .form-control::-moz-placeholder {
@@ -8278,7 +8278,8 @@ input.ct-danger+span+label+span.switch-right {
     }
 }
 
-.trash-container {
+.card-calendar .trash-container,
+.card-channel .trash-container {
     position: fixed;
     bottom: 60px;
     right: 60px;

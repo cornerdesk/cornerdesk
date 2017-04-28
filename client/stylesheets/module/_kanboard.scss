@@ -180,6 +180,40 @@
                         }
                     }
                 }
+                .kantask-details {
+                    padding: 0 20px;
+                    height: 100%;
+                    -webkit-flex-shrink: 0;
+                    flex-shrink: 0;
+                    -webkit-flex-basis: 470px;
+                    flex-basis: 470px;
+                    will-change: flex-basis;
+                    overflow: hidden;
+                    background: #f7f7f7;
+                    -webkit-border-bottom-left-radius: 3px;
+                    border-bottom-left-radius: 3px;
+                    -webkit-border-bottom-right-radius: 3px;
+                    border-bottom-right-radius: 3px;
+                    z-index: 20 !important;
+                    -webkit-animation: flexGrowIn 0.1s;
+                    -moz-animation: flexGrowIn 0.1s;
+                    -o-animation: flexGrowIn 0.1s;
+                    -ms-animation: flexGrowIn 0.1s;
+                    animation: flexGrowIn 0.1s;
+                    -webkit-box-shadow: 0 0 7px 0 #b3b3b3;
+                    box-shadow: 0 0 7px 0 #b3b3b3;
+                    -webkit-transition: flex-basis 0.1s;
+                    -moz-transition: flex-basis 0.1s;
+                    -o-transition: flex-basis 0.1s;
+                    -ms-transition: flex-basis 0.1s;
+                    transition: flex-basis 0.1s;
+                    .kantask-details-header {
+                        margin: 0 -20px 5px;
+                        padding: 7px 16px;
+                        background: #ededed;
+                        border-bottom: 1px solid #dbdbdb;
+                    }
+                }
             }
         }
     }

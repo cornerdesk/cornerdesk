@@ -11,12 +11,6 @@ Template.members.events({
     }
 });
 
-Template.members.helpers({
-    // activeMembers() {
-    //     return this.data.activeMembers();
-    // }
-});
-
 Template.members.onCreated(() => {
     let template = Template.instance();
     template.activeMembers = new ReactiveVar();

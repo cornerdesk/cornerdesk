@@ -51,12 +51,37 @@ Template.kanlist.onRendered(() => {
         },
         receive(evt, ui) {
             let kanlist = ui.item.parents('.kanlist').get(0);
-            const listId = Blaze.getData(kanlist)._id;
 
-            const taskDomElement = ui.item.get(0);
-            const task = Blaze.getData(taskDomElement);
-            if (listId !== task.kanlist) {
-                Meteor.call('updateTask', task._id, { $set: { kanlist: listId } });
+            if (kanlist.id === 'kantrash') {
+                const taskDomElement = ui.item.get(0);
+                const task = Blaze.getData(taskDomElement);
+                sweetAlert({
+                        title: "Are you sure?",
+                        text: "Do you really wan't to delete this task ?",
+                        type: "warning",
+                        showCancelButton: true,
+                        confirmButtonColor: "#DD6B55",
+                        confirmButtonText: "Yes, delete it!",
+                        closeOnConfirm: false,
+                        closeOnCancel: false
+                    },
+                    (confirmation) => {
+                        if (confirmation === false) {
+                            $(ui.sender).sortable('cancel');
+                            sweetAlert.close();
+                            return;
+                        }
+
+                        Meteor.call('removeTask', task._id, () => { sweetAlert.close(); });
+                    });
+            } else {
+                const listId = Blaze.getData(kanlist)._id;
+
+                const taskDomElement = ui.item.get(0);
+                const task = Blaze.getData(taskDomElement);
+                if (listId !== task.kanlist) {
+                    Meteor.call('updateTask', task._id, { $set: { kanlist: listId } });
+                }
             }
         },
     });
@@ -128,52 +153,7 @@ Template.kanlist.events({
 
 Template.kantrash.onRendered(() => {
     const $tasks = this.$('.tasks-container');
-    $tasks.sortable({
-        connectWith: '.tasks-container',
-        tolerance: 'pointer',
-        appendTo: 'body',
-        helper(evt, item) {
-            return item.clone();
-        },
-        distance: 7,
-        items: '.kantask-wrapper:not(.new-task)',
-        scroll: false,
-        placeholder: 'kantask-wrapper placeholder',
-        start(evt, ui) {
-            $('.trash-container').addClass('dragging');
-            ui.placeholder.height(ui.helper.height());
-        },
-        stop(evt, ui) {
-            $('.trash-container').removeClass('dragging');
-        },
-        receive(evt, ui) {
-            const taskDomElement = ui.item.get(0);
-            const task = Blaze.getData(taskDomElement);
-            sweetAlert({
-                    title: "Are you sure?",
-                    text: "You will not be able to recover this imaginary file!",
-                    type: "warning",
-                    showCancelButton: true,
-                    confirmButtonColor: "#DD6B55",
-                    confirmButtonText: "Yes, delete it!",
-                    closeOnConfirm: false,
-                    closeOnCancel: false
-                },
-                (confirmation) => {
-                    if (confirmation === false) {
-                        $(ui.sender).sortable('cancel');
-                        sweetAlert.close();
-                        return;
-                    }
-
-                    Meteor.call('removeTask', task._id, () => { sweetAlert.close(); });
-                });
-
-        },
-    });
-
-    // Remove members
-    $('.trash-container').droppable({
+    $tasks.droppable({
         hoverClass: 'ui-state-active',
         tolerance: 'pointer',
         accept: function(event, ui) {
@@ -217,5 +197,50 @@ Template.kantrash.onRendered(() => {
                     });
             }
         }
+    }).sortable({
+        connectWith: '.tasks-container',
+        tolerance: 'pointer',
+        appendTo: 'body',
+        helper(evt, item) {
+            return item.clone();
+        },
+        distance: 7,
+        items: '.kantask-wrapper:not(.new-task)',
+        scroll: false,
+        placeholder: 'kantask-wrapper placeholder',
+        start(evt, ui) {
+            $('.trash-container').addClass('dragging');
+            ui.placeholder.height(ui.helper.height());
+        },
+        stop(evt, ui) {
+            $('.trash-container').removeClass('dragging');
+        },
+        receive(evt, ui) {
+            const taskDomElement = ui.item.get(0);
+            const task = Blaze.getData(taskDomElement);
+            sweetAlert({
+                    title: "Are you sure?",
+                    text: "Do you really wan't to delete this task ?",
+                    type: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#DD6B55",
+                    confirmButtonText: "Yes, delete it!",
+                    closeOnConfirm: false,
+                    closeOnCancel: false
+                },
+                (confirmation) => {
+                    if (confirmation === false) {
+                        $(ui.sender).sortable('cancel');
+                        sweetAlert.close();
+                        return;
+                    }
+
+                    Meteor.call('removeTask', task._id, () => { sweetAlert.close(); });
+                });
+
+        },
     });
+
+    // Remove members
+    // $('.trash-container')
 });

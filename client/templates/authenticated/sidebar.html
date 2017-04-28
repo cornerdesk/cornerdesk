@@ -39,7 +39,7 @@ RemotR
                 <div class="collapse" id="calendar-instances" aria-expanded="false" style="height: auto;">
                   <ul class="nav">
                     {{#each calendar in calendars}}
-                    <li class="{{currentCalendar calendar.name}}">
+                    <li class="{{currentCalendar calendar._id}}">
                       <a href="/calendars/{{calendar._id}}">
             {{calendar.name}}
           </a>
@@ -148,7 +148,7 @@ RemotR
           <div class="collapse" id="boards" aria-expanded="false" style="height: auto;">
             <ul class="nav">
 
-              <li><a href="/kanboards/@{{currentUsername}}">Personnal Kanboard</a></li>
+              <li class="{{currentBoard currentUsername}}"><a href="/kanboards/@{{currentUsername}}">Personnal Kanboard</a></li>
               <li>
                 <a data-toggle="collapse" href="#kanboards" class="collapsed" aria-expanded="false">
                   <i class="ti-announcement"></i>
@@ -159,7 +159,7 @@ RemotR
                 <div class="collapse" id="kanboards" aria-expanded="false" style="height: auto;">
                   <ul class="nav">
                     {{#each board in kanboards}}
-                    <li class="{{currentBoard board.name}}">
+                    <li class="{{currentBoard board._id}}">
                       <a href="/kanboards/{{board._id}}">
                         {{board.name}}
                       </a>

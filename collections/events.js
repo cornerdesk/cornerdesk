@@ -62,7 +62,7 @@ let EventsSchema = new SimpleSchema({
 Events.attachSchema(EventsSchema);
 
 Events.helpers({
-    getCalendarName: () => {
+    getCalendarName() {
         if (this.calendar !== null) {
             let calendar = Calendars.findOne(this.calendar);
             return calendar.name;

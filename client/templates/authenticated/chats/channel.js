@@ -26,7 +26,7 @@ Template.channel.helpers({
         return Template.instance().isDirect.get();
     },
     isPublic() {
-        return !Channels.findOne({ name: FlowRouter.getParam('item') }).isPrivate;
+        return !Template.instance().isDirect.get() && !Channels.findOne({ name: FlowRouter.getParam('item') }).isPublic();
     },
     username() {
         return FlowRouter.getParam('item');
