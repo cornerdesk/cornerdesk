@@ -46,11 +46,14 @@ Template.kanboard.onRendered(() => {
         stop(evt) {
             $('.kanlists-container').find('.kanlist').each(
                 (i, ui) => {
-                    Meteor.call('updateList', Blaze.getData(ui)._id, {
-                        $set: {
-                            order: i,
-                        },
-                    }, (err) => {});
+                    let listId = Blaze.getData(ui)._id;
+                    if (listId !== null) {
+                        Meteor.call('updateList', , {
+                            $set: {
+                                order: i,
+                            },
+                        }, (err) => {});
+                    }
                 }
             );
             // $('.trash-container').removeClass('dragging');
