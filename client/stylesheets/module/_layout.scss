@@ -603,63 +603,58 @@ strong {
     bottom: 0;
     left: 0;
     z-index: 1;
-}
-
-.sidebar .sidebar-wrapper {
-    position: relative;
-    height: calc(100vh - 75px);
-    overflow: auto;
-    z-index: 4;
-    box-shadow: inset -1px 0px 0px 0px #cfcfca;
-    width: 260px;
-}
-
-.sidebar .logo-mini {
-    display: none;
-}
-
-.sidebar .sidebar-background {
-    position: absolute;
-    z-index: 1;
-    height: 100%;
-    width: 100%;
-    display: block;
-    top: 0;
-    left: 0;
-    background-size: cover;
-    background-position: center center;
-}
-
-.sidebar .user {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-    padding-bottom: 20px;
-}
-
-.sidebar .user .photo {
-    width: 80px;
-    height: 80px;
-    overflow: hidden;
-    border-radius: 50%;
-    margin: 0 auto;
-}
-
-.sidebar .user .photo img {
-    width: 100%;
-}
-
-.sidebar .user a {
-    opacity: .7;
-    color: $maincolor;
-    padding: 7px 11px;
-    text-align: center;
-    display: block;
-}
-
-.sidebar .user a:hover,
-.sidebar .user a:visited,
-.sidebar .user a:focus {
-    color: $maincolor;
-    opacity: 1;
+    .sidebar-wrapper {
+        position: relative;
+        height: calc(100vh - 75px);
+        overflow: auto;
+        z-index: 4;
+        box-shadow: inset -1px 0px 0px 0px #cfcfca;
+        width: 260px;
+        #sidebarMenu {
+            height: calc(60vh);
+        }
+    }
+    .logo-mini {
+        display: none;
+    }
+    .sidebar-background {
+        position: absolute;
+        z-index: 1;
+        height: 100%;
+        width: 100%;
+        display: block;
+        top: 0;
+        left: 0;
+        background-size: cover;
+        background-position: center center;
+    }
+    .user {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+        padding-bottom: 20px;
+        .photo {
+            width: 80px;
+            height: 80px;
+            overflow: hidden;
+            border-radius: 50%;
+            margin: 0 auto;
+            img {
+                width: 100%;
+            }
+        }
+        a {
+            opacity: .7;
+            color: $maincolor;
+            padding: 7px 11px;
+            text-align: center;
+            display: block;
+            &:hover,
+            &:visited,
+            &:focus {
+                color: $maincolor;
+                opacity: 1;
+            }
+        }
+    }
 }
 
 .sidebar,
