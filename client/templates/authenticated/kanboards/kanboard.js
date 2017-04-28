@@ -48,7 +48,7 @@ Template.kanboard.onRendered(() => {
                 (i, ui) => {
                     let listId = Blaze.getData(ui)._id;
                     if (listId !== null) {
-                        Meteor.call('updateList', , {
+                        Meteor.call('updateList', listId, {
                             $set: {
                                 order: i,
                             },
