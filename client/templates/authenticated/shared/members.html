@@ -1,10 +1,14 @@
 <template name="members">
-    <div class="pull-right members">
+        <span class="newMember" data-type="{{type}}" data-id="{{itemId}}">
+            {{> addMember }}
+        </span>
+        {{> smallMembers this}}
+</template>
+
+<template name="smallMembers">
+    <span class="members" data-type="{{type}}" data-id="{{itemId}}">
         {{#each activeMembers}}
             {{> userAvatar }}
         {{/each}}
-        <span id="newMember">
-            {{> addMember }}
-        </span>
-    </div>
+    </span>
 </template>

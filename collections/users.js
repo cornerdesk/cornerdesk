@@ -11,6 +11,9 @@ let _getItem = (type, itemId) => {
         case 'calendar':
             return Calendars.findOne(itemId);
             break;
+        case 'kantask':
+            return Kantasks.findOne(itemId);
+            break;
     }
     return null;
 }
@@ -28,14 +31,18 @@ if (Meteor.isClient) {
                 return this.username[0].toUpperCase();
             }
         },
-        isItemAdmin() {
-            let item = _getItem();
+        isItemAdmin(type, itemId) {
+            let item = (!!type && !!itemId) ? _getItem(type, itemId) : _getItem();
             return item.hasAdmin(this._id);
         },
-        isItemMember() {
-            let item = _getItem();
+        isItemMember(type, itemId) {
+            let item = (!!type && !!itemId) ? _getItem(type, itemId) : _getItem();
             return item.hasMember(this._id);
         },
+        canChangeMembers(type, itemId) {
+            let item = (!!type && !!itemId) ? _getItem(type, itemId) : _getItem();
+            return item.canChangeMembers(this._id);
+        }
     });
 }
 
@@ -47,8 +54,11 @@ if (Meteor.isServer) {
             check(memberId, String);
 
             let item = _getItem(type, itemId);
-
-            item.addMember(memberId);
+            if (item.canChangeMembers(this.userId)) {
+                item.addMember(memberId);
+                return true;
+            }
+            return false;
         },
         removeUserFrom(type, itemId, memberId) {
             check(type, String);
@@ -56,7 +66,7 @@ if (Meteor.isServer) {
             check(memberId, String);
 
             let item = _getItem(type, itemId);
-            if (item.hasAdmin(this.userId) && item.hasMember(memberId)) {
+            if (item.canChangeMembers(this.userId) && item.hasMember(memberId)) {
                 item.removeMember(memberId);
                 return true;
             }

@@ -14,9 +14,10 @@
 
 <template name="addMemberForm">
     <span class="twitter-typeahead form-group">
-    <input class="typeahead form-control form-inline" data-source="getUsers" type="text" name="member-selector" id="memberSelector" />
+        <input class="typeahead form-control form-inline" data-source="getUsers" type="text" name="member-selector" id="memberSelector" />
+        
+        <button name="new-member-form-close" class="btn btn-fill btn-sm">
+        <i class="ti-close"></i>
+        </button>
     </span>
-    <button name="new-member-form-close" class="btn btn-fill btn-icon btn-sm">
-    <i class="btn-icon ti ti-plus"></i>
-    </button>
 </template>

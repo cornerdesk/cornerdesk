@@ -10,27 +10,27 @@
                     <div class="row">
                         <input type="hidden" id="event-id" name="event-id" />
                         <div class="col-md-8 form-group  label-static is-empty">
-                            <label for="event-title" class="form-label">Title</label>
+                            <label for="event-title" class="control-label">Title</label>
                             <input type="text" class="form-control {{readonly}}" {{readonly}} name="event-title" id="event-title">
                         </div>
                         <div class="col-md-4 form-group  label-static is-empty">
-                            <label for="event-color">Color</label>
+                            <label class="control-label" for="event-color">Color</label>
                             <input type="text" class="form-control {{readonly}}" {{readonly}} name="event-color" id="event-color">
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-6 form-group  label-static is-empty">
-                            <label for="event-start">Start</label>
+                            <label class="control-label" for="event-start">Start</label>
                             <input class="form-control {{readonly}}" {{readonly}} id="event-start" type="text" />
                         </div>
                         <div class="col-md-6 form-group  label-static is-empty">
-                            <label for="event-end">End</label>
+                            <label class="control-label" for="event-end">End</label>
                             <input class="form-control {{readonly}}" {{readonly}} id="event-end" type="text" />
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-12 form-group  label-static is-empty">
-                            <label for="event-title">Description</label>
+                            <label class="control-label" for="event-description">Description</label>
                             <textarea class="form-control {{readonly}}" {{readonly}} rows="2" name="event-description" id="event-description" value=""></textarea>
                         </div>
                     </div>
@@ -39,14 +39,12 @@
                             <div class="togglebutton">
                                 <label for="event-allday">
                                     <input type="checkbox" class="{{readonly}}" {{readonly}} name="event-allday" id="event-allday" value="">
-                                    <span class="toggle"></span>
                                     All day
                                 </label>
                             </div>
                             <div class="togglebutton">
                                 <label for="event-private">
                                     <input type="checkbox" class="{{readonly}}" {{readonly}} name="event-private" id="event-private" value="" >
-                                    <span class="toggle"></span>
                                     Make this event private
                                 </label>
                             </div>

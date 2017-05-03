@@ -175,6 +175,19 @@
                                     margin-bottom: 15px;
                                     margin-top: 0px;
                                     padding: 10px;
+                                    .kantask-members {
+                                        position: absolute;
+                                        bottom: 0;
+                                        right: 0;
+                                        .member {
+                                            height: 20px;
+                                            width: 20px;
+                                            .initials {
+                                                font-size: 10px;
+                                                padding: 2px;
+                                            }
+                                        }
+                                    }
                                 }
                             }
                         }
@@ -195,18 +208,18 @@
                     -webkit-border-bottom-right-radius: 3px;
                     border-bottom-right-radius: 3px;
                     z-index: 20 !important;
-                    -webkit-animation: flexGrowIn 0.1s;
-                    -moz-animation: flexGrowIn 0.1s;
-                    -o-animation: flexGrowIn 0.1s;
-                    -ms-animation: flexGrowIn 0.1s;
-                    animation: flexGrowIn 0.1s;
+                    -webkit-animation: width 0.3s;
+                    -moz-animation: width 0.3s;
+                    -o-animation: width 0.3s;
+                    -ms-animation: width 0.3s;
+                    animation: width 0.3s;
                     -webkit-box-shadow: 0 0 7px 0 #b3b3b3;
                     box-shadow: 0 0 7px 0 #b3b3b3;
-                    -webkit-transition: flex-basis 0.1s;
-                    -moz-transition: flex-basis 0.1s;
-                    -o-transition: flex-basis 0.1s;
-                    -ms-transition: flex-basis 0.1s;
-                    transition: flex-basis 0.1s;
+                    -webkit-transition: flex-basis 0.3s;
+                    -moz-transition: flex-basis 0.3s;
+                    -o-transition: flex-basis 0.3s;
+                    -ms-transition: flex-basis 0.3s;
+                    transition: flex-basis 0.3s;
                     .kantask-details-header {
                         margin: 0 -20px 5px;
                         padding: 7px 16px;

@@ -56,6 +56,9 @@ let CalendarsSchema = new SimpleSchema({
 Calendars.attachSchema(CalendarsSchema);
 
 Calendars.helpers({
+    getType() {
+        return 'calendar';
+    },
     /**
      * Is supplied user authorized to view this board?
      */
@@ -119,6 +122,9 @@ Calendars.helpers({
         return !!_.findWhere(this.members, { userId: memberId, isActive: true, isAdmin: true });
     },
 
+    canChangeMembers(memberId) {
+        return this.hasAdmin(memberId);
+    },
     absoluteUrl() {
         return FlowRouter.url('calendar', { item: this._id });
     },
@@ -130,7 +136,7 @@ Calendars.mutations({
         return { $set: { title } };
     },
 
-    setDesciption(description) {
+    setDescription(description) {
         check(description, String);
         return { $set: { description } };
     },
@@ -140,7 +146,7 @@ Calendars.mutations({
         return { $set: { isPrivate: visibility } };
     },
 
-    addMember: (memberId) => {
+    addMember(memberId) {
         return {
             $push: {
                 members: {

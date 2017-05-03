@@ -63,8 +63,11 @@ Template.addMemberForm.onRendered(() => {
         displayKey: 'username',
         source: substringMatcher(getUsers())
     }).bind('typeahead:select', function(ev, suggestion) {
-        handleMemberInsert(suggestion._id);
-        let container = document.getElementById('newMember');
+        let container = $(this).parents('.newMember').get(0),
+            type = container.getAttribute('data-type'),
+            itemId = container.getAttribute('data-id');
+
+        handleMemberInsert(suggestion._id, type, itemId);
         container.innerHTML = '';
         Blaze.render(Template.addMember, container);
     });

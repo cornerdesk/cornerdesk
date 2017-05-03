@@ -57,6 +57,9 @@ let ChannelsSchema = new SimpleSchema({
 Channels.attachSchema(ChannelsSchema);
 
 Channels.helpers({
+    getType() {
+        return 'channel';
+    },
     /**
      * Is supplied user authorized to view this board?
      */
@@ -120,6 +123,9 @@ Channels.helpers({
         return !!_.findWhere(this.members, { userId: memberId, isActive: true, isAdmin: true });
     },
 
+    canChangeMembers(memberId) {
+        return this.hasAdmin(memberId);
+    },
     absoluteUrl() {
         return FlowRouter.url('channel', { item: this.name });
     },
@@ -131,7 +137,7 @@ Channels.mutations({
         return { $set: { title } };
     },
 
-    setDesciption(description) {
+    setDescription(description) {
         check(description, String);
         return { $set: { description } };
     },
@@ -141,7 +147,7 @@ Channels.mutations({
         return { $set: { isPrivate: visibility } };
     },
 
-    addMember: (memberId) => {
+    addMember(memberId) {
         return {
             $push: {
                 members: {

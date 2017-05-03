@@ -749,8 +749,14 @@ strong {
 
 .sidebar .sidebar-wrapper>.nav [data-toggle="collapse"]~div>ul>li>a,
 .off-canvas-sidebar .sidebar-wrapper>.nav [data-toggle="collapse"]~div>ul>li>a {
+    text-transform: uppercase;
     padding-left: 70px;
     margin: 0;
+    i {
+        font-size: 20px;
+        line-height: 20px;
+        margin-right: 10px;
+    }
 }
 
 .sidebar .nav i:not(.btn-icon),
@@ -1098,7 +1104,8 @@ strong {
     .sidebar-mini .sidebar .sidebar-wrapper>.nav li.active>a:after {
         display: none;
     }
-    .sidebar-mini .sidebar .sidebar-wrapper>.nav p {
+    .sidebar-mini .sidebar .sidebar-wrapper>.nav p,
+    .sidebar-mini .sidebar .sidebar-wrapper>.nav span.sidebar-mini {
         display: none;
         left: -20px;
         opacity: 0;
@@ -2313,7 +2320,7 @@ fieldset[disabled] .btn-neutral.active {
 }
 
 .navbar .navbar-nav>li>a.btn.btn-sm,
-.btn-sm {
+.btn.btn-sm {
     font-size: 12px;
     border-radius: 26px;
     padding: 4px 10px;
@@ -2463,7 +2470,9 @@ button:focus {
 .sidebar .user .photo,
 .sidebar .user a,
 .sidebar .sidebar-wrapper>.nav p,
-.off-canvas-sidebar .sidebar-wrapper>.nav p {
+.off-canvas-sidebar .sidebar-wrapper>.nav p,
+.sidebar .sidebar-wrapper>.nav span,
+.off-canvas-sidebar .sidebar-wrapper>.nav span {
     -webkit-transition: all 300ms linear;
     -moz-transition: all 300ms linear;
     -o-transition: all 300ms linear;
@@ -8171,7 +8180,7 @@ input.ct-danger+span+label+span.switch-right {
 .content {
     .title-wrapper {
         height: calc(8vh);
-        padding: 15px;
+        padding: 10px;
         // text-align: center;
         h3,
         .h3 {

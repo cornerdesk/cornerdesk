@@ -3,7 +3,9 @@
         <h3>{{name}}</h3>
         {{#unless isDirect}}
             {{#unless isPublic}}
-                {{> members kanboard}}
+                <div class="pull-right">
+                    {{> members kanboard}}
+                </div>
             {{/unless}}
         {{/unless}}
     </div>

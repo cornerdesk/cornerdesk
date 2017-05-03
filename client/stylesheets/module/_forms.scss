@@ -1,7 +1,12 @@
 // .typeahead {
 .twitter-typeahead {
     padding-top: 0;
-    height: 40px;
+    height: 35px;
+    .typeahead {
+        height: 35px;
+        max-height: 35px;
+        max-width: 120px;
+    }
 }
 
 .tt-suggestion {

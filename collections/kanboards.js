@@ -45,6 +45,9 @@ let KanboardsSchema = new SimpleSchema({
 Kanboards.attachSchema(KanboardsSchema);
 
 Kanboards.helpers({
+    getType() {
+        return 'channel';
+    },
     /**
      * Is supplied user authorized to view this board?
      */
@@ -111,7 +114,9 @@ Kanboards.helpers({
     hasAdmin(memberId) {
         return !!_.findWhere(this.members, { userId: memberId, isActive: true, isAdmin: true });
     },
-
+    canChangeMembers(memberId) {
+        return this.hasAdmin(memberId);
+    },
     absoluteUrl() {
         return FlowRouter.url('kanboard', { item: this._id });
     },
@@ -123,7 +128,7 @@ Kanboards.mutations({
         return { $set: { title } };
     },
 
-    setDesciption(description) {
+    setDescription(description) {
         check(description, String);
         return { $set: { description } };
     },

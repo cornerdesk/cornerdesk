@@ -1,0 +1,40 @@
+<template name="kantaskDetails">
+    <div class="kantask-details ps-container">
+        <div class="kantask-details-header">
+            <a class="btn btn-fill btn-icon btn-sm pull-right" name="close-kantask-details"><i class="ti ti-close"></i></a>
+            <a class="btn btn-fill btn-icon btn-sm pull-right" name="kantask-details-menu"><i class="ti ti-menu"></i></a>
+            <h3>{{task.title}}</h3>
+        </div>
+        <div class="kantask-details-body">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="">
+                        <label class="control-label">Members</label>
+                        <div class="task-members">
+                            {{> members task }}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12">
+                    <div class="">
+                        <label class="control-label">Labels</label>
+                        <div class="task-labels">
+                            <p><small><i>Coming soon...</i></small></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="form-group  label-static is-empty">
+                        <label class="control-label" for="task-description">Description</label>
+                        <textarea class="form-control" rows="2" name="task-description" id="task-description" value="{{task.description}}"></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="kantask-details-footer">
+            <div class="col-md-12 text-center">
+                <button class="btn btn-primary" name="save-task">Save</button>
+            </div>
+        </div>
+    </div>
+</template>

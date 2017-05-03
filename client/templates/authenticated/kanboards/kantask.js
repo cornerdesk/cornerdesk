@@ -9,10 +9,19 @@ Template.newTaskForm.events({
 Template.kantask.events({
     'click .kantask-wrapper' (event, template) {
         let task = template.data,
-            nextList = $(template.firstNode).parents('.kanlist').next();
-        Blaze.renderWithData(Template.kantaskDetails, task, $('.kanlists-container').get(0), nextList.get(0));
+            nextList = $(template.firstNode).parents('.kanlist').next(),
+            details = $('.kantask-details');
+        if (details.length > 0) {
+            Session.set('selectedTask', null);
+            Blaze.remove(Blaze.getView(details.get(0)));
+            return;
+        }
+        Session.set('selectedTask', task._id);
+        Blaze.render(Template.kantaskDetails, $('.kanlists-container').get(0), nextList.get(0));
     }
 });
+
+Template.kantask.onCreated(() => {});
 
 Template.kantask.onRendered(() => {
     // add member to task

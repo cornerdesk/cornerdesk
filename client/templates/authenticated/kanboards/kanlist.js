@@ -162,6 +162,7 @@ Template.kantrash.onRendered(() => {
         drop: function(event, ui) {
             var obj;
             if ($(ui.helper).hasClass('ui-draggable') && $(ui.helper).hasClass('js-member')) {
+                var container = $(ui.draggable).parent('.members');
                 var memberId = $(ui.helper).data('user-id');
                 // handle remove after confirm
                 sweetAlert({
@@ -182,8 +183,8 @@ Template.kantrash.onRendered(() => {
                         }
 
                         Meteor.call('removeUserFrom',
-                            FlowRouter.getRouteName(),
-                            FlowRouter.getParam('item'),
+                            container.data('type'),
+                            container.data('id'),
                             memberId,
                             (err, result) => {
                                 sweetAlert.close();
