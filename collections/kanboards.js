@@ -46,7 +46,7 @@ Kanboards.attachSchema(KanboardsSchema);
 
 Kanboards.helpers({
     getType() {
-        return 'channel';
+        return 'kanboard';
     },
     /**
      * Is supplied user authorized to view this board?
@@ -119,6 +119,9 @@ Kanboards.helpers({
     },
     absoluteUrl() {
         return FlowRouter.url('kanboard', { item: this._id });
+    },
+    getNonMembers() {
+        return Meteor.users.find({ _id: { $nin: _.pluck(this.activeMembers(), 'userId') } })
     },
 });
 

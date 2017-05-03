@@ -2,12 +2,12 @@ Template.members.events({
     'click [name="add-member-button"]': (event, template) => {
         let container = template.find('.newMember');
         container.innerHTML = '';
-        Blaze.render(Template.addMemberForm, container);
+        Blaze.renderWithData(Template.addMemberForm, template.data, container);
     },
     'click [name="new-member-form-close"]': (event, template) => {
         let container = template.find('.newMember');
         container.innerHTML = '';
-        Blaze.render(Template.addMember, container);
+        Blaze.renderWithData(Template.addMember, template.data, container);
     }
 });
 

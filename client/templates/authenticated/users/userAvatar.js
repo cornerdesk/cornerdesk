@@ -1,11 +1,7 @@
 import handleMemberInsert from '../../../modules/handle-member-insert';
 
 const getUsers = () => {
-    return Meteor.users.find({
-        _id: {
-            $ne: Meteor.userId()
-        }
-    }).fetch();
+    return Template.instance().data.getNonMembers().fetch();
 }
 
 Template.userAvatar.helpers({
@@ -79,6 +75,7 @@ Template.userAvatar.onRendered(() => {
     $members.draggable({
         cursor: 'pointer',
         revert: 'invalid',
+        appendTo: 'body',
         helper: function() {
             return $(this).clone();
         },

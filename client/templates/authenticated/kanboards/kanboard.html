@@ -14,10 +14,10 @@
             <div class="kanboard">
                 <div class="kanboard-canvas">
                     <div class="kanlists-container">
+                        {{> kantrash}}
                         {{#each lists}}
                             {{>kanlist}}
                         {{/each}}
-                        {{> kantrash}}
                         {{#if canUserEdit}}
                             {{>addListForm}}
                         {{/if}}

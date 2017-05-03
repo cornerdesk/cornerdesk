@@ -128,6 +128,9 @@ Calendars.helpers({
     absoluteUrl() {
         return FlowRouter.url('calendar', { item: this._id });
     },
+    getNonMembers() {
+        return Meteor.users.find({ _id: { $nin: _.pluck(this.activeMembers(), 'userId') } })
+    },
 });
 
 Calendars.mutations({

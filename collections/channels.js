@@ -129,6 +129,9 @@ Channels.helpers({
     absoluteUrl() {
         return FlowRouter.url('channel', { item: this.name });
     },
+    getNonMembers() {
+        return Meteor.users.find({ _id: { $nin: _.pluck(this.activeMembers(), 'userId') } })
+    },
 });
 
 Channels.mutations({

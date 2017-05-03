@@ -72,10 +72,17 @@ Kantasks.helpers({
     hasMember(memberId) {
         return !!_.findWhere(this.members, { userId: memberId });
     },
+    getKanboard() {
+        return Kanboards.findOne(Kanlists.findOne(this.kanlist).kanboard);
+    },
     canChangeMembers(memberId) {
-        let board = Kanboards.findOne(Kanlists.findOne(this.kanlist));
+        let board = this.getKanboard();
         return !board || board.hasMember(memberId) || board.isPublic();
-    }
+    },
+    getNonMembers() {
+        let board = this.getKanboard();
+        return Meteor.users.find({ _id: { $in: _.pluck(board.activeMembers(), 'userId'), $nin: _.pluck(this.members, 'userId') } });
+    },
 });
 
 Kantasks.mutations({
