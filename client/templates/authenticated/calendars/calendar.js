@@ -47,7 +47,6 @@ Template.calendar.onRendered(() => {
             selectable: true,
             aspectRatio: 2.5,
             events: function(start, end, tz, callback) {
-
                 //find all, because we've already subscribed to a specific range
                 let events = CalHelper.mapDbEventsToEventSource(
                     CalHelper.getEvents(Session.get('item'),
@@ -57,6 +56,8 @@ Template.calendar.onRendered(() => {
                     callback(events);
                 }
             },
+            timezone: 'local',
+            ignoreTimezone: false,
             eventClick: ModalHelper.openEventModal,
             select: ModalHelper.openEmptyEventModal,
             eventDrop: eventDateChanged,

@@ -748,14 +748,15 @@ strong {
 }
 
 .sidebar .sidebar-wrapper>.nav [data-toggle="collapse"]~div>ul>li>a,
-.off-canvas-sidebar .sidebar-wrapper>.nav [data-toggle="collapse"]~div>ul>li>a {
+.off-canvas-sidebar .sidebar-wrapper>.nav [data-toggle="collapse"]~div>ul>li>a,
+.sidebar .sidebar-wrapper>.nav [data-toggle="collapse"]~div>ul>li>button,
+.off-canvas-sidebar .sidebar-wrapper>.nav [data-toggle="collapse"]~div>ul>li>button {
     text-transform: uppercase;
-    padding-left: 70px;
     margin: 0;
+    margin-left: 70px;
     i {
         font-size: 20px;
         line-height: 20px;
-        margin-right: 10px;
     }
 }
 
