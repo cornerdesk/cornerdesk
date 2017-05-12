@@ -3,8 +3,8 @@ let _establishSubscription = (template, isDirect, kanboard) => {
 };
 
 let _handleSwitch = (template) => {
-    if (FlowRouter.getRouteName() !== 'kanboard') return;
     let board = FlowRouter.getParam('item');
+    if (FlowRouter.getRouteName() !== 'kanboard') return;
     Session.set('item', board);
 
     if (board) {

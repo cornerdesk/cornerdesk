@@ -51,6 +51,7 @@ const KantasksSchema = new SimpleSchema({
     },
     'members': {
         type: Array,
+        optional: true,
     },
     'members.$': {
         type: Object,

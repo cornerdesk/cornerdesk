@@ -1,23 +1,26 @@
 <template name="authenticatedNavigation">
   <div class="container-fluid">
-    <div class="navbar-minimize">
-      <button id="minimizeSidebar" class="btn btn-fill btn-icon"><i class="ti-more-alt"></i></button>
-    </div>
-    <button type="button" class="navbar-toggle">
-	                        <span class="sr-only">Toggle navigation</span>
-	                    </button>
     <div class="navbar-header">
-
-      <span>{{reminder}}</span>
-
+      <div class="navbar-minimize">
+        <button id="minimizeSidebar" class="btn btn-icon sidebarMinimizer"><i class="ti-menu"></i></button>
+      </div>
+      <span class="reminder">{{reminder}}</span>
+      <button type="button" class="navbar-toggle sidebarMinimizer">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar bar1"></span>
+          <span class="icon-bar bar2"></span>
+          <span class="icon-bar bar3"></span>
+      </button>
+      <ul class="nav navbar-nav navbar-right pull-right">
+        <li class="dropdown">
+          <a id="userMenu" href="#" class="btn btn-icon dropdown-toggle" data-toggle="dropdown"  aria-haspopup="true" aria-expanded="false">
+            <i class="ti-user"></i>
+          </a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="userMenu">
+            <li class="logout"><a href="#">Logout</a></li>
+          </ul>
+        </li>
+      </ul>
     </div>
-    <ul class="nav navbar-nav navbar-right">
-      <li class="dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{currentUser.emails.[0].address}} <span class="caret"></span></a>
-        <ul class="dropdown-menu" role="menu">
-          <li class="logout"><a href="#">Logout</a></li>
-        </ul>
-      </li>
-    </ul>
   </div>
 </template>

@@ -241,7 +241,4 @@ Template.kantrash.onRendered(() => {
 
         },
     });
-
-    // Remove members
-    // $('.trash-container')
 });

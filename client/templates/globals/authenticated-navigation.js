@@ -27,11 +27,4 @@ Template.authenticatedNavigation.events({
             }
         });
     },
-    'click #minimizeSidebar': (event, template) => {
-        $(document.body).toggleClass('sidebarToggled');
-        var rotation = $(document.body).hasClass('sidebarToggled') ? '90deg' : '-90deg';
-        $('#minimizeSidebar').animate({ rotate: rotation }, {
-            duration: 'slow'
-        }, 'linear');
-    }
 });

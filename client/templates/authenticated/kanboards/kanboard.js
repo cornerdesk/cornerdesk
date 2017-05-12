@@ -35,7 +35,7 @@ Template.kanboard.onRendered(() => {
     $('.kanlists-container').sortable({
         tolerance: 'pointer',
         helper: 'clone',
-        handle: '.kanlist-header',
+        handle: '.list-header-grab-icon',
         items: '.kanlist',
         placeholder: 'kanlist placeholder',
         distance: 7,
@@ -47,7 +47,7 @@ Template.kanboard.onRendered(() => {
             $('.kanlists-container').find('.kanlist').each(
                 (i, ui) => {
                     let listId = Blaze.getData(ui)._id;
-                    if (listId !== null) {
+                    if (!!listId) {
                         Meteor.call('updateList', listId, {
                             $set: {
                                 order: i,
