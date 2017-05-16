@@ -139,10 +139,28 @@
                                 -ms-flex-align: center;
                                 -webkit-align-items: center;
                                 align-items: center;
+                                left: 0;
+                                -webkit-transition: all 0.2s;
+                                -moz-transition: all 0.2s;
+                                -o-transition: all 0.2s;
+                                -ms-transition: all 0.2s;
+                                transition: all 0.2s;
                                 &.new-task {
                                     min-height: 30px;
                                     margin-bottom: 10px;
                                     margin-top: 10px;
+                                }
+                                &.active {
+                                    left: 10px;
+                                    -webkit-transition: all 0.2s;
+                                    -moz-transition: all 0.2s;
+                                    -o-transition: all 0.2s;
+                                    -ms-transition: all 0.2s;
+                                    transition: all 0.2s;
+                                    .kantask {
+                                        border-radius: 0;
+                                        background: #f7f7f7;
+                                    }
                                 }
                                 .kantask {
                                     position: relative;

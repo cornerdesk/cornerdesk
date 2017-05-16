@@ -9,13 +9,16 @@ Template.newTaskForm.events({
 Template.kantask.events({
     'click .kantask-wrapper' (event, template) {
         let task = template.data,
-            nextList = $(template.firstNode).parents('.kanlist').next(),
+            ui = $(template.firstNode),
+            nextList = ui.parents('.kanlist').next(),
             details = $('.kantask-details');
         if (details.length > 0) {
+            $('.kantask-wrapper.active').removeClass('active');
             Session.set('selectedTask', null);
             Blaze.remove(Blaze.getView(details.get(0)));
             return;
         }
+        ui.addClass('active');
         Session.set('selectedTask', task._id);
         Blaze.render(Template.kantaskDetails, $('.kanlists-container').get(0), nextList.get(0));
     }
