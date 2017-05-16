@@ -3,7 +3,9 @@
     <h3>Chat</h3>
     {{#unless isDirect}}
         {{#unless isPublic}}
-          {{> members channel}}
+          <div class="pull-right">
+            {{> members channel}}
+          </div>
         {{/unless}}
     {{/unless}}
   </div>

@@ -27,10 +27,10 @@ Template.trash.onRendered(() => {
                             sweetAlert.close();
                             return;
                         }
-
+                        let container = ui.draggable.parent('.members');
                         Meteor.call('removeUserFrom',
-                            FlowRouter.getRouteName(),
-                            FlowRouter.getParam('item'),
+                            container.data('type'),
+                            container.data('id'),
                             memberId,
                             (err, result) => {
                                 sweetAlert.close();

@@ -56,7 +56,17 @@ let EventsSchema = new SimpleSchema({
     'ownerId': {
         type: String,
         label: 'The ID of the user that created this event.'
-    }
+    },
+    'members': {
+        type: Array,
+        optional: true,
+    },
+    'members.$': {
+        type: Object,
+    },
+    'members.$.userId': {
+        type: String,
+    },
 });
 
 Events.attachSchema(EventsSchema);
@@ -67,5 +77,62 @@ Events.helpers({
             let calendar = Calendars.findOne(this.calendar);
             return calendar.name;
         }
-    }
+    },
+    getType() {
+        return 'event';
+    },
+    activeMembers() {
+        return this.members;
+    },
+    hasMember(memberId) {
+        return !!_.findWhere(this.members, { userId: memberId });
+    },
+    getCalendar() {
+        return Calendars.findOne(this.calendar);
+    },
+    canChangeMembers(memberId) {
+        let cal = this.getCalendar();
+        return !cal || cal.hasMember(memberId) || cal.isPublic();
+    },
+    getNonMembers() {
+        let cal = this.getCalendar();
+        if (!cal || cal.isPublic()) {
+            return Meteor.users.find({ _id: { $nin: _.pluck(this.members, 'userId') } });
+        }
+        return Meteor.users.find({ _id: { $in: _.pluck(cal.activeMembers(), 'userId'), $nin: _.pluck(this.members, 'userId') } });
+    },
+});
+
+Events.mutations({
+    rename(title) {
+        check(title, String);
+        return { $set: { title } };
+    },
+
+    setDescription(description) {
+        check(description, String);
+        return { $set: { description } };
+    },
+
+    addMember(memberId) {
+        if (this.hasMember(memberId) === true) {
+            return;
+        }
+        return {
+            $push: {
+                members: {
+                    userId: memberId,
+                },
+            },
+        };
+    },
+
+    removeMember(memberId) {
+        check(memberId, String);
+        return {
+            $pull: {
+                members: { userId: memberId },
+            },
+        };
+    },
 });

@@ -395,7 +395,7 @@ strong {
 .off-canvas-sidebar .sidebar-wrapper>.nav [data-toggle="collapse"]~div>ul>li>button {
     text-transform: uppercase;
     margin: 0;
-    margin-left: 70px;
+    margin-left: 25px;
     i {
         font-size: 20px;
         line-height: 20px;
@@ -3305,10 +3305,11 @@ star {
     font-size: 20px;
 }
 
-.navbar .navbar-nav>li>a {
+.navbar .navbar-nav>li>a,
+.navbar .navbar-nav>li>button {
     line-height: 1.42857;
     margin: 16px 0px;
-    padding: 10px 15px;
+    padding: 5px;
 }
 
 .navbar .navbar-nav>li>a i,

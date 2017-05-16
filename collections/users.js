@@ -4,18 +4,17 @@ let _getItem = (type, itemId) => {
     switch (type) {
         case 'kanboard':
             return Kanboards.findOne(itemId);
-            break;
         case 'channel':
             return Channels.findOne({ name: itemId });
-            break;
         case 'calendar':
             return Calendars.findOne(itemId);
-            break;
         case 'kantask':
             return Kantasks.findOne(itemId);
-            break;
+        case 'event':
+            return Events.findOne(itemId);
+        default:
+            return null;
     }
-    return null;
 }
 
 if (Meteor.isClient) {

@@ -3,12 +3,12 @@ import handleEventInsert from '../../../modules/handle-event-insert';
 let dateFormat = 'DD/MM/YYYY HH:mm';
 Template.eventModal.helpers({
     event: () => {
-        let event = Session.get('selectedEvent');
+        let event = Template.instance().data;
 
         if (typeof event !== "undefined") {
-            return event;
+            return Events._transform(event);
         } else {
-            return {
+            return Events._transform({
                 title: '',
                 start: '',
                 end: '',
@@ -17,29 +17,29 @@ Template.eventModal.helpers({
                 allDay: false,
                 isPrivate: true,
                 ownerId: Meteor.userId()
-            }
+            });
         }
     },
     calendarName: () => {
-        let event = Session.get('selectedEvent'),
+        let event = Template.instance().data,
             item = Events.findOne(event._id);
-        if (item === undefined || item.calendar === null || item.calendar === undefined || item.calendar === Session.get('calendar')) {
+        if (item === undefined || item.calendar === null || item.calendar === undefined || item.calendar === Session.get('item')) {
             return '';
         }
         return ' (' + item.getCalendarName() + ')';
     },
     formatDate: (date) => {
-        let event = Session.get('selectedEvent');
+        let event = Template.instance().data;
         if (typeof event === 'undefined') {
             return '';
         }
         return moment(date.toISOString()).format(dateFormat);
     },
     isOwner: () => {
-        return Session.get('selectedEvent').ownerId === Meteor.userId();
+        return Template.instance().data.ownerId === Meteor.userId();
     },
     readonly: () => {
-        return Session.get('selectedEvent').ownerId === Meteor.userId() ? '' : 'disabled';
+        return Template.instance().data.ownerId === Meteor.userId() ? '' : 'disabled';
     }
 });
 
@@ -54,7 +54,7 @@ Template.eventModal.events({
 Template.eventModal.onRendered(() => {
     Tracker.autorun(() => {
         let $form = this.$('#eventEditorForm');
-        let event = Session.get('selectedEvent');
+        let event = Template.instance().data;
         $form.find('#event-title').val(event.title);
         $form.find('#event-color').colorpicker({
             color: event.color,

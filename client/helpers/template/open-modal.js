@@ -17,22 +17,9 @@ ModalHelper.openEmptyEventModal = (start, end, allDay, jsEvent, view) => {
         isPrivate: true,
         ownerId: Meteor.userId()
     });
-    Session.set('selectedEvent', calEvent);
-    Modal.show('eventModal', () => { return calEvent; });
+    Modal.show('eventModal', () => { return Events._transform(calEvent); });
 };
 
 ModalHelper.openEventModal = (calEvent, jsEvent, view) => {
-    calEvent = CalHelper.eventWithDates({
-        _id: calEvent._id,
-        title: calEvent.title,
-        color: calEvent.color,
-        start: calEvent.start,
-        end: calEvent.end,
-        description: calEvent.description,
-        allDay: calEvent.allDay,
-        isPrivate: calEvent.isPrivate,
-        ownerId: calEvent.ownerId
-    });
-    Session.set('selectedEvent', calEvent);
-    Modal.show('eventModal', () => { return calEvent; });
+    Modal.show('eventModal', () => { return Events.findOne(calEvent._id); });
 };
