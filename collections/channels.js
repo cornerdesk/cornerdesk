@@ -201,3 +201,7 @@ Channels.mutations({
         };
     },
 });
+
+Channels.after.remove((userId, doc) => {
+    Messages.remove({ channel: doc._id });
+});

@@ -1,8 +1,12 @@
 <template name="kantaskDetails">
     <div class="kantask-details ps-container">
         <div class="kantask-details-header">
-            <a class="btn btn-fill btn-icon btn-sm pull-right" name="close-kantask-details"><i class="ti-close"></i></a>
-            <a class="btn btn-fill btn-icon btn-sm pull-right" name="kantask-details-menu"><i class="ti-menu"></i></a>
+            <button class="close pull-right" name="close-kantask-details"><i class="ti-close"></i></button>
+            <span class="dropdown pull-right">
+                <button class="close pull-right dropdown-toggle"  data-target="#" data-toggle="dropdown" name="kantask-details-menu" data-><i class="ti-more"></i></button>
+                <ul class="dropdown-menu">
+                </ul>
+            </span>
             <h3>{{task.title}}</h3>
         </div>
         <div class="kantask-details-body">

@@ -93,13 +93,31 @@ Template.kanlist.events({
             Bert.alert('You can\'t remove this list.', 'warning');
         }
         let listId = this._id;
-        Meteor.call('removeList', listId, (err) => {
-            if (err) {
-                Bert.alert('An error occured while removing the list.', 'danger');
-                return;
-            }
-            Bert.alert('The list is now removed.', 'success');
-        });
+        sweetAlert({
+                title: "You are just about to delete this list",
+                text: "Do you want to continue ?",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Yes, delete it!",
+                closeOnConfirm: false,
+                closeOnCancel: false
+            },
+            (confirmation) => {
+                sweetAlert.close();
+                if (confirmation === false) {
+                    return;
+                }
+
+                Meteor.call('removeList', listId, (err) => {
+                    if (err) {
+                        Bert.alert('An error occured while removing the list.', 'danger');
+                        return;
+                    }
+                    Bert.alert('The list is now removed.', 'success');
+                });
+            });
+
     },
     'click .createTaskButton' (event, template) {
         template.showNewTaskForm.set(true);

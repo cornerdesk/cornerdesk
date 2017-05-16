@@ -200,3 +200,7 @@ Kanboards.mutations({
         };
     },
 });
+
+Kanboards.after.remove((userId, doc) => {
+    Kanlists.remove({ kanboard: doc._id });
+});

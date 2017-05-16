@@ -39,7 +39,7 @@ pdp = {
 
             if (pdp.misc.sidebar_mini_active == true) {
                 $('body').removeClass('sidebar-mini');
-                $btn.html('<i class="ti-more-alt"></i>');
+                $btn.html('<i class="ti-menu"></i>');
                 pdp.misc.sidebar_mini_active = false;
 
             } else {
@@ -259,10 +259,13 @@ Template.sidebar.onCreated(() => {
 Template.sidebar.onRendered(() => {
     window_width = $(window).width();
     $sidebar = $('.sidebar');
-    let sidebar = Template.instance().find('#sidebarMenu, #sidebarMobileMenu');
-    $sidebar.perfectScrollbar();
-    $sidebar.on('mouseenter', () => {
-        $sidebar.perfectScrollbar('update');
+    $('#sidebarMenu').perfectScrollbar();
+    $('#sidebarMenu').on('mouseenter', function() {
+        $('#sidebarMenu').perfectScrollbar('update');
+    });
+    $('#sidebarMobileMenu').perfectScrollbar();
+    $('#sidebarMobileMenu').on('mouseenter', function() {
+        $('#sidebarMobileMenu').perfectScrollbar('update');
     });
     pdp.initSidebarsCheck();
     pdp.initMinimizeSidebar();

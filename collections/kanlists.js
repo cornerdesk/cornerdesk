@@ -37,3 +37,7 @@ let KanlistsSchema = new SimpleSchema({
 });
 
 Kanlists.attachSchema(KanlistsSchema);
+
+Kanlists.after.remove((userId, doc) => {
+    Kantasks.remove({ kanlist: doc._id });
+});

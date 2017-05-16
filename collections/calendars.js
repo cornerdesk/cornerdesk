@@ -200,3 +200,7 @@ Calendars.mutations({
         };
     },
 });
+
+Calendars.after.remove((userId, doc) => {
+    Events.remove({ calendar: doc._id });
+});
