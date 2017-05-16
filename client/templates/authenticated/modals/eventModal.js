@@ -48,6 +48,35 @@ Template.eventModal.events({
         handleEventInsert(event, template);
 
         Modal.hide('eventModal');
+    },
+    'click .removeEventBtn': (event, template) => {
+        let $that = $(event.target);
+        debugger;
+        sweetAlert({
+                title: "Delete?",
+                text: "Do you really wan't to do this ?",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Yes, delete it!",
+                closeOnConfirm: false,
+                closeOnCancel: false
+            },
+            (confirmation) => {
+                sweetAlert.close();
+                if (confirmation === false) {
+                    return;
+                }
+                Meteor.call('removeEvent', $that.data('id'), (err) => {
+                    if (!!err) {
+                        Bert.alert('An error occured.', 'danger');
+                        return;
+                    }
+
+                    Bert.alert('Done ! You will not see this event anymore.', 'success');
+                    Modal.hide('eventModal');
+                });
+            });
     }
 });
 

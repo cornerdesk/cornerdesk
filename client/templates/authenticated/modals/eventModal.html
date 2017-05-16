@@ -3,19 +3,26 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header text-center">
-                    <button type="button" class="close" data-dismiss="modal">×</button>
+                    <button type="button" class="close" data-dismiss="modal"><i class="ti-close"></i></button>
+                    <span class="dropdown pull-right">
+                        <button type="button" class="close dropdown-toggle"  data-target="#" data-toggle="dropdown"><i class="ti-menu"></i></button>
+                        
+                        <ul class="dropdown-menu">
+                            <li><a class="removeEventBtn" data-id="{{_id}}" href="#">Remove event</a></li>
+                        </ul>
+                    </span>
                     <h3><i class="ti-ruler-pencil"></i> Event editor{{calendarName}}</h3>
                 </div>
                 <div class="modal-body" id="eventEditorForm">
                     <div class="row">
-                        <input type="hidden" id="event-id" name="event-id" />
+                        <input type="hidden" id="event-id" name="event-id" value="{{_id}}" />
                         <div class="col-md-8 form-group  label-static is-empty">
                             <label for="event-title" class="control-label">Title</label>
-                            <input type="text" class="form-control {{readonly}}" {{readonly}} name="event-title" id="event-title">
+                            <input type="text" class="form-control {{readonly}}" {{readonly}} name="event-title" id="event-title" value="{{title}}">
                         </div>
                         <div class="col-md-4 form-group  label-static is-empty">
                             <label class="control-label" for="event-color">Color</label>
-                            <input type="text" class="form-control {{readonly}}" {{readonly}} name="event-color" id="event-color">
+                            <input type="text" class="form-control {{readonly}}" {{readonly}} name="event-color" id="event-color" value="{{color}}">
                         </div>
                     </div>
                     <div class="row">
