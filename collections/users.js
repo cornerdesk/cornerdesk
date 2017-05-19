@@ -71,5 +71,9 @@ if (Meteor.isServer) {
             }
             return false;
         },
+        readMessage(messageId) {
+            check(messageId, String);
+            Messages.findOne(messageId).read(this.userId);
+        }
     });
 }

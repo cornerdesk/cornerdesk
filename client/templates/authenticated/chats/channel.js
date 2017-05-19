@@ -48,5 +48,18 @@ Template.channel.helpers({
 Template.channel.events({
     'keyup [name="message"]' (event, template) {
         handleMessageInsert(event, template);
+    },
+    'scroll #messages' (event, template) {
+        setTimeout(() => {
+            $('#messages').find('.message.unread').each(function(n) {
+
+                var $this = $(this);
+
+                if ($this.position().top + $this.height() > $('#messages').position().top && $this.position().top < $('#messages').position().top + $('#messages').height()) {
+                    Meteor.call('readMessage', Blaze.getData($this.get(0))._id);
+                    $(this).removeClass('unread');
+                }
+            });
+        }, 1000)
     }
 });

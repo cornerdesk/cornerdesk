@@ -1,5 +1,5 @@
 <template name="message">
-  <div class="message">
+  <div class="message {{unreadClass}}">
     {{#if showHeader}}
       <header>
         <h4>{{name owner}} <span>{{messageTimestamp timestamp}}</span></h4>

@@ -35,7 +35,42 @@ let MessagesSchema = new SimpleSchema({
     'message': {
         type: String,
         label: 'The content of this message.'
+    },
+    'unreads': {
+        type: Array,
+        autoValue() { // eslint-disable-line consistent-
+            if (this.isInsert && !this.isSet) {
+                if (this.field('to').isSet) {
+                    return [this.field('to').value]
+                }
+                let channel = Channels.findOne(this.field('channel').value);
+                // TODO: public ?
+                return _.pluck(channel.activeMembers(), 'userId');
+            }
+        },
+        optional: true,
+    },
+    'unreads.$': {
+        type: String
     }
 });
 
 Messages.attachSchema(MessagesSchema);
+
+Messages.helpers({
+    isUnread: function() {
+        return _.contains(this.unreads, Meteor.userId());
+    }
+});
+
+Messages.mutations({
+    read(userId) {
+        if (this.isUnread()) {
+            return {
+                $pull: {
+                    unreads: userId,
+                },
+            }
+        }
+    }
+})

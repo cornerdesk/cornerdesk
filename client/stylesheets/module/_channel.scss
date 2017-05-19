@@ -33,7 +33,7 @@
         overflow: auto;
         height: calc(68vh);
         // background: $background;
-        padding: 20px 20px 0;
+        padding: 10px 10px 0;
     }
     .messages-list {
         width: 100%;
@@ -49,8 +49,16 @@
     }
     .message {
         padding: 3px;
-        border-radius: 3px;
-        background: $background;
+        background-color: $background;
+        -webkit-transition: all 1s;
+        -moz-transition: all 1s;
+        -o-transition: all 1s;
+        -ms-transition: all 1s;
+        transition: all 1s;
+        &.unread {
+            border-left: solid 5px $yellow-bg-font-color;
+            background-color: lighten($yellow-bg-color, 10);
+        }
     }
     .message:hover {
         background: darken($background, 10) !important;
