@@ -5,9 +5,6 @@ body {
         .sidebar {
             display: none;
         }
-        .main-panel {
-            width: 100%;
-        }
     }
 }
 
@@ -618,7 +615,7 @@ strong {
     position: relative;
     z-index: 2;
     float: right;
-    width: calc(100% - 260px);
+    width: calc(100% - 258px);
     min-height: 100%;
 }
 
@@ -7855,6 +7852,31 @@ input.ct-danger+span+label+span.switch-right {
         overflow: hidden;
         .card {
             height: 100%;
+        }
+    }
+    .actions-wrapper {
+        position: absolute;
+        height: 175px;
+        width: 100%;
+        bottom: -150px;
+        background: lighten($maincolor, 10);
+        z-index: 999;
+        -webkit-transition: all 300ms ease-in;
+        -moz-transition: all 300ms ease-in;
+        -o-transition: all 300ms ease-in;
+        -ms-transition: all 300ms ease-in;
+        transition: all 300ms ease-in;
+        &.open {
+            bottom: 0;
+        }
+        .actions-opener {
+            display: block;
+            text-align: center;
+            width: 100%;
+            height: 25px;
+            background: $maincolor;
+            color: #ffffff;
+            cursor: pointer;
         }
     }
 }

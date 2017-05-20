@@ -37,3 +37,11 @@ Template.default.helpers({
         return FlowRouter.getRouteName();
     }
 });
+
+Template.default.events({
+    'click .actions-opener' (event, template) {
+        let $actionContainer = template.$('.actions-wrapper');
+        $actionContainer.toggleClass('open');
+        $('.actions-opener i', $actionContainer).toggleClass('ti-angle-up').toggleClass('ti-angle-down');
+    }
+})
