@@ -315,6 +315,9 @@ Template.sidebar.helpers({
             return channels;
         }
     },
+    hasUnreadMessages(channel) {
+        return channel.hasUnreadMessages(Meteor.userId());
+    },
     kanboards() {
         let kanboards = Kanboards.find();
         if (kanboards) {

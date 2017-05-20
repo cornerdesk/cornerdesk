@@ -132,6 +132,9 @@ Channels.helpers({
     getNonMembers() {
         return Meteor.users.find({ _id: { $nin: _.pluck(this.activeMembers(), 'userId') } })
     },
+    hasUnreadMessages(userId) {
+        return Messages.find({ channel: this._id, unreads: userId }).fetch().length > 0;
+    }
 });
 
 Channels.mutations({

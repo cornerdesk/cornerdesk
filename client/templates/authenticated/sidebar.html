@@ -82,10 +82,12 @@ RemotR
               <li class="{{currentChannel channel.name}}">
                 <a href="/messages/{{channel.name}}">
                   #{{channel.name}}
+                  {{#if hasUnreadMessages channel}}
+<span class="unread">new</span>
+                  {{/if}}
                 </a>
               </li>
               {{/each}}
-
               <li>
                 <button name="new-channel-button" class="btn btn-fill btn-icon btn-sm">
                   <i class="btn-icon ti ti-plus"></i>

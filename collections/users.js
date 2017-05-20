@@ -74,6 +74,10 @@ if (Meteor.isServer) {
         readMessage(messageId) {
             check(messageId, String);
             Messages.findOne(messageId).read(this.userId);
+        },
+        hasUnreadMessages(channelId) {
+            check(channelId, String);
+            return Channels.findOne(channelId).hasUnreadMessages(this.userId);
         }
     });
 }

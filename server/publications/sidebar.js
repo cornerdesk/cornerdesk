@@ -1,4 +1,12 @@
 Meteor.publish('sidebar', function() {
+    let that = this;
+    var channelsIds = Channels.find({
+        $or: [{
+                isPrivate: false,
+            },
+            { members: { $elemMatch: { userId: this.userId, isActive: true } } },
+        ],
+    }, { fields: { _id: 1 } }).fetch();
     return [
         Calendars.find({
             $or: [{
@@ -14,6 +22,11 @@ Meteor.publish('sidebar', function() {
                 { members: { $elemMatch: { userId: this.userId, isActive: true } } },
             ],
         }),
+        Messages.find({
+            channel: {
+                $in: _.pluck(channelsIds, '_id')
+            }
+        }, { fields: { channel: 1, unreads: 1 } }),
         Kanboards.find({
             $or: [{
                     isPrivate: false,

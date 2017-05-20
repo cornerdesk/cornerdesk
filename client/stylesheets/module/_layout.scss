@@ -356,6 +356,19 @@ strong {
     padding-left: 25px;
     padding-right: 25px;
     opacity: .7;
+    .unread {
+        position: relative;
+        top: 2px;
+        float: right;
+        background: $orange-bg-color;
+        color: $orange-bg-font-color;
+        border: solid 1px $orange-bg-font-color;
+        font-size: 8px;
+        font-weight: bold;
+        text-align: center;
+        padding: 2px;
+        border-radius: 10px;
+    }
 }
 
 .sidebar .sidebar-wrapper>.nav li:hover>a,
