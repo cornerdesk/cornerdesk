@@ -45,7 +45,8 @@ Template.calendar.onRendered(() => {
             defaultView: 'agendaWeek',
             editable: true,
             selectable: true,
-            aspectRatio: 2.5,
+            height: 'parent',
+            // aspectRatio: 2.5,
             events: function(start, end, tz, callback) {
                 //find all, because we've already subscribed to a specific range
                 let events = CalHelper.mapDbEventsToEventSource(

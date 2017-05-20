@@ -60,6 +60,6 @@ Template.channel.events({
                     $(this).removeClass('unread');
                 }
             });
-        }, 1000)
+        }, 2000)
     }
 });

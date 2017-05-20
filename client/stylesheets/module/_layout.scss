@@ -7851,7 +7851,11 @@ input.ct-danger+span+label+span.switch-right {
         }
     }
     .content-wrapper {
-        height: calc(92vh);
+        height: calc(80vh);
+        overflow: hidden;
+        .card {
+            height: 100%;
+        }
     }
 }
 
