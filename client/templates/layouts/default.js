@@ -16,6 +16,10 @@ Template.default.onRendered(() => {
 });
 
 Template.default.helpers({
+    showActionBar() {
+        return FlowRouter.getRouteName() === 'calendar' ||
+            FlowRouter.getRouteName() === 'kanboard';
+    },
     loggingIn() {
         return Meteor.loggingIn();
     },

@@ -34,8 +34,7 @@ peppelg:bootstrap-3-modal
 kadira:blaze-layout
 dwatson:meteor-pagedown
 fezvrasta:bootstrap-material-design
-stubborncoder:bootstrap-material-datepicker
-dapearce:material-icons
+aido179:bootstrap-material-datepicker
 mquandalle:jquery-ui-drag-drop-sort
 keepnox:perfect-scrollbar
 risul:bootstrap-colorpicker
@@ -47,3 +46,4 @@ kevohagan:sweetalert
 modweb:arrive
 matb33:collection-hooks
 davesierra:fullcalendar
+risul:bootstrap-x-editable

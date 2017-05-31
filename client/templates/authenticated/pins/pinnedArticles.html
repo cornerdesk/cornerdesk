@@ -1,0 +1,35 @@
+<template name="pinnedArticles">
+    {{#if canUserEdit}}
+    <div class="row">
+        <div class="col-md-4 col-md-offset-4 col-xs-12 text-center">
+            <div class="form-group label-static">
+                <label class="control-label">Article URL</label>
+                <div class="input-group">
+                    <input type="text" class="form-control" name="article-url">
+                    <span class="input-group-btn">
+                        <button class="btn btn-fab btn-fab-mini" name="add-article"><i class="ti-save"></i></button>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{/if}}
+    <div class="articles-wrapper">
+        <div class="articles">
+            {{#each article in articles}}
+            <div class="pinned-article">
+                <div class="header">
+                    <!--Title-->
+                    <h4 class="title">{{article.title}}</h4>
+                </div>
+                <div class="content">
+                    {{{getImage article.content}}}
+                    <!--Text-->
+                    <div class="description">{{{sanitizeText article.content}}}</div>
+                    <a href="{{getDetailsRoute article}}" class="btn btn-primary waves-effect waves-light">Show</a>
+                </div>
+            </div>
+            {{/each}}
+        </div>
+        </div>
+</template>

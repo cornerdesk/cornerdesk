@@ -1,9 +1,12 @@
 @import 'variables';
 body {
     position: relative;
-    &.sidebarToggled {
+    &.sidebar-toggled {
         .sidebar {
             display: none;
+        }
+        .main-panel {
+            width: 100%;
         }
     }
 }
@@ -132,7 +135,7 @@ h6 .small,
 .h4 .small,
 .h5 .small,
 .h6 .small {
-    color: #9A9A9A;
+    color: $second-font-color;
     font-weight: 300;
     line-height: 1.4em;
 }
@@ -164,76 +167,76 @@ blockquote small {
 
 .text-primary,
 .text-primary:hover {
-    color: #5e8283;
+    color: $primary;
 }
 
 .text-info,
 .text-info:hover {
-    color: #429cb6;
+    color: $blue;
 }
 
 .text-success,
 .text-success:hover {
-    color: #54b07d;
+    color: $green;
 }
 
 .text-warning,
 .text-warning:hover {
-    color: #f0a810;
+    color: $orange;
 }
 
 .text-danger,
 .text-danger:hover {
-    color: #c84513;
+    color: $danger;
 }
 
 strong {
-    color: #484541;
+    color: $maincolor;
 }
 
 .icon-primary {
-    color: #7A9E9F;
+    color: $primary;
 }
 
 .icon-info {
-    color: #68B3C8;
+    color: $info;
 }
 
 .icon-success {
-    color: #7AC29A;
+    color: $green;
 }
 
 .icon-warning {
-    color: #F3BB45;
+    color: $orange;
 }
 
 .icon-danger {
-    color: #EB5E28;
+    color: $danger;
 }
 
 .chart-legend .text-primary,
 .chart-legend .text-primary:hover {
-    color: #7A9E9F;
+    color: $primary;
 }
 
 .chart-legend .text-info,
 .chart-legend .text-info:hover {
-    color: #68B3C8;
+    color: $info;
 }
 
 .chart-legend .text-success,
 .chart-legend .text-success:hover {
-    color: #7AC29A;
+    color: $success;
 }
 
 .chart-legend .text-warning,
 .chart-legend .text-warning:hover {
-    color: #F3BB45;
+    color: $warning;
 }
 
 .chart-legend .text-danger,
 .chart-legend .text-danger:hover {
-    color: #EB5E28;
+    color: $danger;
 }
 
 .sidebar {
@@ -244,7 +247,7 @@ strong {
     z-index: 1;
     .sidebar-wrapper {
         position: relative;
-        height: calc(100vh - 75px);
+        height: calc(100vh - $navbar-header-height);
         overflow: auto;
         z-index: 4;
         box-shadow: inset -1px 0px 0px 0px #cfcfca;
@@ -307,7 +310,7 @@ strong {
     padding: 18px 0px;
     margin: 0;
     box-shadow: inset -1px 0px 0px 0px #cfcfca;
-    height: 75px;
+    height: $navbar-header-height;
     position: relative;
     z-index: 4;
 }
@@ -375,7 +378,7 @@ strong {
 
 .sidebar .sidebar-wrapper>.nav li.active>a,
 .off-canvas-sidebar .sidebar-wrapper>.nav li.active>a {
-    color: #7A9E9F;
+    color: $active-link-font-color;
     opacity: 1;
 }
 
@@ -565,7 +568,7 @@ strong {
 
 .sidebar[data-background-color="brown"][data-active-color="danger"] .nav li.active>a,
 .off-canvas-sidebar[data-background-color="brown"][data-active-color="danger"] .nav li.active>a {
-    color: #ef8157;
+    color: $danger;
     opacity: 1;
 }
 
@@ -581,31 +584,31 @@ strong {
 
 .sidebar[data-active-color="primary"] .nav li.active>a,
 .off-canvas-sidebar[data-active-color="primary"] .nav li.active>a {
-    color: #7A9E9F;
+    color: $primary;
     opacity: 1;
 }
 
 .sidebar[data-active-color="info"] .nav li.active>a,
 .off-canvas-sidebar[data-active-color="info"] .nav li.active>a {
-    color: #68B3C8;
+    color: $info;
     opacity: 1;
 }
 
 .sidebar[data-active-color="success"] .nav li.active>a,
 .off-canvas-sidebar[data-active-color="success"] .nav li.active>a {
-    color: #7AC29A;
+    color: $success;
     opacity: 1;
 }
 
 .sidebar[data-active-color="warning"] .nav li.active>a,
 .off-canvas-sidebar[data-active-color="warning"] .nav li.active>a {
-    color: #F3BB45;
+    color: $warning;
     opacity: 1;
 }
 
 .sidebar[data-active-color="danger"] .nav li.active>a,
 .off-canvas-sidebar[data-active-color="danger"] .nav li.active>a {
-    color: #EB5E28;
+    color: $danger;
     opacity: 1;
 }
 
@@ -620,7 +623,8 @@ strong {
 }
 
 .main-panel>.content {
-    min-height: calc(100% - 123px);
+    min-height: calc(100vh - $navbar-header-height - $title-wrapper-height);
+    max-height: calc(100vh - $navbar-header-height - $title-wrapper-height);
 }
 
 .main-panel>.footer {
@@ -2054,6 +2058,7 @@ body {
     font-family: 'Muli', Arial, sans-serif;
     .wrapper {
         min-height: 100vh;
+        overflow: hidden;
         position: relative;
         &:after {
             display: table;
@@ -2222,7 +2227,7 @@ a.dropdown-toggle[aria-expanded="true"] .caret {
 }
 
 .section-white {
-    background-color: $background-color-2;
+    background-color: $background2;
 }
 
 .form-control::-moz-placeholder {
@@ -7047,7 +7052,7 @@ input.ct-danger+span+label+span.switch-right {
 
 @media (min-width: 992px) {
     .navbar {
-        min-height: 75px;
+        min-height: $navbar-header-height;
     }
     .navbar-form {
         margin-top: 17px;
@@ -7838,7 +7843,7 @@ input.ct-danger+span+label+span.switch-right {
 
 .content {
     .title-wrapper {
-        height: calc(8vh);
+        height: $title-wrapper-height;
         padding: 10px;
         // text-align: center;
         h3,
@@ -7848,7 +7853,7 @@ input.ct-danger+span+label+span.switch-right {
         }
     }
     .content-wrapper {
-        height: calc(80vh);
+        height: $content-wrapper-height;
         overflow: hidden;
         .card {
             height: 100%;
@@ -8030,4 +8035,53 @@ input.ct-danger+span+label+span.switch-right {
 
 .close {
     margin-left: 15px;
+}
+
+.modal.fs-modal {
+    // &.hide {
+    //     .modal-dialog {
+    //         .modal-content {
+    //             -webkit-transform: scale(0.2);
+    //             -moz-transform: scale(0.2);
+    //             -ms-transform: scale(0.2);
+    //             transform: scale(0.2);
+    //             opacity: 0;
+    //         }
+    //     }
+    // }
+    &.in {
+        .modal-dialog {
+            .modal-content {
+                -webkit-transform: scale(1);
+                -moz-transform: scale(1);
+                -ms-transform: scale(1);
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+    }
+    .modal-dialog {
+        width: 100%;
+        height: calc(100vh);
+        margin: 0;
+        .modal-content {
+            height: 100%;
+            -webkit-transition: all 0.2s;
+            -moz-transition: all 0.2s;
+            transition: all 0.2s;
+            -webkit-transform: scale(0.2);
+            -moz-transform: scale(0.2);
+            -ms-transform: scale(0.2);
+            transform: scale(0.2);
+            opacity: 0;
+            .modal-body {
+                padding: 0 5%;
+            }
+            .modal-footer {
+                position: absolute;
+                bottom: 25px;
+                width: 100%;
+            }
+        }
+    }
 }

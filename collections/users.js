@@ -1,3 +1,5 @@
+import extractor from 'article-extractor';
+
 let _getItem = (type, itemId) => {
     type = type !== undefined ? type : FlowRouter.getRouteName();
     itemId = itemId !== undefined ? itemId : FlowRouter.getParam('item');
@@ -78,6 +80,22 @@ if (Meteor.isServer) {
         hasUnreadMessages(channelId) {
             check(channelId, String);
             return Channels.findOne(channelId).hasUnreadMessages(this.userId);
+        },
+        addPinnedArticle(url) {
+            check(url, String);
+            let userId = this.userId;
+            const getArticleData = Meteor.wrapAsync(extractor.extractData);
+            try {
+                var pinnedArticle = getArticleData(url);
+
+                pinnedArticle.url = url;
+                pinnedArticle.isPrivate = true;
+                pinnedArticle.unread = true;
+                pinnedArticle.userId = userId;
+                Pins.insert(pinnedArticle);
+            } catch (exception) {
+                throw new Meteor.Error('500', `${ exception }`);
+            }
         }
     });
 }

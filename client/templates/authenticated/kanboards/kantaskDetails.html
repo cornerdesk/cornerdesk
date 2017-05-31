@@ -30,7 +30,8 @@
                 <div class="col-md-12">
                     <div class="form-group  label-static is-empty">
                         <label class="control-label" for="task-description">Description</label>
-                        <textarea class="form-control" rows="2" name="task-description" id="task-description" value="{{task.description}}"></textarea>
+                        <div id="task-description" class="form-control editable markeddown" data-type="textarea" data-placeholder="Enter text" data-emptytext="Click to enter text" data-rows="2">{{task.description}}</div>
+                        <!--<textarea class="form-control" rows="2" name="task-description" id="task-description" value="{{task.description}}"></textarea>-->
                     </div>
                 </div>
             </div>

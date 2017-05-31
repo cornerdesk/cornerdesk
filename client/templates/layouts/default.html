@@ -11,13 +11,14 @@
 							{{>header}}
 							<div class="content">
 								{{> Template.dynamic template=yield}}
-								
-        <div class="actions-wrapper">
-            <a class="actions-opener">
-                <i class="ti-angle-up"></i>
-            </a>
-			{{> Template.dynamic template=actions}}
-        </div>
+								{{#if showActionBar}}
+								<div class=" hidden-sm actions-wrapper">
+									<a class="actions-opener">
+										<i class="ti-angle-up"></i>
+									</a>
+									{{> Template.dynamic template=actions}}
+								</div>
+								{{/if}}
 							</div>
 						</div>
 					{{/unless}}

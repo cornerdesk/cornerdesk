@@ -33,7 +33,7 @@ body .fc {
 }
 
 .fc-unthemed .fc-popover {
-    background-color: #FFFFFF;
+    background-color: $main-font-color;
 }
 
 .fc-unthemed .fc-divider,
@@ -170,12 +170,11 @@ NOTE: use percentage font sizes or else old IE chokes
     border-radius: 20px !important;
     box-sizing: border-box;
     border-width: 2px;
-    background: #ffffff;
+    background: $background2;
     font-size: 12px;
     font-weight: 500;
-    padding: 7px 18px;
-    border-color: #66615B;
-    color: #66615B;
+    border-color: $maincolor;
+    color: $maincolor;
     -webkit-transition: all 150ms linear;
     -moz-transition: all 150ms linear;
     -o-transition: all 150ms linear;
@@ -192,9 +191,8 @@ NOTE: use percentage font sizes or else old IE chokes
 .open>.fc button.dropdown-toggle,
 .open>.fc button.dropdown-toggle:focus,
 .open>.fc button.dropdown-toggle:hover {
-    background-color: #66615B;
-    color: rgba(255, 255, 255, 0.85);
-    border-color: #66615B;
+    color: $active-link-font-color;
+    border-color: $active-link-font-color;
 }
 
 .fc button:hover .caret,
@@ -234,12 +232,12 @@ fieldset[disabled] .fc button.focus,
 fieldset[disabled] .fc button:active,
 fieldset[disabled] .fc button.active {
     background-color: transparent;
-    border-color: #66615B;
+    border-color: $maincolor;
 }
 
 .fc button.btn-fill {
-    color: #FFFFFF;
-    background-color: #66615B;
+    color: $main-font-color;
+    background-color: $maincolor;
     opacity: 1;
     filter: alpha(opacity=100);
 }
@@ -249,13 +247,13 @@ fieldset[disabled] .fc button.active {
 .fc button.btn-fill:active,
 .fc button.btn-fill.active,
 .open>.fc button.btn-fill.dropdown-toggle {
-    background-color: #484541;
-    color: #FFFFFF;
-    border-color: #484541;
+    background-color: $active-link-font-color;
+    color: $main-font-color;
+    border-color: $active-link-font-color;
 }
 
 .fc button.btn-fill .caret {
-    border-top-color: #FFFFFF;
+    border-top-color: $main-font-color;
 }
 
 .fc button.btn-simple:hover,
@@ -264,15 +262,15 @@ fieldset[disabled] .fc button.active {
 .fc button.btn-simple.active,
 .open>.fc button.btn-simple.dropdown-toggle {
     background-color: transparent;
-    color: #484541;
+    color: $maincolor;
 }
 
 .fc button.btn-simple .caret {
-    border-top-color: #FFFFFF;
+    border-top-color: $main-font-color;
 }
 
 .fc button .caret {
-    border-top-color: #66615B;
+    border-top-color: $maincolor;
 }
 
 .fc button:hover,
@@ -356,8 +354,9 @@ fieldset[disabled] .fc button.active {
 .fc .fc-state-active:active:focus,
 .fc .fc-state-active:active:hover,
 .fc .fc-state-active:active {
-    background-color: #66615B;
-    color: #FFFFFF;
+    border-color: $active-link-font-color;
+    color: $active-link-font-color;
+    font-weight: bold;
 }
 
 
@@ -1237,6 +1236,10 @@ a.fc-more:hover {
 We use the full "fc-time-grid-event" class instead of using descendants because the event won't
 be a descendant of the grid when it is being dragged.
 */
+
+.fc-unthemed td.fc-today {
+    background-color: transparentize($active-link-font-color, 0.7);
+}
 
 .fc-time-grid-event {
     overflow: hidden;

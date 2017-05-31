@@ -39,6 +39,11 @@ RemotR
                   <i class="ti-blackboard"></i> Kanboard
                 </a>
               </li>
+              <li class="{{currentPins currentUsername}}">
+                <a href="/articles/@{{currentUsername}}">
+                  <i class="ti-bookmark"></i> Articles
+                </a>
+              </li>
             </ul>
           </div>
         </li>
@@ -177,6 +182,14 @@ RemotR
                         <span class="sidebar-mini"><i class="ti-blackboard"></i></span>
                         <span class="sidebar-normal">
                           Kanban board
+                        </span>
+                        </a>
+                      </li>
+                      <li class="{{currentPins user.username}}">
+                        <a href="/articles/@{{user.username}}">
+                        <span class="sidebar-mini"><i class="ti-bookmark"></i></span>
+                        <span class="sidebar-normal">
+                          Articles
                         </span>
                         </a>
                       </li>

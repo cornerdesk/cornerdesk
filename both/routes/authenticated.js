@@ -28,6 +28,20 @@ authenticatedRoutes.route('/calendars/:item', {
     }
 });
 
+authenticatedRoutes.route('/articles/:item', {
+    name: 'pins',
+    action() {
+        BlazeLayout.render('default', { yield: 'pinnedArticles' });
+    }
+});
+
+authenticatedRoutes.route('/articles/:item/:article', {
+    name: 'article',
+    action() {
+        BlazeLayout.render('default', { yield: 'articleDetails' });
+    }
+});
+
 // authenticatedRoutes.route('/kanboards/:board', {
 //     name: 'directboard',
 //     action(params) {

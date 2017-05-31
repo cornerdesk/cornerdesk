@@ -38,12 +38,12 @@ pdp = {
             var $btn = $(this);
 
             if (pdp.misc.sidebar_mini_active == true) {
-                $('body').removeClass('sidebar-mini');
+                $('body').removeClass('sidebar-toggled'); //sidebar-mini for mini bar
                 $btn.html('<i class="ti-menu"></i>');
                 pdp.misc.sidebar_mini_active = false;
 
             } else {
-                $('body').addClass('sidebar-mini');
+                $('body').addClass('sidebar-toggled');
                 $btn.html('<i class="ti-menu-alt"></i>');
                 pdp.misc.sidebar_mini_active = true;
             }
@@ -292,6 +292,15 @@ Template.sidebar.helpers({
     },
     currentBoard(name) {
         if (FlowRouter.getRouteName() === 'kanboard') {
+            let current = FlowRouter.getParam('item');
+            if (current) {
+                return current === name || current === `@${name}` ? 'active' : false;
+            }
+        }
+        return false;
+    },
+    currentPins() {
+        if (FlowRouter.getRouteName() === 'pins') {
             let current = FlowRouter.getParam('item');
             if (current) {
                 return current === name || current === `@${name}` ? 'active' : false;
