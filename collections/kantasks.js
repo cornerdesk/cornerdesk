@@ -3,13 +3,13 @@ Kantasks = new Meteor.Collection('kantasks');
 
 Kantasks.allow({
     insert: () => false,
-    update: () => false,
+    update: () => true,
     remove: () => false
 });
 
 Kantasks.deny({
     insert: () => true,
-    update: () => true,
+    update: () => false,
     remove: () => true
 });
 

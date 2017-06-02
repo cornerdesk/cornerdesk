@@ -2058,7 +2058,6 @@ body {
     font-family: 'Muli', Arial, sans-serif;
     .wrapper {
         min-height: 100vh;
-        overflow: hidden;
         position: relative;
         &:after {
             display: table;
@@ -2071,7 +2070,7 @@ body {
             background-repeat: no-repeat;
             background-position: 50% 50%;
             background-attachment: fixed;
-            background-size: 100% auto;
+            background-size: cover;
             padding: 0;
             margin: 0;
             display: -webkit-box;
@@ -2498,15 +2497,15 @@ textarea.form-control {
 
 
 /*!
- * jQuery UI Slider 1.10.4
- * http://jqueryui.com
- *
- * Copyright 2014 jQuery Foundation and other contributors
- * Released under the MIT license.
- * http://jquery.org/license
- *
- * http://api.jqueryui.com/slider/#theming
- */
+* jQuery UI Slider 1.10.4
+* http://jqueryui.com
+*
+* Copyright 2014 jQuery Foundation and other contributors
+* Released under the MIT license.
+* http://jquery.org/license
+*
+* http://api.jqueryui.com/slider/#theming
+*/
 
 .ui-slider {
     border-radius: 3px;
@@ -6075,11 +6074,11 @@ input.textarea {
     overflow-y: auto;
     text-align: left;
     /*
-      &.tag-primary .tag,
-      &.tag-primary .tagsinput-remove-link{
-           background-color: $primary-color;
-      }
-  */
+&.tag-primary .tag,
+&.tag-primary .tagsinput-remove-link{
+    background-color: $primary-color;
+}
+*/
 }
 
 .tagsinput .tag {
@@ -6323,12 +6322,12 @@ input.textarea {
 
 
 /* ============================================================
- * bootstrapSwitch v1.3 by Larentis Mattia @spiritualGuru
- * http://www.larentis.eu/switch/
- * ============================================================
- * Licensed under the Apache License, Version 2.0
- * http://www.apache.org/licenses/LICENSE-2.0
- * ============================================================ */
+* bootstrapSwitch v1.3 by Larentis Mattia @spiritualGuru
+* http://www.larentis.eu/switch/
+* ============================================================
+* Licensed under the Apache License, Version 2.0
+* http://www.apache.org/licenses/LICENSE-2.0
+* ============================================================ */
 
 .has-switch {
     border-radius: 30px;
@@ -7118,8 +7117,8 @@ input.ct-danger+span+label+span.switch-right {
     }
     .card form {
         /*[class*="col-"]{
-        padding: 6px;
-    }*/
+padding: 6px;
+}*/
     }
     .card form [class*="col-"]:first-child {
         padding-left: 15px;
@@ -8081,6 +8080,25 @@ input.ct-danger+span+label+span.switch-right {
                 position: absolute;
                 bottom: 25px;
                 width: 100%;
+            }
+        }
+    }
+}
+
+
+/* x-editable css */
+
+.editable-container {
+    width: 100%;
+    .editableform {
+        .control-group {
+            width: 100%;
+            .editable-input {
+                width: calc(100% - 70px); // 100% - buttons width
+                input[type="text"],
+                textarea {
+                    width: 100%;
+                }
             }
         }
     }

@@ -22,11 +22,12 @@ Template.kantaskDetails.onCreated(() => {
 });
 
 Template.kantaskDetails.onRendered(() => {
-    Template.instance().$('#task-description').editable({
+    let template = Template.instance();
+    template.$('#task-description').editable({
         mode: 'inline',
         anim: '0.3s',
         success: function(response, newValue) {
-            debugger;
+            template.task.get().setDescription(newValue);
         }
     });
 });
