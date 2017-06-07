@@ -2,7 +2,7 @@
     <a class="member js-member ui-draggable ui-draggable-handle" title="{{member.profile.name.first}} {{member.profile.name.last}} ({{member.username}})" href="#" aria-label="{{member.profile.name.first}} {{member.profile.name.last}} ({{member.username}})"
     data-user-id="{{userId}}" data-member-type="{{memberType}}">
         <span class="initials">{{initials}}</span>
-        <span class="member-presence-status active"></span>
+        <span class="member-state {{presenceClass}}"></span>
     </a>
 </template>
 

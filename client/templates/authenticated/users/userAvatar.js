@@ -16,6 +16,13 @@ Template.userAvatar.helpers({
     },
     userId: () => {
         return Template.instance().data.userId;
+    },
+    presenceClass: () => {
+        const userPresence = presences.findOne({ userId: Template.instance().data.userId });
+        if (!userPresence)
+            return 'disconnected';
+        else
+            return 'connected';
     }
 });
 

@@ -6601,10 +6601,16 @@ input.ct-danger+span+label+span.switch-right {
         &[data-member-type="admin"] {
             background-color: $yellow-bg-color;
             color: $yellow-bg-font-color;
+            .member-state {
+                border: 1px solid $yellow-bg-font-color;
+            }
         }
         &[data-member-type="normal"] {
             background-color: $blue-bg-color;
             color: $blue-bg-font-color;
+            .member-state {
+                border: 1px solid $blue-bg-font-color;
+            }
         }
         .avatar {
             width: 30px;
@@ -6615,6 +6621,20 @@ input.ct-danger+span+label+span.switch-right {
             font-weight: bold;
             font-size: 16px;
             padding: 4px;
+        }
+        .member-state {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            right: -5%;
+            bottom: -5%;
+            border-radius: 50%;
+            &.disconnected {
+                background-color: $danger;
+            }
+            &.connected {
+                background-color: $success;
+            }
         }
     }
 }

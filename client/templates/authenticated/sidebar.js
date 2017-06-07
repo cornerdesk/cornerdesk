@@ -127,7 +127,14 @@ Template.sidebar.helpers({
         if (name) {
             return `${name.first} ${name.last}`;
         }
-    }
+    },
+    presenceStatusClassName(user) {
+        const userPresence = presences.findOne({ userId: user._id });
+        if (!userPresence)
+            return 'disconnected';
+        else
+            return 'connected';
+    },
 });
 
 Template.sidebar.events({

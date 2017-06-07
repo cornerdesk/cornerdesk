@@ -188,6 +188,20 @@ li.active a {
             color: $active-link-font-color;
         }
     }
+    .member-state {
+        float: left;
+        margin-right: 3px;
+        width: 5px;
+        height: 5px;
+        border-radius: 50%;
+        background-color: $primary;
+        &.disconnected {
+            background-color: $danger;
+        }
+        &.connected {
+            background-color: $success;
+        }
+    }
 }
 
 .menu-top .profile img {
@@ -250,7 +264,6 @@ li.active a {
 .show-menu .menu-button {
     -webkit-transform: translate3d($sidebar-width, 60px, 0);
     transform: translate3d($sidebar-width, 60px, 0);
-    // transition: all 0.1s ease-in;
 }
 
 .show-menu .content::before {
