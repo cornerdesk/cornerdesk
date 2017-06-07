@@ -51,7 +51,6 @@ Template.eventModal.events({
     },
     'click .removeEventBtn': (event, template) => {
         let $that = $(event.target);
-        debugger;
         sweetAlert({
                 title: "Delete?",
                 text: "Do you really wan't to do this ?",

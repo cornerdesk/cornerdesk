@@ -1,5 +1,5 @@
 <template name="default">
-	<div class="wrapper {{route}}">
+	<div class="app-container {{route}}">
 		{{>bertAlert}} 
 			{{#if loggingIn}} 
 				{{> loading}} 
@@ -7,18 +7,17 @@
 				{{#if authenticated}}  
 					{{#unless redirectAuthenticated}}
 							{{> sidebar}}
-						<div class="main-panel ps-container ps-theme-default ps-active-y">
-							{{>header}}
+						<div class="main-panel">
 							<div class="content">
 								{{> Template.dynamic template=yield}}
-								{{#if showActionBar}}
+								<!--{{#if showActionBar}}
 								<div class=" hidden-sm actions-wrapper">
 									<a class="actions-opener">
 										<i class="ti-angle-up"></i>
 									</a>
 									{{> Template.dynamic template=actions}}
 								</div>
-								{{/if}}
+								{{/if}}-->
 							</div>
 						</div>
 					{{/unless}}

@@ -1,16 +1,5 @@
 <template name="authenticatedNavigation">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <div class="navbar-minimize">
-        <button id="minimizeSidebar" class="btn btn-icon sidebarMinimizer"><i class="ti-menu"></i></button>
-      </div>
-      <span class="reminder">{{reminder}}</span>
-      <button type="button" class="navbar-toggle sidebarMinimizer">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar bar1"></span>
-          <span class="icon-bar bar2"></span>
-          <span class="icon-bar bar3"></span>
-      </button>
+      <span class="hidden-xs hidden-sm reminder">{{reminder}}</span>
       <ul class="nav navbar-nav navbar-right pull-right">
         <li class="dropdown">
           <a id="userMenu" href="#" class="btn btn-icon dropdown-toggle" data-toggle="dropdown"  aria-haspopup="true" aria-expanded="false">
@@ -21,6 +10,4 @@
           </ul>
         </li>
       </ul>
-    </div>
-  </div>
 </template>

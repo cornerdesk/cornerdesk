@@ -1,24 +1,21 @@
 <template name="sidebar">
-  <div class="sidebar" data-background-color="brown" data-active-color="primary">
-
-    <div class="logo">
-      <a href="/" class="simple-text">
-RemotR
-				</a>
-    </div>
-    <div class="sidebar-wrapper ps-container ps-theme-default ps-active-x">
-      <div class="text-center">
-        <h3><small>AGILE TOOLS</small></h3>
-        <div class="user">
-          <div class="photo">
-            <img src="/flat-avatar.png" />
+    <div class="menu-wrap">
+				<nav class="menu-top">
+          <span class="logo">
+            <a href="/" class="simple-text">
+              RemotR
+            </a>
+          </span>
+            {{#if currentUser}} {{> authenticatedNavigation}} {{else}} {{> publicNavigation}} {{/if}}
+				</nav>
+				<nav class="menu-side">
+          <h3><small>AGILE TOOLS</small></h3>
+          <div class="user">
+            <div class="photo">
+              <img src="/flat-avatar.png" />
+            </div>
           </div>
-        </div>
-        <ul class="nav nav-sidebar"></ul>
-        <!--<br />
-            <a href="/login" class="btn btn-white btn-outline btn-rounded btn-sm">Logout</a>-->
-      </div>
-      <ul class="nav" id="sidebarMenu">
+					<ul class="nav" id="sidebarMenu">
         <!--My organisation-->
         <li>
           <a data-toggle="collapse" href="#myself" class="collapsed" aria-expanded="false">
@@ -201,174 +198,7 @@ RemotR
           </div>
         </li>
       </ul>
-      <ul class="nav nav-mobile-menu" id="sidebarMobileMenu">
-        <!--My organisation-->
-        <li>
-          <a data-toggle="collapse" href="#myself" class="collapsed" aria-expanded="false">
-            <i class="ti-home"></i>
-            <p>My organisation
-              <b class="caret"></b>
-            </p>
-          </a>
-          <div  class="collapse" id="myself" aria-expanded="false">
-            <ul class="nav">
-              <li class="{{currentCalendar currentUsername}}">
-                <a href="/calendars/@{{currentUsername}}">
-                  <i class="ti-calendar"></i> Calendar
-                </a>
-              </li>
-              <li class="{{currentBoard currentUsername}}">
-                <a href="/kanboards/@{{currentUsername}}">
-                  <i class="ti-blackboard"></i> Kanboard
-                </a>
-              </li>
-            </ul>
-          </div>
-        </li>
-        <!--Public and visible containers-->
-        <li>
-          <a data-toggle="collapse" href="#calendars" class="collapsed" aria-expanded="false">
-            <i class="ti-calendar"></i>
-            <p>Calendars
-              <b class="caret"></b>
-            </p>
-          </a>
-          <div class="collapse" id="calendars" aria-expanded="false">
-            <ul class="nav">
-              {{#each calendar in calendars}}
-              <li class="{{currentCalendar calendar._id}}">
-                <a href="/calendars/{{calendar._id}}">
-                  {{calendar.name}}
-                </a>
-              </li>
-              {{/each}}
-
-              <li>
-                <button name="new-calendar-button" class="btn btn-fill btn-icon btn-sm">
-                  <i class="btn-icon ti ti-plus"></i>
-                </button>
-              </li>
-            </ul>
-          </div> 
-        </li>
-              
-        <li>
-          <a data-toggle="collapse" href="#chats" class="collapsed" aria-expanded="false">
-            <i class="ti-comments"></i>
-            <p>Chats
-              <b class="caret"></b>
-            </p>
-          </a>
-          <div class="collapse" id="chats" aria-expanded="false">
-            <ul class="nav">
-              {{#each channel in channels}}
-              <li class="{{currentChannel channel.name}}">
-                <a href="/messages/{{channel.name}}">
-                  #{{channel.name}}
-                </a>
-              </li>
-              {{/each}}
-
-              <li>
-                <button name="new-channel-button" class="btn btn-fill btn-icon btn-sm">
-                  <i class="btn-icon ti ti-plus"></i>
-                </button>
-              </li>
-            </ul>
-          </div>
-        </li>
-        <li>
-            <a data-toggle="collapse" href="#boards" class="collapsed" aria-expanded="false">
-            <i class="ti-blackboard"></i>
-            <p>Boards
-              <b class="caret"></b>
-            </p>
-          </a>
-          <div class="collapse" id="boards" aria-expanded="false">
-            <ul class="nav">
-              {{#each board in kanboards}}
-              <li class="{{currentBoard board._id}}">
-                <a href="/kanboards/{{board._id}}">
-                  {{board.name}}
-                </a>
-              </li>
-              {{/each}}
-              <li>
-                <button name="new-board-button" class="btn btn-fill btn-icon btn-sm">
-                  <i class="btn-icon ti ti-plus"></i>
-                </button>
-              </li>
-            </ul>
-          </div>
-        </li>
-        <li>
-            <a data-toggle="collapse" href="#support" class="collapsed" aria-expanded="false">
-            <i class="ti-bar-chart"></i>
-            <p>Support
-              <b class="caret"></b>
-            </p>
-          </a>
-          <div class="collapse" id="support" aria-expanded="false">
-            <ul class="nav">
-              <li><a href="/support/bugs">Bugs</a></li>
-              <li><a href="/support/evolutions">Evolutions</a></li>
-              <li><a href="/support/helps">Helps</a></li>
-            </ul>
-          </div>
-        </li>
-        <!--Direct links-->
-        <li>
-          <a data-toggle="collapse" href="#directItems" class="collapsed" aria-expanded="false">
-            <i class="ti-user"></i>
-            <p>Users
-              <b class="caret"></b>
-            </p>
-          </a>
-          <div class="collapse" id="directItems" aria-expanded="false">
-            <ul class="nav">
-              {{#each user in users}}
-              <li>
-                <a data-toggle="collapse" href="#direct{{user.username}}" class="collapsed" aria-expanded="false">
-                  <span class="sidebar-normal">
-                    <p>{{fullName user.profile.name}}
-                      <b class="caret"></b>
-                    </p>
-                  </span>
-                </a>
-                <div class="collapse" id="direct{{user.username}}" aria-expanded="false">
-                  <ul class="nav">
-                      <li class="{{currentCalendar user.username}}">
-                        <a href="/calendars/@{{user.username}}">
-                        <span class="sidebar-mini"><i class="ti-calendar"></i></span>
-                        <span class="sidebar-normal">
-                          Calendar
-                        </span>
-                        </a>
-                      </li>
-                      <li class="{{currentChannel user.username}}">
-                        <a href="/messages/@{{user.username}}">
-                        <span class="sidebar-mini"><i class="ti-comments"></i></span>
-                        <span class="sidebar-normal">
-                          Chat
-                        </span>
-                        </a>
-                      </li>
-                      <li class="{{currentBoard user.username}}">
-                        <a href="/kanboards/@{{user.username}}">
-                        <span class="sidebar-mini"><i class="ti-blackboard"></i></span>
-                        <span class="sidebar-normal">
-                          Kanban board
-                        </span>
-                        </a>
-                      </li>
-                  </ul>
-                </div>
-              </li>
-              {{/each}}
-            </ul>
-          </div>
-        </li>
-      </ul>
-    </div>
-  </div>
+				</nav>
+			</div>
+			<button class="menu-button" id="open-button">Open Menu</button>
 </template>

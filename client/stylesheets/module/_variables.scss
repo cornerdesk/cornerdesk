@@ -15,19 +15,18 @@ $green-bg-color: #d5e5a3;
 $green-bg-font-color: #60773d;
 $blue-bg-color: #b8d8d8;
 $blue-bg-font-color: #506568;
-$maincolor: #66615b;
+$maincolor: #373a47;
 $background: lighten($maincolor, 50); //#f4f3ef;
 $background2: #ffffff;
-$main-font-color: #ffffff;
-$second-font-color: #5e8283;
-$active-link-font-color: #5e8283; //#7A9E9F
+$main-font-color: #b8b7ad;
+$second-font-color: #c94e50;
+$active-link-font-color: #c94e50; //#7A9E9F
 $listWidth: 270px;
 $primary: $bluegray;
 $info: $blue;
 $success: $green;
 $warning: $orange;
 $danger: $red;
-$title-wrapper-height: 75px;
-$navbar-header-height: 75px;
-$header-total-height: 150px;
-$content-wrapper-height: calc(100vh - 150px);
+$title-wrapper-height: 60px;
+$content-wrapper-height: calc(100% - 60px);
+$sidebar-width: 250px;
