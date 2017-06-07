@@ -239,10 +239,18 @@ li.active a {
     width: 100%;
 }
 
-.show-menu .main-panel,
+.show-menu .main-panel {
+    -webkit-transform: translate3d($sidebar-width, 60px, 0);
+    transform: translate3d($sidebar-width, 60px, 0);
+    color: transparent;
+    text-shadow: 0 0 2px #333;
+    filter: brightness(70%);
+}
+
 .show-menu .menu-button {
     -webkit-transform: translate3d($sidebar-width, 60px, 0);
     transform: translate3d($sidebar-width, 60px, 0);
+    // transition: all 0.1s ease-in;
 }
 
 .show-menu .content::before {
