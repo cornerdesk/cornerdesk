@@ -1500,8 +1500,9 @@ body {
     color: $maincolor;
     font-size: 14px;
     font-family: 'Muli', Arial, sans-serif;
+    height: 100%;
     .app-container {
-        min-height: 100vh;
+        min-height: 100%;
         position: relative;
         &:after {
             display: table;
@@ -5936,15 +5937,15 @@ input.ct-danger+span+label+span.switch-right {
     background-color: #EB5E28;
 }
 
-.wrapper {
+.app-container {
     position: relative;
     top: 0;
-    height: 100vh;
+    height: 100%;
 }
 
-.wrapper.wrapper-full-page {
+.app-container.wrapper-full-page {
     height: auto;
-    min-height: 100vh;
+    min-height: 100%;
 }
 
 .full-page:after,
@@ -6020,7 +6021,7 @@ input.ct-danger+span+label+span.switch-right {
 
 .login-page>.content,
 .lock-page>.content {
-    padding-top: 20vh;
+    padding-top: 20%;
 }
 
 .login-page .card,
@@ -6518,8 +6519,7 @@ input.ct-danger+span+label+span.switch-right {
     }
     .content-wrapper {
         height: $content-wrapper-height;
-        overflow-x: hidden;
-        overflow-y: auto;
+        overflow: hidden;
         .card {
             height: 100%;
             margin: 0;
@@ -6731,7 +6731,7 @@ input.ct-danger+span+label+span.switch-right {
     }
     .modal-dialog {
         width: 100%;
-        height: calc(100vh);
+        height: 100%;
         margin: 0;
         .modal-content {
             height: 100%;

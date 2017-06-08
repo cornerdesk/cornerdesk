@@ -868,7 +868,10 @@ a.fc-more:hover {
 
 .fc-toolbar {
     text-align: center;
-    margin-bottom: 1em;
+}
+
+.fc-toolbar.fc-header-toolbar {
+    margin-bottom: 0;
 }
 
 .fc-toolbar .fc-left {
@@ -1388,7 +1391,7 @@ be a descendant of the grid when it is being dragged.
 }
 
 .card-calendar .fc-toolbar {
-    padding-top: 20px;
+    padding-top: 10px;
     padding-left: 20px;
     padding-right: 20px;
 }
