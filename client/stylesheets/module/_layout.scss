@@ -3152,7 +3152,7 @@ star {
     box-shadow: 0 2px 2px rgba(204, 197, 185, 0.5);
     background-color: #FFFFFF;
     color: #252422;
-    margin-bottom: 20px;
+    // margin-bottom: 20px;
     position: relative;
     z-index: 1;
 }
@@ -6518,7 +6518,8 @@ input.ct-danger+span+label+span.switch-right {
     }
     .content-wrapper {
         height: $content-wrapper-height;
-        overflow: hidden;
+        overflow-x: hidden;
+        overflow-y: auto;
         .card {
             height: 100%;
         }

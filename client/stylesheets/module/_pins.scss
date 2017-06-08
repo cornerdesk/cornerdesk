@@ -1,19 +1,13 @@
 .articles-wrapper {
     position: relative;
     padding: 0 30px 0 10px;
-    max-height: calc(100vh - 120px);
+    max-height: calc(100% - 120px);
     overflow-x: hidden;
     overflow-y: overlay;
     .articles {
         position: relative;
-        -webkit-column-count: 3;
-        -webkit-column-gap: 10px;
         -webkit-column-fill: auto;
-        -moz-column-count: 3;
-        -moz-column-gap: 10px;
         -moz-column-fill: auto;
-        column-count: 3;
-        column-gap: 10px;
         column-fill: auto;
         .pinned-article {
             display: inline-block;
@@ -34,19 +28,52 @@
             transition: all .2s ease;
             img {
                 width: 100%;
+                max-height: 200px;
+                object-fit: contain;
             }
             .description {}
         }
     }
+    @media all and (min-width: 992px) {
+        .articles {
+            -webkit-column-count: 3;
+            -webkit-column-gap: 10px;
+            -moz-column-count: 3;
+            -moz-column-gap: 10px;
+            column-count: 3;
+            column-gap: 10px;
+        }
+    }
+    @media all and (max-width: 992px) and (min-width: 768px) {
+        .articles {
+            -webkit-column-count: 2;
+            -webkit-column-gap: 5px;
+            -moz-column-count: 2;
+            -moz-column-gap: 5px;
+            column-count: 2;
+            column-gap: 5px;
+        }
+    }
+    @media all and (max-width: 768px) {
+        .articles {
+            -webkit-column-count: 1;
+            -webkit-column-gap: 5px;
+            -moz-column-count: 1;
+            -moz-column-gap: 5px;
+            column-count: 1;
+            column-gap: 5px;
+        }
+    }
 }
 
-.wrapper.article .content-wrapper {
+.app-container.article .content-wrapper {
     background-color: white;
     overflow: overlay;
     .article-details {
-        max-width: 950px;
+        max-width: 992px;
         margin-right: auto;
         margin-left: auto;
+        padding: 20px;
         img {
             margin-right: auto;
             margin-left: auto;
