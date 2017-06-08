@@ -1237,7 +1237,7 @@ be a descendant of the grid when it is being dragged.
 */
 
 .fc-unthemed td.fc-today {
-    background-color: transparentize($active-link-font-color, 0.5);
+    background-color: transparentize($active-link-font-color, 0.3);
 }
 
 .fc-time-grid-event {
