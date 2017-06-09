@@ -6580,14 +6580,12 @@ input.ct-danger+span+label+span.switch-right {
 .members {
     background: none;
     .member {
-        -webkit-border-radius: 3px;
-        border-radius: 3px;
         display: block;
         position: relative;
         float: left;
         height: 32px;
         width: 32px;
-        margin: 0 4px 4px 0;
+        margin: 0 7px 4px 0;
         background: white;
         cursor: pointer;
         -webkit-user-select: none;
@@ -6596,8 +6594,6 @@ input.ct-danger+span+label+span.switch-right {
         user-select: none;
         z-index: 1;
         text-decoration: none;
-        -webkit-border-radius: 50%;
-        border-radius: 50%;
         border: 1px solid;
         text-align: center;
         &[data-member-type="admin"] {
@@ -6621,20 +6617,19 @@ input.ct-danger+span+label+span.switch-right {
         .initials {
             display: block;
             font-weight: bold;
-            font-size: 16px;
-            padding: 4px;
+            font-size: 14px;
+            margin: 6px auto;
         }
         .member-state {
             position: absolute;
             width: 10px;
             height: 10px;
-            right: -5%;
-            bottom: -5%;
-            border-radius: 50%;
-            &.disconnected {
+            right: -15%;
+            bottom: -15%;
+            &.offline {
                 background-color: $danger;
             }
-            &.connected {
+            &.online {
                 background-color: $success;
             }
         }

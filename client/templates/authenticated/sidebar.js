@@ -131,9 +131,9 @@ Template.sidebar.helpers({
     presenceStatusClassName(user) {
         const userPresence = presences.findOne({ userId: user._id });
         if (!userPresence)
-            return 'disconnected';
+            return 'offline';
         else
-            return 'connected';
+            return userPresence.state;
     },
 });
 

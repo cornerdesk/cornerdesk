@@ -20,9 +20,9 @@ Template.userAvatar.helpers({
     presenceClass: () => {
         const userPresence = presences.findOne({ userId: Template.instance().data.userId });
         if (!userPresence)
-            return 'disconnected';
+            return 'offline';
         else
-            return 'connected';
+            return userPresence.state;
     }
 });
 

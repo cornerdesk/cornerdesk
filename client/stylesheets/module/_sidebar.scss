@@ -176,7 +176,7 @@ li.active a {
         margin-left: 15px;
     }
     #sidebarMenu {
-        max-height: calc(100vh - 160px);
+        max-height: calc(100% - 160px);
     }
     .btn.btn-fill,
     .navbar .navbar-nav>li>a.btn.btn-fill {
@@ -195,10 +195,10 @@ li.active a {
         height: 5px;
         border-radius: 50%;
         background-color: $primary;
-        &.disconnected {
+        &.offline {
             background-color: $danger;
         }
-        &.connected {
+        &.online {
             background-color: $success;
         }
     }
