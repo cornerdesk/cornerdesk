@@ -80,7 +80,7 @@ Template.sidebar.helpers({
         }
         return false;
     },
-    currentPins() {
+    currentPins(name) {
         if (FlowRouter.getRouteName() === 'pins') {
             let current = FlowRouter.getParam('item');
             if (current) {

@@ -6644,6 +6644,7 @@ input.ct-danger+span+label+span.switch-right {
     height: 30px;
     min-width: 30px;
     font-size: 20px;
+    border-radius: 0px;
 }
 
 .card-kanboard .kanboard .kanboard-canvas .kanlists-container .kanlist.trash-container {
@@ -6768,3 +6769,18 @@ input.ct-danger+span+label+span.switch-right {
         }
     }
 }
+
+// Datetimepicker
+// .dtp div.dtp-date,
+// .dtp div.dtp-time {
+//     background-color: $active-link-font-color;
+// }
+// .dtp>.dtp-content>.dtp-date-view>header.dtp-header {
+//     background-color: darken($active-link-font-color, 15);
+// }
+// .dtp .p10>a {
+//     color: darken($active-link-font-color, 15);
+// }
+// .dtp table.dtp-picker-days tr>td>a.selected {
+//     background-color: $active-link-font-color;
+// }
