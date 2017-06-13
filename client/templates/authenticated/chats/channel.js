@@ -2,6 +2,20 @@ import handleChannelSwitch from '../../../modules/handle-channel-switch';
 import sortMessages from '../../../modules/sort-messages';
 import handleMessageInsert from '../../../modules/handle-message-insert';
 
+var readMessages = function() {
+    setTimeout(() => {
+        $('#messages').find('.message.unread').each(function(n) {
+
+            var $this = $(this);
+
+            if ($this.position().top + $this.height() > $('#messages').position().top && $this.position().top < $('#messages').position().top + $('#messages').height()) {
+                Meteor.call('readMessage', Blaze.getData($this.get(0))._id);
+                $(this).removeClass('unread');
+            }
+        });
+    }, 2000);
+}
+
 const getUsers = () => {
     return Meteor.users.find({ _id: { $ne: Meteor.userId() } }).fetch();
 }
@@ -12,6 +26,7 @@ Template.channel.onCreated(() => {
 });
 
 Template.channel.onRendered(() => {
+    readMessages();
     // this.$('[name="message"]').mention({
     //     delimiter: '@',
     //     users: getUsers()
@@ -50,16 +65,6 @@ Template.channel.events({
         handleMessageInsert(event, template);
     },
     'scroll #messages' (event, template) {
-        setTimeout(() => {
-            $('#messages').find('.message.unread').each(function(n) {
-
-                var $this = $(this);
-
-                if ($this.position().top + $this.height() > $('#messages').position().top && $this.position().top < $('#messages').position().top + $('#messages').height()) {
-                    Meteor.call('readMessage', Blaze.getData($this.get(0))._id);
-                    $(this).removeClass('unread');
-                }
-            });
-        }, 2000)
+        readMessages();
     }
 });

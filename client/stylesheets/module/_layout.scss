@@ -6730,6 +6730,8 @@ input.ct-danger+span+label+span.switch-right {
         height: 100%;
         margin: 0;
         .modal-content {
+            overflow-x: hidden;
+            overflow-y: auto;
             height: 100%;
             -webkit-transition: all 0.2s;
             -moz-transition: all 0.2s;
@@ -6743,8 +6745,8 @@ input.ct-danger+span+label+span.switch-right {
                 padding: 0 5%;
             }
             .modal-footer {
-                position: absolute;
-                bottom: 25px;
+                position: relative;
+                bottom: 0;
                 width: 100%;
             }
         }

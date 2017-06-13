@@ -1,8 +1,21 @@
 <template name="authenticatedNavigation">
       <span class="hidden-xs hidden-sm reminder">{{reminder}}</span>
-      <ul class="nav navbar-nav navbar-right pull-right">
+      <ul id="userMenu" class="nav navbar-nav navbar-right pull-right">
         <li class="dropdown">
-          <a id="userMenu" href="#" class="btn btn-icon dropdown-toggle" data-toggle="dropdown"  aria-haspopup="true" aria-expanded="false">
+          <a href="#notifications" class="btn btn-icon btn-rotate dropdown-toggle btn-rotate" data-toggle="dropdown" aria-expanded="true">
+            <i class="ti-bell"></i>
+            <span class="notification">{{ notificationsCount }}</span>
+          </a>
+          <ul class="dropdown-menu">
+            {{#each notifications }}
+              <li>
+                <a href="{{url}}" class="notification"><i class="{{iconClass}}"></i> {{message}}</a> 
+              </li>
+            {{/each}}
+          </ul>
+      </li>
+        <li class="dropdown">
+          <a id="userMenu" href="#" class="btn btn-icon btn-rotate dropdown-toggle" data-toggle="dropdown"  aria-haspopup="true" aria-expanded="false">
             <i class="ti-user"></i>
           </a>
           <ul class="dropdown-menu" role="menu" aria-labelledby="userMenu">

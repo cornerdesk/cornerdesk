@@ -6,6 +6,10 @@ const handleRedirect = (routes, redirect) => {
     }
 };
 
+Template.default.onCreated(() => {
+
+});
+
 Template.default.onRendered(() => {
     Tracker.autorun(() => {
         let isChannel = FlowRouter.getParam('channel'),

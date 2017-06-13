@@ -12,6 +12,12 @@ Template.authenticatedNavigation.helpers({
             };
 
         return `It's ${ days[ now.getDay() ] } ! It's gonna be a great day !`;
+    },
+    notificationsCount() {
+        return Notifications.find().count();
+    },
+    notifications() {
+        return Notifications.find().fetch();
     }
 });
 

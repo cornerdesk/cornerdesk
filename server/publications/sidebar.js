@@ -35,6 +35,11 @@ Meteor.publish('sidebar', function() {
                 { members: { $elemMatch: { userId: this.userId, isActive: true } } },
             ],
         }),
+        Notifications.find({
+            userId: this.userId,
+            unread: true,
+            date: { $lt: new Date() }
+        }),
         Meteor.users.find({ _id: { $ne: this.userId } }, { fields: { username: 1, 'profile.name': 1 } }),
         presences.find({}, { fields: { state: true, userId: true } })
     ];

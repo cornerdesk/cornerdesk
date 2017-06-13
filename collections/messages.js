@@ -28,6 +28,10 @@ let MessagesSchema = new SimpleSchema({
         type: String,
         label: 'The ID of the user that created this message.'
     },
+    'iconClass': {
+        type: String,
+        optional: true
+    },
     'timestamp': {
         type: Date,
         label: 'The date and time this message was created.'
@@ -73,4 +77,17 @@ Messages.mutations({
             }
         }
     }
-})
+});
+
+Messages.after.insert((userId, doc) => {
+    if (!!doc.to) {
+        var user = Meteor.users.findOne(userId);
+        Notifications.insert({
+            userId: doc.to,
+            message: '@' + user.username + ': ' + doc.message,
+            date: new Date(),
+            iconClass: 'ti-comments-smiley',
+            url: FlowRouter.path('channel', { item: '@' + user.username })
+        });
+    }
+});
