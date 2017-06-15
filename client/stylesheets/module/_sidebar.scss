@@ -213,8 +213,41 @@ li.active a {
     margin-right: 1em;
 }
 
-#userMenu a {
-    color: $main-font-color;
+#userMenu {
+    margin-top: 5px;
+    a {
+        color: $main-font-color;
+    }
+    .notification-header {
+        color: $maincolor;
+        white-space: nowrap;
+        font-size: 14px;
+        padding: 0 10px;
+        border-bottom: 1px solid $main-font-color;
+    }
+    .notification {
+        &:not(:last-child) {
+            border-bottom: 1px solid $main-font-color;
+        }
+        .notification-icon {
+            margin-right: 5px;
+        }
+        .notification-icon,
+        h4,
+        p {
+            font-size: 14px;
+            line-height: 1;
+        }
+        .notification-icon,
+        h4 {
+            margin-top: 5px;
+            margin-bottom: 0;
+        }
+        p {
+            margin-top: 0;
+            margin-bottom: 5px;
+        }
+    }
 }
 
 .icon-list {

@@ -18,6 +18,9 @@ Template.authenticatedNavigation.helpers({
     },
     notifications() {
         return Notifications.find().fetch();
+    },
+    notificationMessage() {
+        return 'You have ' + Notifications.find().count() + ' notification(s)';
     }
 });
 
@@ -33,4 +36,17 @@ Template.authenticatedNavigation.events({
             }
         });
     },
+    'click a[name="dismiss-notifications"]' (event, template) {
+        let notifications = Notifications.find().fetch();
+        for (var index in notifications) {
+            Meteor.call('readNotification', notifications[index]._id);
+        }
+    }
+});
+
+Template.notification.events({
+    'click .notification>a' (event, template) {
+        let notification = template.data;
+        Meteor.call('readNotification', notification._id);
+    }
 });

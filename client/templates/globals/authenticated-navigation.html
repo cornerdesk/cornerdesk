@@ -4,18 +4,22 @@
         <li class="dropdown">
           <a href="#notifications" class="btn btn-icon btn-rotate dropdown-toggle btn-rotate" data-toggle="dropdown" aria-expanded="true">
             <i class="ti-bell"></i>
-            <span class="notification">{{ notificationsCount }}</span>
+            <span>{{ notificationsCount }}</span>
           </a>
           <ul class="dropdown-menu">
+            <li class="notification-header">
+              {{notificationMessage}}
+              <span>
+                <a href="#" name="dismiss-notifications" title="Dismiss notifications" class="btn btn-icon btn-default"><i class="ti-close"></i></a>
+              </span>
+            </li>
             {{#each notifications }}
-              <li>
-                <a href="{{url}}" class="notification"><i class="{{iconClass}}"></i> {{message}}</a> 
-              </li>
+              {{> notification}}
             {{/each}}
           </ul>
       </li>
         <li class="dropdown">
-          <a id="userMenu" href="#" class="btn btn-icon btn-rotate dropdown-toggle" data-toggle="dropdown"  aria-haspopup="true" aria-expanded="false">
+          <a href="#" class="btn btn-icon btn-rotate dropdown-toggle" data-toggle="dropdown"  aria-haspopup="true" aria-expanded="false">
             <i class="ti-user"></i>
           </a>
           <ul class="dropdown-menu" role="menu" aria-labelledby="userMenu">
@@ -23,4 +27,19 @@
           </ul>
         </li>
       </ul>
+</template>
+
+<template name="notification">
+  <li class="notification">
+    <a href="{{url}}">
+      <div class="notification-icon pull-left">
+        <i class="{{iconClass}}"></i>
+      </div>
+      <h4>
+        {{ownerName}}
+        <small><i class="fa fa-clock-o"></i> {{messageTimestamp date}}</small>
+      </h4>
+      <p>{{{parseMarkdown message}}}</p>
+    </a>                
+  </li>
 </template>

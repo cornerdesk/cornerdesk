@@ -15,12 +15,28 @@ let NotificationsSchema = new SimpleSchema({
     'message': {
         type: String
     },
+    'iconClass': {
+        type: String,
+        optional: true
+    },
     'ownerId': {
         type: String,
         label: 'The user who is the origin of the notification',
         autoValue() {
             if (this.isInsert && !this.isSet) {
                 return Meteor.userId();
+            }
+        }
+    },
+    'ownerName': {
+        type: String,
+        label: 'The owner name',
+        autoValue() {
+            if (this.isInsert && !this.isSet) {
+                if (!!Meteor.userId()) {
+                    return '@' + Meteor.user().username;
+                }
+                return 'REMOTR';
             }
         }
     },
@@ -56,3 +72,21 @@ let NotificationsSchema = new SimpleSchema({
 });
 
 Notifications.attachSchema(NotificationsSchema);
+
+// Notifications.helpers({
+//     isUnread: function() {
+//         return _.contains(this.unreads, Meteor.userId());
+//     }
+// });
+
+Notifications.mutations({
+    read() {
+        if (this.unread) {
+            return {
+                $set: {
+                    unread: false,
+                },
+            }
+        }
+    }
+});

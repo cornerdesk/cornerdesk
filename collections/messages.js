@@ -84,9 +84,9 @@ Messages.after.insert((userId, doc) => {
         var user = Meteor.users.findOne(userId);
         Notifications.insert({
             userId: doc.to,
-            message: '@' + user.username + ': ' + doc.message,
+            message: doc.message,
             date: new Date(),
-            iconClass: 'ti-comments-smiley',
+            iconClass: 'ti-comments',
             url: FlowRouter.path('channel', { item: '@' + user.username })
         });
     }
