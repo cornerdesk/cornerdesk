@@ -17,11 +17,18 @@ Template.authenticatedNavigation.helpers({
         return Notifications.find().count();
     },
     notifications() {
-        return Notifications.find().fetch();
+        return Notifications.find({ date: { $lt: new Date() } }, { sort: { date: 1 } });
     },
     notificationMessage() {
         return 'You have ' + Notifications.find().count() + ' notification(s)';
     }
+});
+
+Template.authenticatedNavigation.onCreated(() => {
+    let template = Template.instance();
+    Tracker.autorun(() => {
+        Meteor.subscribe('notifications');
+    });
 });
 
 Template.authenticatedNavigation.events({
