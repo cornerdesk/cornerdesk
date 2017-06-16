@@ -25,15 +25,4 @@ Template.kantaskDetails.onCreated(() => {
 
 Template.kantaskDetails.onRendered(() => {
     let template = Template.instance();
-    template.$('#task-description').editable({
-        mode: 'inline',
-        anim: '0.3s',
-        display: function() {
-            return false; // meteor already takes care of updating the UI for us, so don't allow X-Editable to do it as well.
-        },
-        success: function(response, newValue) {
-            template.task.get().setDescription(newValue);
-            return true;
-        }
-    });
 });
