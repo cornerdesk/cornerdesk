@@ -1384,37 +1384,37 @@ be a descendant of the grid when it is being dragged.
     padding: 5px! important;
 }
 
-.card-calendar .content {
+.view-calendar .content {
     padding: 0 !important;
 }
 
-.card-calendar .fc-toolbar {
+.view-calendar .fc-toolbar {
     padding-top: 10px;
     padding-left: 20px;
     padding-right: 20px;
 }
 
-.card-calendar .fc td:first-child {
+.view-calendar .fc td:first-child {
     border-left: 0;
 }
 
-.card-calendar .fc td:last-child {
+.view-calendar .fc td:last-child {
     border-right: 0;
 }
 
-.card-calendar .fc-basic-view td:last-child.fc-week-number span,
-.card-calendar .fc-basic-view td:last-child.fc-day-number {
+.view-calendar .fc-basic-view td:last-child.fc-week-number span,
+.view-calendar .fc-basic-view td:last-child.fc-day-number {
     padding-right: 20px;
 }
 
-.card-calendar .fc .fc-day-header:last-child {
+.view-calendar .fc .fc-day-header:last-child {
     padding-right: 15px;
 }
 
-.card-calendar .fc .fc-row:last-child td {
+.view-calendar .fc .fc-row:last-child td {
     border-bottom: 0;
 }
 
-.card-calendar .fc .fc-body .fc-widget-content {
+.view-calendar .fc .fc-body .fc-widget-content {
     border-bottom: 0;
 }

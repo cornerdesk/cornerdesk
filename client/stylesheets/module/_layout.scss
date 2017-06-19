@@ -1,4 +1,5 @@
 @import 'variables';
+@import url('https://fonts.googleapis.com/css?family=Geo|Gruppo&subset=latin-ext');
 #__blaze-root {
     height: 100%;
 }
@@ -48,7 +49,7 @@ a,
 td {
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
-    font-family: 'Muli', "Helvetica", Arial, sans-serif;
+    font-family: 'Geo', sans-serif;
 }
 
 h1,
@@ -101,6 +102,7 @@ h6,
 p {
     font-size: 16px;
     line-height: 1.4em;
+    font-family: 'Gruppo', cursive;
 }
 
 h1 small,
@@ -232,7 +234,7 @@ strong {
 }
 
 .main-panel {
-    background-color: #f4f3ef;
+    background-color: #ffffff;
     overflow: auto;
     position: relative;
     z-index: 2;
@@ -258,6 +260,10 @@ strong {
 .perfect-scrollbar-off .sidebar .sidebar-wrapper,
 .perfect-scrollbar-off .main-panel {
     overflow: auto;
+}
+
+.btn {
+    font-family: 'Gruppo', cursive;
 }
 
 .btn,
@@ -470,8 +476,8 @@ fieldset[disabled] .navbar .navbar-nav>li>a.btn.active {
 
 .navbar .navbar-nav>li>a.btn.btn-primary,
 .btn-primary {
-    border-color: #7A9E9F;
-    color: #7A9E9F;
+    border-color: $active-link-font-color;
+    color: $active-link-font-color;
 }
 
 .navbar .navbar-nav>li>a.btn.btn-primary:hover,
@@ -492,9 +498,9 @@ fieldset[disabled] .navbar .navbar-nav>li>a.btn.active {
 .open>.btn-primary.dropdown-toggle,
 .open>.btn-primary.dropdown-toggle:focus,
 .open>.btn-primary.dropdown-toggle:hover {
-    background-color: #7A9E9F;
-    color: rgba(255, 255, 255, 0.85);
-    border-color: #7A9E9F;
+    background-color: $active-link-font-color; //#7A9E9F;
+    color: transparentize($active-link-font-color, 0.85);
+    border-color: $active-link-font-color;
 }
 
 .navbar .navbar-nav>li>a.btn.btn-primary:hover .caret,
@@ -515,7 +521,7 @@ fieldset[disabled] .navbar .navbar-nav>li>a.btn.active {
 .open>.btn-primary.dropdown-toggle .caret,
 .open>.btn-primary.dropdown-toggle:focus .caret,
 .open>.btn-primary.dropdown-toggle:hover .caret {
-    border-top-color: rgba(255, 255, 255, 0.85);
+    border-top-color: transparentize($active-link-font-color, 0.85);
 }
 
 .navbar .navbar-nav>li>a.btn.btn-primary.disabled,
@@ -567,13 +573,13 @@ fieldset[disabled] .btn-primary.focus,
 fieldset[disabled] .btn-primary:active,
 fieldset[disabled] .btn-primary.active {
     background-color: transparent;
-    border-color: #7A9E9F;
+    border-color: $hover-link-font-color;
 }
 
 .navbar .navbar-nav>li>a.btn.btn-primary.btn-fill,
 .btn-primary.btn-fill {
     color: #FFFFFF;
-    background-color: #7A9E9F;
+    background-color: $active-link-font-color;
     opacity: 1;
     filter: alpha(opacity=100);
 }
@@ -588,9 +594,9 @@ fieldset[disabled] .btn-primary.active {
 .btn-primary.btn-fill:active,
 .btn-primary.btn-fill.active,
 .open>.btn-primary.btn-fill.dropdown-toggle {
-    background-color: #5e8283;
+    background-color: $hover-link-font-color;
     color: #FFFFFF;
-    border-color: #5e8283;
+    border-color: $active-link-font-color;
 }
 
 .navbar .navbar-nav>li>a.btn.btn-primary.btn-fill .caret,
@@ -609,7 +615,7 @@ fieldset[disabled] .btn-primary.active {
 .btn-primary.btn-simple.active,
 .open>.btn-primary.btn-simple.dropdown-toggle {
     background-color: transparent;
-    color: #5e8283;
+    color: $hover-link-font-color;
 }
 
 .navbar .navbar-nav>li>a.btn.btn-primary.btn-simple .caret,
@@ -619,7 +625,12 @@ fieldset[disabled] .btn-primary.active {
 
 .navbar .navbar-nav>li>a.btn.btn-primary .caret,
 .btn-primary .caret {
-    border-top-color: #7A9E9F;
+    border-top-color: $active-link-font-color;
+}
+
+.btn:not(.btn-raised).btn-primary,
+.input-group-btn .btn:not(.btn-raised).btn-primary {
+    color: $active-link-font-color;
 }
 
 .navbar .navbar-nav>li>a.btn.btn-success,
@@ -1500,7 +1511,7 @@ fieldset[disabled] .btn-neutral.active {
 body {
     color: $maincolor;
     font-size: 14px;
-    font-family: 'Muli', Arial, sans-serif;
+    font-family: 'Gruppo', cursive;
     height: 100%;
     .app-container {
         min-height: 100%;
@@ -1537,7 +1548,7 @@ body {
                 flex-direction: column;
                 justify-content: center;
                 align-items: center;
-                .card {
+                .view {
                     background-color: $maincolor;
                     opacity: 0.75;
                     .form-control {
@@ -1550,12 +1561,12 @@ body {
 }
 
 a {
-    color: #68B3C8;
+    color: $active-link-font-color;
 }
 
 a:hover,
 a:focus {
-    color: #429cb6;
+    color: $hover-link-font-color;
     text-decoration: none;
 }
 
@@ -3149,16 +3160,15 @@ star {
     color: #A49E9E;
 }
 
-.card {
-    border-radius: 0;
-    box-shadow: 0 2px 2px rgba(204, 197, 185, 0.5);
-    background-color: #FFFFFF;
-    color: #252422;
-    margin-bottom: 20px;
-    position: relative;
-    z-index: 1;
-}
-
+// .card {
+//     border-radius: 0;
+//     box-shadow: 0 2px 2px rgba(204, 197, 185, 0.5);
+//     background-color: #FFFFFF;
+//     color: #252422;
+//     margin-bottom: 20px;
+//     position: relative;
+//     z-index: 1;
+// }
 .card .title,
 .card .stats,
 .card .category,
@@ -3703,20 +3713,20 @@ star {
     padding-left: 50px;
 }
 
-.card-product .details .name {
+.card-item .details .name {
     margin-top: 20px;
 }
 
-.card-product .details .description {
+.card-item .details .description {
     display: inline-block;
     margin-right: 60px;
 }
 
-.card-product .details .actions {
+.card-item .details .actions {
     top: 20px;
 }
 
-.card-product .details .actions h5 {
+.card-item .details .actions h5 {
     color: #484541;
 }
 
@@ -6498,19 +6508,22 @@ input.ct-danger+span+label+span.switch-right {
 .content {
     .title-wrapper {
         height: $title-wrapper-height;
-        padding: 10px;
-        padding-left: 75px;
+        padding: 5px;
+        padding-left: 90px;
+        border-bottom: 2px solid $maincolor;
         // text-align: center;
         h3,
         .h3 {
             text-transform: uppercase;
             display: inline;
+            font-size: 2.5em;
+            line-height: 1.1;
         }
     }
     .content-wrapper {
         height: $content-wrapper-height;
         overflow: hidden;
-        .card {
+        .view {
             height: 100%;
             margin: 0;
         }
@@ -6626,7 +6639,7 @@ input.ct-danger+span+label+span.switch-right {
     }
 }
 
-.card-kanboard .kanboard .kanboard-canvas .kanlists-container .kanlist.trash-container {
+.view-kanboard .kanboard .kanboard-canvas .kanlists-container .kanlist.trash-container {
     background: $hover-link-font-color;
     color: #ffffff;
     max-width: 0;
@@ -6644,8 +6657,8 @@ input.ct-danger+span+label+span.switch-right {
     }
 }
 
-.card-calendar .trash-container,
-.card-channel .trash-container {
+.view-calendar .trash-container,
+.view-channel .trash-container {
     position: fixed;
     bottom: 60px;
     right: 60px;
@@ -6730,6 +6743,26 @@ input.ct-danger+span+label+span.switch-right {
             }
         }
     }
+}
+
+.form-group.is-focused label,
+.form-group.is-focused label.control-label {
+    color: $active-link-font-color;
+}
+
+.form-control,
+.form-group .form-control {
+    background-image: -webkit-gradient(linear, left top, left bottom, from($active-link-font-color), to($active-link-font-color)), -webkit-gradient(linear, left top, left bottom, from(#D2D2D2), to(#D2D2D2));
+    background-image: -webkit-linear-gradient($active-link-font-color, $active-link-font-color), -webkit-linear-gradient(#D2D2D2, #D2D2D2);
+    background-image: -o-linear-gradient($active-link-font-color, $active-link-font-color), -o-linear-gradient(#D2D2D2, #D2D2D2);
+    background-image: linear-gradient($active-link-font-color, $active-link-font-color), linear-gradient(#D2D2D2, #D2D2D2);
+}
+
+.form-group.is-focused .form-control {
+    background-image: -webkit-gradient(linear, left top, left bottom, from($active-link-font-color), to($active-link-font-color)), -webkit-gradient(linear, left top, left bottom, from(#D2D2D2), to(#D2D2D2));
+    background-image: -webkit-linear-gradient($active-link-font-color, $active-link-font-color), -webkit-linear-gradient(#D2D2D2, #D2D2D2);
+    background-image: -o-linear-gradient($active-link-font-color, $active-link-font-color), -o-linear-gradient(#D2D2D2, #D2D2D2);
+    background-image: linear-gradient($active-link-font-color, $active-link-font-color), linear-gradient(#D2D2D2, #D2D2D2);
 }
 
 
