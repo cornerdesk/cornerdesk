@@ -38,6 +38,15 @@ let KanlistsSchema = new SimpleSchema({
 
 Kanlists.attachSchema(KanlistsSchema);
 
+Kanlists.helpers({
+    getNumberOfTasks() {
+        return Kantasks.find({ kanlist: this._id }).count();
+    },
+    getNumberOfAffectedTasksTo(userId) {
+        return Kantasks.find({ kanlist: this._id, members: { $elemMatch: { userId: userId } } }).count();
+    }
+})
+
 Kanlists.after.remove((userId, doc) => {
     Kantasks.remove({ kanlist: doc._id });
 });

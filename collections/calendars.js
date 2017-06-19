@@ -131,6 +131,18 @@ Calendars.helpers({
     getNonMembers() {
         return Meteor.users.find({ _id: { $nin: _.pluck(this.activeMembers(), 'userId') } })
     },
+    getNumberOfEventForDay() {
+        var now = new Date();
+        var dateMidnight = new Date(now);
+        dateMidnight.setHours(23);
+        dateMidnight.setMinutes(59);
+        dateMidnight.setSeconds(59);
+
+        return Events.find({ calendar: this._id, end: { $gt: new Date() }, start: { $lte: dateMidnight } }).count();
+    },
+    getNumberOfEvents() {
+        return Events.find({ calendar: this._id, end: { $gt: new Date() } }).count();
+    }
 });
 
 Calendars.mutations({

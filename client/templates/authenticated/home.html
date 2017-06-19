@@ -3,157 +3,68 @@
         <h3>Nest Square</h3>
     </div>
     <div class="content-wrapper">
-        <div class="card card-dashboard">
-        <div class="row">
-            <div class="col-md-6">
-        <div class="card card-item">
-            <div class="card-header with-border">
-              <h3 class="title">Monthly Recap Report</h3>
-
-              <div class="actions pull-right">
-                <button type="button" class="btn btn-card-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                </button>
-                <div class="btn-group">
-                  <button type="button" class="btn btn-card-tool dropdown-toggle" data-toggle="dropdown">
-                    <i class="fa fa-wrench"></i></button>
-                  <ul class="dropdown-menu" role="menu">
-                    <li><a href="#">Action</a></li>
-                    <li><a href="#">Another action</a></li>
-                    <li><a href="#">Something else here</a></li>
-                    <li class="divider"></li>
-                    <li><a href="#">Separated link</a></li>
-                  </ul>
+        <div class="view view-dashboard">
+            {{#if isReady}}
+            <div class="row">
+                <div class="col-xs-12">
+                    <h4>MY BOARDS</h4>
                 </div>
-                <button type="button" class="btn btn-card-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-              </div>
             </div>
-            <!-- /.card-header -->
-            <div class="content">
-              <div class="row">
-                <div class="col-md-8">
-                  <p class="description">
-                    <strong>Sales: 1 Jan, 2014 - 30 Jul, 2014</strong>
-                  </p>
-
-                  <div class="chart">
-                    <!-- Sales Chart Canvas -->
-                    <canvas id="salesChart" style="height: 180px; width: 816px;" height="450" width="2040"></canvas>
-                  </div>
-                  <!-- /.chart-responsive -->
+            <div class="row">
+                {{#each kanboards}}
+                <div class="col-md-4 col-sm-6 col-xs-12">
+                    <div class="card" data-color="blue">
+                        <div class="header">
+                            <div class="title">{{title}}</div>
+                        </div>
+                        <div class="content">
+                            <ul>
+                                {{#each lists}}
+                                <p><small><b></b></small></p>
+                                <div class="progress-group">
+                                    <span class="progress-text"><b>{{title}}:</b> affected tasks</span>
+                                    <span class="progress-number"><b>{{affectedTasks}}</b>/{{totalTasks}}</span>
+                                </div>
+                                    <!--<li><b>{{title}}: </b><span class="number">{{affectedTasks}}</span> tasks assigned on <span class="number">{{totalTasks}}</span></li>-->
+                                {{else}}
+                                    <li><b>There are no tasks in this board.</b></li>
+                                {{/each}}
+                            </ul>
+                        </div>
+                        <div class="footer text-right">
+                            <a class="btn" href="{{url}}">Go !</a>
+                        </div>
+                    </div>
                 </div>
-                <!-- /.col -->
-                <div class="col-md-4">
-                  <p class="text-center">
-                    <strong>Goal Completion</strong>
-                  </p>
-
-                  <div class="progress-group">
-                    <span class="progress-text">Add Products to Cart</span>
-                    <span class="progress-number"><b>160</b>/200</span>
-
-                    <div class="progress sm">
-                      <div class="progress-bar progress-bar-aqua" style="width: 80%"></div>
-                    </div>
-                  </div>
-                  <!-- /.progress-group -->
-                  <div class="progress-group">
-                    <span class="progress-text">Complete Purchase</span>
-                    <span class="progress-number"><b>310</b>/400</span>
-
-                    <div class="progress sm">
-                      <div class="progress-bar progress-bar-red" style="width: 80%"></div>
-                    </div>
-                  </div>
-                  <!-- /.progress-group -->
-                  <div class="progress-group">
-                    <span class="progress-text">Visit Premium Page</span>
-                    <span class="progress-number"><b>480</b>/800</span>
-
-                    <div class="progress sm">
-                      <div class="progress-bar progress-bar-green" style="width: 80%"></div>
-                    </div>
-                  </div>
-                  <!-- /.progress-group -->
-                  <div class="progress-group">
-                    <span class="progress-text">Send Inquiries</span>
-                    <span class="progress-number"><b>250</b>/500</span>
-
-                    <div class="progress sm">
-                      <div class="progress-bar progress-bar-yellow" style="width: 80%"></div>
-                    </div>
-                  </div>
-                  <!-- /.progress-group -->
-                </div>
-                <!-- /.col -->
-              </div>
-              <!-- /.row -->
+                {{/each}}
             </div>
-            <!-- ./card-body -->
-            <div class="card-footer">
-              <div class="row">
-                <div class="col-sm-3 col-xs-6">
-                  <div class="description-block border-right">
-                    <span class="description-percentage text-green"><i class="fa fa-caret-up"></i> 17%</span>
-                    <h5 class="description-header">$35,210.43</h5>
-                    <span class="description-text">TOTAL REVENUE</span>
-                  </div>
-                  <!-- /.description-block -->
+            <div class="row">
+                <div class="col-xs-12">
+                    <h4>MY CALENDARS</h4>
                 </div>
-                <!-- /.col -->
-                <div class="col-sm-3 col-xs-6">
-                  <div class="description-block border-right">
-                    <span class="description-percentage text-yellow"><i class="fa fa-caret-left"></i> 0%</span>
-                    <h5 class="description-header">$10,390.90</h5>
-                    <span class="description-text">TOTAL COST</span>
-                  </div>
-                  <!-- /.description-block -->
-                </div>
-                <!-- /.col -->
-                <div class="col-sm-3 col-xs-6">
-                  <div class="description-block border-right">
-                    <span class="description-percentage text-green"><i class="fa fa-caret-up"></i> 20%</span>
-                    <h5 class="description-header">$24,813.53</h5>
-                    <span class="description-text">TOTAL PROFIT</span>
-                  </div>
-                  <!-- /.description-block -->
-                </div>
-                <!-- /.col -->
-                <div class="col-sm-3 col-xs-6">
-                  <div class="description-block">
-                    <span class="description-percentage text-red"><i class="fa fa-caret-down"></i> 18%</span>
-                    <h5 class="description-header">1200</h5>
-                    <span class="description-text">GOAL COMPLETIONS</span>
-                  </div>
-                  <!-- /.description-block -->
-                </div>
-              </div>
-              <!-- /.row -->
             </div>
-            <!-- /.card-footer -->
-          </div>
-          
-
-            </div>
-            <div class="col-md-6">
-<div class="card">
-
-                    <!--Card image-->
-                    <img class="img-fluid" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20%282%29.jpg" alt="Card image cap">
-                    <!--/.Card image-->
-
-                    <!--Card content-->
-                    <div class="card-block">
-                        <!--Title-->
-                        <h4 class="card-title">Card title</h4>
-                        <!--Text-->
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" class="btn btn-primary waves-effect waves-light">Button</a>
+            <div class="row">
+                {{#each calendars}}
+                <div class="col-md-4 col-sm-6 col-xs-12">
+                    <div class="card" data-color="green">
+                        <div class="header">
+                            <div class="title">{{title}}</div>
+                        </div>
+                        <div class="content">
+                            <p><span class="number">{{todayEvents}}</span> remaining events today </p>
+                            <p><span class="number">{{totalEvents}}</span> in total</p>
+                        </div>
+                        <div class="footer text-right">
+                            <a class="btn" href="{{url}}">Go !</a>
+                        </div>
                     </div>
-                    <!--/.Card content-->
-
                 </div>
-          </div>
-        </div>
+                {{/each}}
+            </div>
+            
+            {{else}}
+                <div class="loading"></div>
+            {{/if}}
         </div>
     </div>
 </template>

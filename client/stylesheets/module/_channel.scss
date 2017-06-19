@@ -46,7 +46,7 @@
         }
     }
     .message:hover {
-        background: $background !important;
+        background: transparentize($hover-link-font-color, 0.5) !important;
     }
     .message header h4 {
         font-size: 14px;
