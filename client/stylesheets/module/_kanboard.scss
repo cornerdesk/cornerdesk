@@ -9,7 +9,7 @@
     -ms-flex: 1;
     flex: 1;
     overflow-x: hidden;
-    background-color: lighten($background, 10);
+    background-color: rgba(153, 153, 153, 0.1);
     height: 100%;
     .kanboard {
         position: absolute;
@@ -162,13 +162,15 @@
                                     -ms-transition: all 0.2s;
                                     transition: all 0.2s;
                                     .kantask {
-                                        border-left: 3px solid $active-link-font-color;
+                                        border-style: dashed;
+                                        border-color: $active-link-font-color;
                                         background-color: rgba(153, 153, 153, 0.6);
                                         color: $active-link-font-color;
                                         font-weight: bold;
                                     }
                                 }
                                 .kantask {
+                                    border-left: 4px solid rgba(153, 153, 153, 0.2);
                                     position: relative;
                                     -webkit-box-flex: 1;
                                     -moz-box-flex: 1;

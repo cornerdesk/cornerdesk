@@ -29,6 +29,11 @@ const KantasksSchema = new SimpleSchema({
         label: 'The id of the list the task belongs to.',
         optional: false
     },
+    'color': {
+        type: String,
+        label: 'The color of the task',
+        optional: true
+    },
     'createdAt': {
         type: Date,
         label: 'System date of the creation of the date',
@@ -59,6 +64,7 @@ const KantasksSchema = new SimpleSchema({
     'members.$.userId': {
         type: String,
     },
+
 });
 
 Kantasks.attachSchema(KantasksSchema);

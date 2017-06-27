@@ -51,3 +51,4 @@ dynamic-import
 browser-policy-common
 browser-policy-content
 service-configuration
+verron:autosize

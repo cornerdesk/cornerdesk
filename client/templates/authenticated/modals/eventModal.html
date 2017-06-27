@@ -11,7 +11,7 @@
                             <li><a class="removeEventBtn" data-id="{{_id}}" href="#">Remove event</a></li>
                         </ul>
                     </span>
-                    <h3><i class="ti-ruler-pencil"></i> Event editor{{calendarName}}</h3>
+                    <h3><i class="ti-ruler-pencil"></i> Event editor {{calendarName}}</h3>
                 </div>
                 <div class="modal-body" id="eventEditorForm">
                     <div class="row">
@@ -20,9 +20,10 @@
                             <label for="event-title" class="control-label">Title</label>
                             <input type="text" class="form-control {{readonly}}" {{readonly}} name="event-title" id="event-title" value="{{title}}">
                         </div>
-                        <div class="col-md-4 form-group  label-static is-empty">
-                            <label class="control-label" for="event-color">Color</label>
-                            <input type="text" class="form-control {{readonly}}" {{readonly}} name="event-color" id="event-color" value="{{color}}">
+                        <div class="col-md-4">
+                            {{> colorPicker name="Color" identifier="event-color" color=color}}
+                            <!--<label class="control-label" for="event-color">Color</label>
+                            <input type="text" class="form-control {{readonly}}" {{readonly}} name="event-color" id="event-color" value="{{color}}">-->
                         </div>
                     </div>
                     <div class="row">
@@ -48,7 +49,7 @@
                     <div class="row">
                         <div class="col-md-12 form-group  label-static is-empty">
                             <label class="control-label" for="event-description">Description</label>
-                            <textarea class="form-control {{readonly}}" {{readonly}} rows="2" name="event-description" id="event-description" value=""></textarea>
+                            <textarea class="form-control {{readonly}}" {{readonly}} name="event-description" id="event-description" value=""></textarea>
                         </div>
                     </div>
                     <div class="row">

@@ -81,42 +81,11 @@ Template.eventModal.events({
 
 Template.eventModal.onRendered(() => {
     Tracker.autorun(() => {
+        let template = Template.instance();
         let $form = this.$('#eventEditorForm');
-        let event = Template.instance().data;
+        let event = template.data;
         $form.find('#event-title').val(event.title);
-        $form.find('#event-color').colorpicker({
-            color: event.color,
-            format: 'hex',
-            colorSelectors: {
-                '#f44336': '#f44336', //red
-                '#e91e63': '#e91e63', //pink
-                '#9c27b0': '#9c27b0', //purple
-                '#673ab7': '#673ab7', //deep-purple
-                '#3f51b5': '#3f51b5', //indigo
-                '#2196f3': '#2196f3', //blue
-                '#03a9f4': '#03a9f4', //light-blue
-                '#00bcd4': '#00bcd4', //cyan
-                '#009688': '#009688', //teal
-                '#4caf50': '#4caf50', //green
-                '#8bc34a': '#8bc34a', //light-green
-                '#cddc39': '#cddc39', //lime
-                '#ffeb3b': '#ffeb3b', //yellow
-                '#ffc107': '#ffc107', //amber
-                '#ff9800': '#ff9800', //orange
-                '#ff5722': '#ff5722', //deep-orange
-                '#795548': '#795548', //brown
-                '#9e9e9e': '#9e9e9e', //grey
-                '#607d8b': '#607d8b', //blue-grey
-                '#666666': '#666666',
-            },
-            template: '<div class="colorpicker dropdown-menu colorpicker-hidden colorpicker-horizontal colorpicker-right">' +
-                '<div class="colorpicker-selectors" style="display: block;">' +
-                '</div>',
-            component: '.colorpicker-addon',
-            horizontal: true
-        }).on('changeColor', function(e) {
-            $(e.target).css('color', e.color.toString('hex'));
-        }).css('color', event.color);
+
         // <i style="background-color: rgb(244, 67, 54);"></i><i style="background-color: rgb(233, 30, 99);"></i><i style="background-color: rgb(156, 39, 176);"></i>' +
         //         '<i style="background-color: rgb(103, 58, 183);"></i><i style="background-color: rgb(63, 81, 181);"></i><i style="background-color: rgb(33, 150, 243);"></i><i></i>' +
         //         '<i style="background-color: rgb(0, 188, 212);"></i><i style="background-color: rgb(0, 150, 136);"></i><i style="background-color: rgb(76, 175, 80);"></i>' +
@@ -133,5 +102,7 @@ Template.eventModal.onRendered(() => {
         $("#event-start").on("dateSelected", (e) => {
             $('#event-end').bootstrapMaterialDatePicker("setMinDate", e.date);
         });
+        autosize(template.find('textarea'));
     });
+
 });

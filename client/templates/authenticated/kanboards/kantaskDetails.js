@@ -5,7 +5,12 @@ Template.kantaskDetails.events({
         Blaze.remove(template.view);
     },
     'click [name="save-task"]' (event, template) {
-        Meteor.call('updateTask', template.task.get()._id, { $set: { description: template.find('[name="task-description"]').value } });
+        Meteor.call('updateTask', template.task.get()._id, {
+            $set: {
+                description: template.find('[name="task-description"]').value,
+                color: template.find('#task-color').value,
+            }
+        });
     }
 });
 
@@ -25,4 +30,5 @@ Template.kantaskDetails.onCreated(() => {
 
 Template.kantaskDetails.onRendered(() => {
     let template = Template.instance();
+    autosize(template.find('textarea'));
 });

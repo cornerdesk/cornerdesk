@@ -6,6 +6,15 @@ Template.newTaskForm.events({
     },
 });
 
+Template.kantask.helpers({
+    background() {
+        let template = Template.instance();
+        if (!!template.data.color) {
+            return 'border-color:' + template.data.color;
+        }
+    }
+})
+
 Template.kantask.events({
     'click .kantask-wrapper' (event, template) {
         let task = template.data,
@@ -27,8 +36,9 @@ Template.kantask.events({
 Template.kantask.onCreated(() => {});
 
 Template.kantask.onRendered(() => {
+    var template = Template.instance();
     // add member to task
-    this.$('.kantask-wrapper').droppable({
+    template.$('.kantask-wrapper').droppable({
         hoverClass: 'ui-state-active',
         tolerance: 'pointer',
         accept: function(event, ui) {

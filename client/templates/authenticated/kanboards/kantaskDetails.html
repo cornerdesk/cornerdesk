@@ -11,13 +11,16 @@
         </div>
         <div class="kantask-details-body">
             <div class="row">
-                <div class="col-sm-12">
+                <div class="col-sm-12 col-md-8">
                     <div class="">
                         <label class="control-label">Members</label>
                         <div class="task-members">
                             {{> members task }}
                         </div>
                     </div>
+                </div>
+                <div class="col-sm-12 col-md-4">
+                    {{> colorPicker name="Color" identifier="task-color" color=task.color}}
                 </div>
                 <div class="col-sm-12">
                     <div class="">
