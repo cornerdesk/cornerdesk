@@ -2,7 +2,7 @@
 Modal.allowMultiple = true;
 
 Meteor.startup(() => {
-    Bert.style = 'lined-top-left';
+    Bert.defaults.style = 'lined-top-right';
     //Bert.defaults.hideDelay = -1;
     Bert.icons = {
         default: 'ti-comments-smiley',
