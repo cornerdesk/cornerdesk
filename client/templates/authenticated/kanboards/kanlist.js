@@ -45,8 +45,19 @@ Template.kanlist.onRendered(() => {
             $('.trash-container').addClass('dragging');
             ui.placeholder.height(ui.helper.height());
             ui.placeholder.width(ui.helper.width());
+            $(document).on('mousemove', function(event) {
+                setTimeout(function() {
+
+                    if (event.screenX < 50) {
+                        window.scrollBy(-20, 0);
+                    } else if (event.screenX > window.innerWidth - 50) {
+                        window.scrollBy(20, 0);
+                    }
+                }, 100);
+            })
         },
         stop(evt, ui) {
+            $(document).off('mousemove');
             $('.trash-container').removeClass('dragging');
         },
         receive(evt, ui) {

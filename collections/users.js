@@ -1,5 +1,5 @@
 import extractor from 'article-extractor';
-
+import { check } from 'meteor/check';
 let _getItem = (type, itemId) => {
     type = type !== undefined ? type : FlowRouter.getRouteName();
     itemId = itemId !== undefined ? itemId : FlowRouter.getParam('item');

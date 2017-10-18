@@ -1,3 +1,4 @@
+import { check } from 'meteor/check';
 Meteor.publish('pins', function(username) {
     check(username, String);
 

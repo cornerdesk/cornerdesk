@@ -1,6 +1,6 @@
 import insertTask from '../../modules/insert-task';
 import updateTask from '../../modules/update-task';
-
+import { check } from 'meteor/check';
 Meteor.methods({
     insertTask(task) {
         check(task, {

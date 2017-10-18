@@ -1,4 +1,6 @@
 import SimpleSchema from 'simpl-schema';
+import { check } from 'meteor/check';
+
 Calendars = new Mongo.Collection('calendars');
 
 Calendars.allow({

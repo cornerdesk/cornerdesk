@@ -1,4 +1,6 @@
 import SimpleSchema from 'simpl-schema';
+import { check } from 'meteor/check';
+
 Channels = new Mongo.Collection('channels');
 
 Channels.allow({

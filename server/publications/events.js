@@ -1,3 +1,4 @@
+import { check } from 'meteor/check';
 // Publication de la collection Events pour 
 // utilisation / affichage côté client et serveur
 Meteor.publish('events', function(calendar, start, end) {

@@ -1,3 +1,4 @@
+import { check } from 'meteor/check';
 Meteor.publish('kanboards', function() {
     return Kanboards.find({
         archived: false,

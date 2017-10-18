@@ -1,3 +1,4 @@
+import { check, Match } from 'meteor/check';
 import insertList from '../../modules/insert-list';
 import updateList from '../../modules/update-list';
 

@@ -1,3 +1,4 @@
+import { check } from 'meteor/check';
 Meteor.methods({
     removeList(documentId) {
         check(documentId, String);

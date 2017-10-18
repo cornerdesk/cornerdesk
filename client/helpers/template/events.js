@@ -82,7 +82,7 @@ CalHelper.createEvent = (calendar, title, color, start, end, description, allDay
 CalHelper.updateEvent = (id, modifier) => {
     Events.update({ _id: id }, { $set: modifier }, function(err) {
         if (err) { Bert.alert('Oups... An error occured...', 'danger'); }
-        Bert.alert('Event updated !', 'success');
+        Bert.alert({message:'Event updated !', type:'success', hideDelay: -1});
     });
 };
 

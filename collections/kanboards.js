@@ -1,4 +1,6 @@
 import SimpleSchema from 'simpl-schema';
+import { check } from 'meteor/check';
+
 Kanboards = new Meteor.Collection('kanboards');
 
 let KanboardsSchema = new SimpleSchema({

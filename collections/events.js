@@ -1,4 +1,5 @@
 import SimpleSchema from 'simpl-schema';
+import { check } from 'meteor/check';
 // Définition de la collection Events dans la base MongoDB
 Events = new Meteor.Collection('events');
 

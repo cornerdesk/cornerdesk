@@ -1,3 +1,4 @@
+import { check } from 'meteor/check';
 Meteor.publish('calendar', function(calendar, start, end) {
     check(calendar, String);
     check(start, Date);

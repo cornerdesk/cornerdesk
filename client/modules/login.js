@@ -1,3 +1,6 @@
+import { validate } from 'jquery-validation';
+
+
 let template;
 
 let _handleLogin = () => {
