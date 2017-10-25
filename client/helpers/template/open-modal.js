@@ -23,3 +23,7 @@ ModalHelper.openEmptyEventModal = (start, end, allDay, jsEvent, view) => {
 ModalHelper.openEventModal = (calEvent, jsEvent, view) => {
     Modal.show('eventModal', () => { return Events.findOne(calEvent._id); });
 };
+
+ModalHelper.openKantaskModal = (task, jsEvent, view) => {
+    Modal.show('kantaskDetails', () => { return task; });
+};

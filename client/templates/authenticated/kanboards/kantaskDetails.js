@@ -1,8 +1,7 @@
 Template.kantaskDetails.events({
     'click [name="close-kantask-details"]' (event, template) {
-        var $activeWrapper = $('.kantask-wrapper.active');
-        if ($activeWrapper.length > 0) { $activeWrapper.removeClass('active'); }
-        Blaze.remove(template.view);
+        Session.set('selectedTask', null);
+        Modal.hide('kantaskModal');
     },
     'click [name="save-task"]' (event, template) {
         Meteor.call('updateTask', template.task.get()._id, {

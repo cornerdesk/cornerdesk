@@ -1,46 +1,50 @@
 <template name="kantaskDetails">
-    <div class="kantask-details ps-container">
-        <div class="kantask-details-header">
-            <button class="close pull-right" name="close-kantask-details"><i class="ti-close"></i></button>
-            <span class="dropdown pull-right">
-                <button class="close pull-right dropdown-toggle"  data-target="#" data-toggle="dropdown" name="kantask-details-menu" data-><i class="ti-more"></i></button>
-                <ul class="dropdown-menu">
-                </ul>
-            </span>
-            <h3>{{task.title}}</h3>
-        </div>
-        <div class="kantask-details-body">
-            <div class="row">
-                <div class="col-sm-12 col-md-8">
-                    <div class="">
-                        <label class="control-label">Members</label>
-                        <div class="task-members">
-                            {{> members task }}
+    <div class="kantask-details ps-container modal fs-modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header text-center">
+                    <button class="close pull-right" name="close-kantask-details"><i class="ti-close"></i></button>
+                    <span class="dropdown pull-right">
+                        <button class="close pull-right dropdown-toggle"  data-target="#" data-toggle="dropdown" name="kantask-details-menu" data-><i class="ti-more"></i></button>
+                        <ul class="dropdown-menu">
+                        </ul>
+                    </span>
+                    <h3>{{task.title}}</h3>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-sm-12 col-md-8">
+                            <div class="">
+                                <label class="control-label">Members</label>
+                                <div class="task-members">
+                                    {{> members task }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-md-4">
+                            {{> colorPicker name="Color" identifier="task-color" color=task.color}}
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="">
+                                <label class="control-label">Labels</label>
+                                <div class="task-labels">
+                                    <p><small><i>Coming soon...</i></small></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group  label-static is-empty">
+                                <label class="control-label" for="task-description">Description</label>
+                                <textarea class="form-control" name="task-description" id="task-description" value="{{task.description}}"></textarea>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-12 col-md-4">
-                    {{> colorPicker name="Color" identifier="task-color" color=task.color}}
-                </div>
-                <div class="col-sm-12">
-                    <div class="">
-                        <label class="control-label">Labels</label>
-                        <div class="task-labels">
-                            <p><small><i>Coming soon...</i></small></p>
-                        </div>
+                <div class="modal-footer">
+                    <div class="col-md-12 text-center">
+                        <button class="btn btn-primary" name="save-task">Save</button>
                     </div>
                 </div>
-                <div class="col-md-12">
-                    <div class="form-group  label-static is-empty">
-                        <label class="control-label" for="task-description">Description</label>
-                        <textarea class="form-control" name="task-description" id="task-description" value="{{task.description}}"></textarea>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="kantask-details-footer">
-            <div class="col-md-12 text-center">
-                <button class="btn btn-primary" name="save-task">Save</button>
             </div>
         </div>
     </div>

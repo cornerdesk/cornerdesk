@@ -31,7 +31,7 @@ Template.kanlist.onRendered(() => {
     // Drag n drop of the tasks
     const $tasksLists = this.$('.tasks-container');
     $tasksLists.sortable({
-        connectWith: '.tasks-container',
+        connectWith: '.tasks-container, .trash-container',
         tolerance: 'pointer',
         appendTo: 'body',
         helper(evt, item) {
@@ -42,7 +42,7 @@ Template.kanlist.onRendered(() => {
         scroll: false,
         placeholder: 'kantask-wrapper placeholder',
         start(evt, ui) {
-            $('.trash-container').addClass('dragging');
+            $('.kanboard').addClass('dragging');
             ui.placeholder.height(ui.helper.height());
             ui.placeholder.width(ui.helper.width());
             $(document).on('mousemove', function(event) {
@@ -58,7 +58,7 @@ Template.kanlist.onRendered(() => {
         },
         stop(evt, ui) {
             $(document).off('mousemove');
-            $('.trash-container').removeClass('dragging');
+            $('.kanboard').removeClass('dragging');
         },
         receive(evt, ui) {
             let kanlist = ui.item.parents('.kanlist').get(0);
@@ -181,7 +181,7 @@ Template.kanlist.events({
 });
 
 Template.kantrash.onRendered(() => {
-    const $tasks = this.$('.tasks-container');
+    const $tasks = this.$('.trash-container');
     $tasks.droppable({
         hoverClass: 'ui-state-active',
         tolerance: 'pointer',
@@ -228,7 +228,7 @@ Template.kantrash.onRendered(() => {
             }
         }
     }).sortable({
-        connectWith: '.tasks-container',
+        connectWith: '.tasks-container, trash-containerr',
         tolerance: 'pointer',
         appendTo: 'body',
         helper(evt, item) {
@@ -239,11 +239,11 @@ Template.kantrash.onRendered(() => {
         scroll: false,
         placeholder: 'kantask-wrapper placeholder',
         start(evt, ui) {
-            $('.trash-container').addClass('dragging');
+            $('.kanboard').addClass('dragging');
             ui.placeholder.height(ui.helper.height());
         },
         stop(evt, ui) {
-            $('.trash-container').removeClass('dragging');
+            $('.kanboard').removeClass('dragging');
         },
         receive(evt, ui) {
             const taskDomElement = ui.item.get(0);

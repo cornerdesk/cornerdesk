@@ -6666,23 +6666,40 @@
         }
     }
     
-    .view-kanboard .kanboard .kanboard-canvas .kanlists-container .kanlist.trash-container {
-        background: $hover-link-font-color;
-        color: #ffffff;
-        max-width: 0;
-        -webkit-transition: max-width 0.5s;
-        transition: max-width 0.5s;
-        visibility: hidden;
+    .view-kanboard .kanboard { 
         &.dragging {
+            .trash-container {
             visibility: visible;
-            -webkit-transition: max-width 0.5s;
-            transition: max-width 0.5s;
-            max-width: $listWidth;
+            -webkit-transition: max-height 0.5s;
+            transition: max-height 0.5s;
+            max-height: 90px;
+            height:90px;
         }
-        i {
-            font-size: 50px;
+        .kanboard-canvas {
+            -webkit-transition: top 0.5s;
+            transition: top 0.5s;
+            top:90px;
         }
     }
+        .trash-container {
+        background: $hover-link-font-color;
+        color: #ffffff;
+        max-height: 0;
+        width:100%;
+        -webkit-transition: max-height 0.5s;
+        transition: max-height 0.5s;
+        visibility: hidden;
+        position:relative;
+        z-index:9999;
+        
+        > div {
+            padding:20px;
+            i {
+                font-size: 50px;
+            }
+        }
+    }
+}
     
     .view-calendar .trash-container,
     .view-channel .trash-container {
