@@ -6609,78 +6609,14 @@
     
     .members {
         background: none;
-        .member {
-            display: block;
-            position: relative;
-            float: left;
-            height: 32px;
-            width: 32px;
-            margin: 0 7px 4px 0;
-            background: white;
-            cursor: pointer;
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-            user-select: none;
-            z-index: 1;
-            text-decoration: none;
-            border: 1px solid;
-            text-align: center;
-            &[data-member-type="admin"] {
-                background-color: $yellow-bg-color;
-                color: $yellow-bg-font-color;
-                .member-state {
-                    border: 1px solid $yellow-bg-font-color;
-                }
-            }
-            &[data-member-type="normal"] {
-                background-color: $blue-bg-color;
-                color: $blue-bg-font-color;
-                .member-state {
-                    border: 1px solid $blue-bg-font-color;
-                }
-            }
-            .avatar {
-                width: 30px;
-                border-radius: 50%; // ???
-            }
-            .initials {
-                display: block;
-                font-weight: bold;
-                font-size: 14px;
-                margin: 6px auto;
-            }
-            .member-state {
-                position: absolute;
-                width: 10px;
-                height: 10px;
-                right: -15%;
-                bottom: -15%;
-                &.offline {
-                    background-color: $danger;
-                }
-                &.online {
-                    background-color: $success;
-                }
-            }
-        }
     }
     
     .view-kanboard .kanboard { 
-        &.dragging {
-            .trash-container {
-            visibility: visible;
-            -webkit-transition: max-height 0.5s;
-            transition: max-height 0.5s;
-            max-height: 90px;
-            height:90px;
-        }
         .kanboard-canvas {
             -webkit-transition: top 0.5s;
             transition: top 0.5s;
             top:90px;
         }
-    }
         .trash-container {
         background: $hover-link-font-color;
         color: #ffffff;
@@ -6700,50 +6636,116 @@
         }
     }
 }
-    
-    .view-calendar .trash-container,
-    .view-channel .trash-container {
-        position: fixed;
-        bottom: 60px;
-        right: 60px;
-        background-color: $hover-link-font-color;
-        color: #ffffff;
-        border-radius: 0; //50%;
-        padding: 0;
-        border: 0;
-        width: 0;
-        height: 0;
+.view-calendar .trash-container,
+.view-channel .trash-container {
+    position: fixed;
+    bottom: 60px;
+    right: 60px;
+    background-color: $hover-link-font-color;
+    color: #ffffff;
+    border-radius: 0; //50%;
+    padding: 0;
+    border: 0;
+    width: 0;
+    height: 0;
+    -webkit-transition: all 0.5s;
+    transition: all 0.5s;
+    opacity: 0;
+    visibility: hidden;
+    z-index: 9999;
+    text-align: center;
+    vertical-align: middle;
+    i {
+        font-size: 0;
         -webkit-transition: all 0.5s;
         transition: all 0.5s;
-        opacity: 0;
-        visibility: hidden;
-        z-index: 9999;
-        text-align: center;
-        vertical-align: middle;
+    }
+}
+.content-wrapper.dragging {
+    .view-kanboard .trash-container {
+        visibility: visible;
+        -webkit-transition: max-height 0.5s;
+        transition: max-height 0.5s;
+        max-height: 90px;
+        height:90px;
+    }
+    .view-calendar .trash-container,
+    .view-channel .trash-container {
+        width: 140px;
+        height: 140px;
+        visibility: visible;
+        opacity: 1;
+        -webkit-transition: all 0.5s;
+        transition: all 0.5s;
+        max-width: $listWidth;
+        padding: 40px;
+        border: 3px solid $active-link-font-color;
+        bottom: 20px;
+        right: 40px;
         i {
-            font-size: 0;
+            font-size: 50px;
             -webkit-transition: all 0.5s;
             transition: all 0.5s;
-        }
-        &.dragging {
-            width: 140px;
-            height: 140px;
-            visibility: visible;
-            opacity: 1;
-            -webkit-transition: all 0.5s;
-            transition: all 0.5s;
-            max-width: $listWidth;
-            padding: 40px;
-            border: 3px solid $active-link-font-color;
-            bottom: 20px;
-            right: 40px;
-            i {
-                font-size: 50px;
-                -webkit-transition: all 0.5s;
-                transition: all 0.5s;
-            }
         }
     }
+}
+.member {
+    display: block;
+    position: relative;
+    float: left;
+    height: 32px;
+    width: 32px;
+    margin: 0 7px 4px 0;
+    background: white;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    z-index: 1;
+    text-decoration: none;
+    border: 1px solid;
+    text-align: center;
+    &[data-member-type="admin"] {
+        background-color: $yellow-bg-color;
+        color: $yellow-bg-font-color;
+        .member-state {
+            border: 1px solid $yellow-bg-font-color;
+        }
+    }
+    &[data-member-type="normal"] {
+        background-color: $blue-bg-color;
+        color: $blue-bg-font-color;
+        .member-state {
+            border: 1px solid $blue-bg-font-color;
+        }
+    }
+    .avatar {
+        width: 30px;
+        border-radius: 50%; // ???
+    }
+    .initials {
+        display: block;
+        font-weight: bold;
+        font-size: 14px;
+        margin: 6px auto;
+    }
+    .member-state {
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        right: -15%;
+        bottom: -15%;
+        &.offline {
+            background-color: $danger;
+        }
+        &.online {
+            background-color: $success;
+        }
+    }
+}
+    
+    
     
     .close {
         margin-left: 15px;
@@ -6825,18 +6827,3 @@
             }
         }
     }
-    
-    // Datetimepicker
-    // .dtp div.dtp-date,
-    // .dtp div.dtp-time {
-    //     background-color: $active-link-font-color;
-    // }
-    // .dtp>.dtp-content>.dtp-date-view>header.dtp-header {
-    //     background-color: darken($active-link-font-color, 15);
-    // }
-    // .dtp .p10>a {
-    //     color: darken($active-link-font-color, 15);
-    // }
-    // .dtp table.dtp-picker-days tr>td>a.selected {
-    //     background-color: $active-link-font-color;
-    // }

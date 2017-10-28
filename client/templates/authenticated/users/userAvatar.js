@@ -89,10 +89,10 @@ Template.userAvatar.onRendered(() => {
         distance: 20,
         zIndex: 999999,
         start(evt, ui) {
-            $('.trash-container').addClass('dragging');
+            $('.content-wrapper').addClass('dragging');
         },
         stop(evt, ui) {
-            $('.trash-container').removeClass('dragging');
+            $('.content-wrapper').removeClass('dragging');
         }
     });
 });

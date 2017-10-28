@@ -42,7 +42,7 @@ Template.kanlist.onRendered(() => {
         scroll: false,
         placeholder: 'kantask-wrapper placeholder',
         start(evt, ui) {
-            $('.kanboard').addClass('dragging');
+            $('.content-wrapper').addClass('dragging');
             ui.placeholder.height(ui.helper.height());
             ui.placeholder.width(ui.helper.width());
             $(document).on('mousemove', function(event) {
@@ -58,7 +58,7 @@ Template.kanlist.onRendered(() => {
         },
         stop(evt, ui) {
             $(document).off('mousemove');
-            $('.kanboard').removeClass('dragging');
+            $('.content-wrapper').removeClass('dragging');
         },
         receive(evt, ui) {
             let kanlist = ui.item.parents('.kanlist').get(0);
@@ -228,7 +228,7 @@ Template.kantrash.onRendered(() => {
             }
         }
     }).sortable({
-        connectWith: '.tasks-container, trash-containerr',
+        connectWith: '.tasks-container, trash-container',
         tolerance: 'pointer',
         appendTo: 'body',
         helper(evt, item) {
@@ -239,11 +239,11 @@ Template.kantrash.onRendered(() => {
         scroll: false,
         placeholder: 'kantask-wrapper placeholder',
         start(evt, ui) {
-            $('.kanboard').addClass('dragging');
+            $('.content-wrapper').addClass('dragging');
             ui.placeholder.height(ui.helper.height());
         },
         stop(evt, ui) {
-            $('.kanboard').removeClass('dragging');
+            $('.content-wrapper').removeClass('dragging');
         },
         receive(evt, ui) {
             const taskDomElement = ui.item.get(0);

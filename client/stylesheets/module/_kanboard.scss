@@ -169,91 +169,62 @@
                                         font-weight: bold;
                                     }
                                 }
-                                .kantask {
-                                    border-left: 4px solid rgba(153, 153, 153, 0.2);
-                                    position: relative;
-                                    -webkit-box-flex: 1;
-                                    -moz-box-flex: 1;
-                                    -o-box-flex: 1;
-                                    box-flex: 1;
-                                    -webkit-flex: 1;
-                                    -ms-flex: 1;
-                                    flex: 1;
-                                    -webkit-box-lines: multiple;
-                                    -moz-box-lines: multiple;
-                                    -o-box-lines: multiple;
-                                    -webkit-flex-wrap: wrap;
-                                    -ms-flex-wrap: wrap;
-                                    flex-wrap: wrap;
-                                    -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
-                                    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
-                                    -webkit-border-radius: 0px;
-                                    border-radius: 0px;
-                                    color: $maincolor;
-                                    overflow: hidden;
-                                    -webkit-transition: all 0.7s;
-                                    -moz-transition: all 0.7s;
-                                    -o-transition: all 0.7s;
-                                    -ms-transition: all 0.7s;
-                                    transition: all 0.7s;
-                                    background: rgba(153, 153, 153, 0.2);
-                                    min-height: 80px;
-                                    margin-bottom: 15px;
-                                    margin-top: 0px;
-                                    padding: 10px;
-                                    opacity: 0.7;
-                                    .kantask-members {
-                                        position: absolute;
-                                        bottom: 0;
-                                        right: 0;
-                                        .member {
-                                            height: 20px;
-                                            width: 20px;
-                                            .initials {
-                                                font-size: 10px;
-                                                margin: 2px auto;
-                                            }
-                                            .member-state {
-                                                width: 6px;
-                                                height: 6px;
-                                            }
-                                        }
-                                    }
-                                }
                             }
                         }
                     }
                 }
-                .kantask-details {
-                    padding: 0 20px;
-                    height: 100%;
-                    -webkit-flex-shrink: 0;
-                    flex-shrink: 0;
-                    -webkit-flex-basis: 470px;
-                    flex-basis: 470px;
-                    will-change: flex-basis;
-                    overflow: hidden;
-                    background: #f7f7f7;
-                    z-index: 20 !important;
-                    -webkit-animation: width 0.3s;
-                    -moz-animation: width 0.3s;
-                    -o-animation: width 0.3s;
-                    -ms-animation: width 0.3s;
-                    animation: width 0.3s;
-                    -webkit-box-shadow: 0 0 7px 0 #b3b3b3;
-                    box-shadow: 0 0 7px 0 #b3b3b3;
-                    -webkit-transition: flex-basis 0.3s;
-                    -moz-transition: flex-basis 0.3s;
-                    -o-transition: flex-basis 0.3s;
-                    -ms-transition: flex-basis 0.3s;
-                    transition: flex-basis 0.3s;
-                    .kantask-details-header {
-                        margin: 0 -20px 5px;
-                        padding: 7px 16px;
-                        background: #ededed;
-                        border-bottom: 1px solid #dbdbdb;
-                    }
-                }
+            }
+        }
+    }
+}
+
+.kantask {
+    border-left: 4px solid rgba(153, 153, 153, 0.2);
+    position: relative;
+    -webkit-box-flex: 1;
+    -moz-box-flex: 1;
+    -o-box-flex: 1;
+    box-flex: 1;
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    -webkit-box-lines: multiple;
+    -moz-box-lines: multiple;
+    -o-box-lines: multiple;
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+    -webkit-border-radius: 0px;
+    border-radius: 0px;
+    color: $maincolor;
+    overflow: hidden;
+    -webkit-transition: all 0.7s;
+    -moz-transition: all 0.7s;
+    -o-transition: all 0.7s;
+    -ms-transition: all 0.7s;
+    transition: all 0.7s;
+    background: rgba(153, 153, 153, 0.2);
+    min-height: 80px;
+    margin-bottom: 15px;
+    margin-top: 0px;
+    padding: 10px;
+    opacity: 0.7;
+    .kantask-members {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        .member {
+            height: 20px;
+            width: 20px;
+            .initials {
+                font-size: 10px;
+                margin: 2px auto;
+            }
+            .member-state {
+                width: 6px;
+                height: 6px;
             }
         }
     }
