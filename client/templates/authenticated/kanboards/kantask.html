@@ -1,8 +1,13 @@
 <template name="kantask">
     <a class="kantask-wrapper">
         <div class="kantask" style="{{background}}">
-            <div class="kantask-labels pull-right"></div>
+            <a class="kantask-grab-icon"  data-target="#">
+                <i class="ti-move"></i>
+                <div class="ripple-container"></div>
+            </a>
             <div class="kantask-title">{{title}}</div>
+
+            <div class="kantask-labels"></div>
             <div class="kantask-members">{{>smallMembers this}}</div>
         </div>
     </a>

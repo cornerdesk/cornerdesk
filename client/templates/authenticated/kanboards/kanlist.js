@@ -31,6 +31,7 @@ Template.kanlist.onRendered(() => {
     // Drag n drop of the tasks
     const $tasksLists = this.$('.tasks-container');
     $tasksLists.sortable({
+        handle: '.kantask-grab-icon',
         connectWith: '.tasks-container, .trash-container',
         tolerance: 'pointer',
         appendTo: 'body',
@@ -183,6 +184,7 @@ Template.kanlist.events({
 Template.kantrash.onRendered(() => {
     const $tasks = this.$('.trash-container');
     $tasks.droppable({
+        handle: '.kantask-grab-icon',
         hoverClass: 'ui-state-active',
         tolerance: 'pointer',
         accept: function(event, ui) {
@@ -228,7 +230,8 @@ Template.kantrash.onRendered(() => {
             }
         }
     }).sortable({
-        connectWith: '.tasks-container, trash-container',
+        handle: '.kantask-grab-icon',
+        connectWith: '.tasks-container, .trash-container',
         tolerance: 'pointer',
         appendTo: 'body',
         helper(evt, item) {
