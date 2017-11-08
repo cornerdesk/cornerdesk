@@ -12,7 +12,7 @@
     "article-extractor": "^1.0.2",
     "autolinker": "^1.4.3",
     "babel-runtime": "^6.23.0",
-    "bcrypt": "^1.0.2",
+    "bcrypt": "^1.0.3",
     "jquery": "^2.2.4",
     "jquery-validation": "^1.15.1",
     "jquery.scrollto": "^2.1.2",

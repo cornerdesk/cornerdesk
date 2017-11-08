@@ -13,7 +13,7 @@ fourseven:scss
 meteorhacks:ssr
 ecmascript@0.9.0
 kadira:flow-router
-meteorhacks:fast-render
+staringatlights:fast-render
 session@1.1.7
 templating
 reactive-var@1.0.11
