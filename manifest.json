@@ -1,0 +1,13 @@
+{
+    "default_locale": "en",
+
+    "description": "Agile tools for smart people",
+
+    "icons": {
+        "48": "./public/favicon.ico",
+        "96": "./public/favicon.ico"
+    },
+    "permissions": ["webNavigation"],
+    "display": "fullscreen",
+    "name": "Nest Square"
+}
