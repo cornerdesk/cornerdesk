@@ -40,7 +40,7 @@ aldeed:collection2-core@2.0.0
 kevohagan:sweetalert
 modweb:arrive
 matb33:collection-hooks
-rzymek:fullcalendar
+fullcalendar:fullcalendar
 3stack:presence
 fastclick@1.0.13
 dynamic-import@0.2.0
