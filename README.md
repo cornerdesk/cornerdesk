@@ -10,16 +10,16 @@ this project includes four main features :
 
 ## Calendars
 
-![Corner Desk calendars](https://imgur.com/hQAfEVg)
+![Corner Desk calendars](https://imgur.com/hQAfEVg.jpg)
 
 ## Kanban boards
 
-![Corner Desk boards](https://imgur.com/RckDu6K)
+![Corner Desk boards](https://imgur.com/RckDu6K.jpg)
 
 ## Chats
 
-![Corner Desk chats](https://imgur.com/v0nWoFI)
+![Corner Desk chats](https://imgur.com/v0nWoFI.jpg)
 
 ## Pinned articles
 
-![Corner Desk pinned articles](https://imgur.com/H4pWBqg)
+![Corner Desk pinned articles](https://imgur.com/H4pWBqg.jpg)
