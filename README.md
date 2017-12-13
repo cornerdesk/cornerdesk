@@ -23,3 +23,7 @@ this project includes four main features :
 ## Pinned articles
 
 ![Corner Desk pinned articles](https://imgur.com/H4pWBqg.jpg)
+
+## License
+
+Corner Desk is released under the very permissive [MIT license](LICENSE) and made with [Meteor](https://www.meteor.com).
